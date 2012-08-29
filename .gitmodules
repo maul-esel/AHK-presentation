@@ -6,7 +6,7 @@
 	url = https://github.com/Uberi/Canvas-AHK.git
 [submodule "ahk_library"]
 	path = ahk_library
-	url = https://github.com/lordkrandel/ahk_library.git
+	url = https://github.com/maul-esel/ahk_library.git
 [submodule "CGUI"]
 	path = CGUI
 	url = https://github.com/maul-esel/CGUI.git
