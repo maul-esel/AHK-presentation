@@ -1,0 +1,16 @@
+<presentation>
+	<part name="introduction"/>
+	<part name="version-history">
+		<browser file="\diagrams\versions.%s.svg" width="0.75" height="0.75" x="5" y="5"/>
+	</part>
+	<part name="usage-cases"/>
+	<part name="script-structure"/>
+	<part name="functionality">
+		<part name="gui"/>
+		<part name="hotkey"/>
+		<part name="automation"/>
+		<part name="extensibility"/>
+	</part>
+	<part name="community"/>
+	<part name="end"/>
+</presentation>
