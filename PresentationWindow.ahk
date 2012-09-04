@@ -10,7 +10,11 @@
 
 		this.Color("white", "white")
 
-		this.AddControl("ListBox", "NavigationBox", "x5 y110 w150 h" (0.78 * A_ScreenHeight), "|".join(this.presentation.parts.localized))
+		tree := this.AddControl("TreeView", "NavigationBox", "x5 y110 w150 h" (0.78 * A_ScreenHeight)) ;, "|".join(this.presentation.parts.localized))
+		for i, part in this.presentation.parts
+		{
+			item := tree.Items.Add(part.localized_name, "Expand")
+		}
 
 		ComObjError(false)
 		header := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
