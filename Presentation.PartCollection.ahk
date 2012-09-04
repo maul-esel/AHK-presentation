@@ -43,6 +43,11 @@ class PartCollection
 		return this._elements[index]
 	}
 
+	_NewEnum()
+	{
+		return ObjNewEnum(this._elements)
+	}
+
 	Count()
 	{
 		return this._elements.maxIndex()
