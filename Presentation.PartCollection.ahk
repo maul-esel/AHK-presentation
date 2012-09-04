@@ -43,5 +43,10 @@ class PartCollection
 		return this._elements[index]
 	}
 
+	Count()
+	{
+		return this._elements.maxIndex()
+	}
+
 	Owner := ""
 }
