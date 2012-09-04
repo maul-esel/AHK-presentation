@@ -10,7 +10,7 @@
 
 		this.Color("white", "white")
 
-		tree := this.AddControl("TreeView", "NavigationBox", "x5 y110 w150 h" (0.78 * A_ScreenHeight)) ;, "|".join(this.presentation.parts.localized))
+		tree := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w150 h" (0.78 * A_ScreenHeight))
 		for i, part in this.presentation.parts
 		{
 			item := tree.Items.Add(part.localized_name, "Expand")
