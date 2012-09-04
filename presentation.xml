@@ -21,7 +21,7 @@
 	<part name="script-structure"/>
 	<part name="functionality">
 		<part name="gui"/>
-		<part name="hotkey"/>
+		<part name="hotkeys"/>
 		<part name="automation"/>
 		<part name="extensibility"/>
 	</part>
