@@ -24,6 +24,13 @@
 		throw Exception("Part not found!")
 	}
 
+	getPartIndex(part)
+	{
+		if (i := Obj.in(this.parts, part))
+			return i
+		throw Exception("Part index not found!")
+	}
+
 	_doc := ComObjCreate("MSXML2.DOMDocument")
 
 	parts := []
