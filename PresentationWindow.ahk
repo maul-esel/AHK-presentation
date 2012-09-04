@@ -16,9 +16,9 @@
 			item := tree.Items.Add(part.localized_name, "Expand")
 		}
 
-		ComObjError(false)
+		err := ComObjError(false)
 		header := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
-		ComObjError(true)
+		ComObjError(err)
 		header.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 	}
 
