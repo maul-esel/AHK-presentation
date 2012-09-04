@@ -7,15 +7,12 @@ SetBatchLines -1
 SetWorkingDir %A_ScriptDir%
 ;*********** </SETTINGS> **********
 
-
 String.init()
-pres := new Presentation()
 
+pres := new Presentation()
 gui := new PresentationWindow(pres)
 
-gui.loadPart("introduction")
 gui.Maximize()
-
 gui.Show()
 
 return

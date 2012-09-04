@@ -29,9 +29,8 @@
 		}
 	}
 
-	loadPart(part_name)
+	loadPart(part)
 	{
-		part := this.presentation.getPart(part_name)
 		if (!part.created)
 		{
 			this.createPart(part)
@@ -144,7 +143,7 @@
 			if (index != this.presentation.parts.maxIndex()) ; do not load next part if this was already the last
 			{
 				this.unloadPart()
-				this.loadPart(this.presentation.parts[index + 1].name) ; load next part in array
+				this.loadPart(this.presentation.parts[index + 1]) ; load next part in array
 			}
 		}
 	}
@@ -157,7 +156,7 @@
 			if (index != 1) ; if we didn't already load the first part
 			{
 				this.unloadPart()
-				this.loadPart(this.presentation.parts[index - 1].name) ; load previous part
+				this.loadPart(this.presentation.parts[index - 1]) ; load previous part
 			}
 		}
 		else
@@ -182,6 +181,6 @@
 	NavigationBox_ItemSelected(item)
 	{
 		this.unloadPart()
-		this.loadPart(item.part.name)
+		this.loadPart(item.part)
 	}
 }
