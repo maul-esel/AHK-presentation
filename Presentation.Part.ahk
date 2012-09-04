@@ -6,6 +6,10 @@ class Part
 		this.is_steps := node.getAttribute("steps") = "true"
 		this.name := node.getAttribute("name")
 		this.localized_name := Translator.getString(this.name)
+
+		nodes := node.selectNodes("./part")
+		Loop % nodes.length
+			this.children.Insert(new Presentation.Part(nodes.item(A_Index - 1)))
 	}
 
 	created := false
@@ -21,4 +25,6 @@ class Part
 	name := ""
 
 	localized_name := ""
+
+	children := []
 }
