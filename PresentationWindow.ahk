@@ -85,10 +85,11 @@
 			{
 				err := ComObjError(false)
 				ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
+				ComObjError(err)
 				part.controls.Insert(ctrl.hwnd)
 
-				ctrl.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\" ctrl_node.getAttribute("resource"))
-				ComObjError(err)
+				is_localized := ctrl_node.getAttribute("localized") = "true"
+				ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
 			}
 
 			if (part.is_steps && ctrl_node.getAttribute("steps") != 0)
