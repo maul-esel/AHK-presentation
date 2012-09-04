@@ -26,16 +26,22 @@ class PartCollection
 		throw Exception("Part not found in collection!", -1)
 	}
 
-	Next(part)
+	Next(part = "")
 	{
+		if (part == "")
+			return this._elements[1]
+
 		index := this.IndexOf(part) + 1
 		if (index > this._elements.maxIndex())
 			throw Exception("Out of range!", -1)
 		return this._elements[index]
 	}
 
-	Previous(part)
+	Previous(part = "")
 	{
+		if (part == "")
+			return this._elements[this.Count()]
+
 		index := this.IndexOf(part) - 1
 		if (index < 1)
 			throw Exception("Out of range!", -1)
