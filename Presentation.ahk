@@ -17,4 +17,6 @@
 	_doc := ComObjCreate("MSXML2.DOMDocument")
 
 	parts := []
+
+	#include %A_ScriptDir%\Presentation.Part.ahk
 }
