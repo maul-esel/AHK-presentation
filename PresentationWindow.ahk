@@ -10,8 +10,8 @@
 
 		this.Color("white", "white")
 
-		tree := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w150 h" (0.78 * A_ScreenHeight))
-		this._read_parts(tree.Items, this.presentation.parts)
+		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w150 h" (0.78 * A_ScreenHeight))
+		this._read_parts(this.NavigationBox.Items, this.presentation.parts)
 
 		err := ComObjError(false)
 		header := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
@@ -25,6 +25,7 @@
 		{
 			item := parent.Add(part.localized_name, "Expand")
 			this._read_parts(item, part.children)
+			item.part := part
 		}
 	}
 
@@ -38,6 +39,8 @@
 
 		this.showPart(part)
 		this.loaded := part
+
+		this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name)
 	}
 
 	unloadPart()
@@ -174,5 +177,11 @@
 	PostDestroy()
 	{
 		ExitApp
+	}
+
+	NavigationBox_ItemSelected(item)
+	{
+		this.unloadPart()
+		this.loadPart(item.part.name)
 	}
 }
