@@ -137,14 +137,28 @@
 		}
 		else ; no more controls to show, load next part
 		{
-			; TODO: support nested parts
+			coll := this.loaded.Collection
+			, index := coll.IndexOf(this.loaded)
+			, max_index := coll.Count()
 
-			index := this.presentation.getPartIndex(this.loaded) ; first find current part in array
-			if (index != this.presentation.parts.maxIndex()) ; do not load next part if this was already the last
+			if (this.loaded.children.count() > 0) ; check for nested parts
 			{
-				this.unloadPart()
-				this.loadPart(this.presentation.parts[index + 1]) ; load next part in array
+				part := this.loaded.children.Next("")
 			}
+			else if (index < max_index) ; check for parts on same level
+			{
+				part := coll.Next(this.loaded) ; load the next on this level
+			}
+			else if (index == max_index) ; already displayed last part on this level, so...
+			{
+				owner := coll.Owner
+				if (owner == this.presentation) ; ... first check if we're already in the highest level.
+					return ; if so, this was the last. Stop here.
+				part := owner.Collection.Next(coll.Owner) ; else go up one level
+			}
+
+			this.unloadPart()
+			this.loadPart(part) ; load next part in array
 		}
 	}
 
@@ -152,12 +166,22 @@
 	{
 		if (this.loaded.step == 0) ; there are no negative steps - load the previous part
 		{
-			index := this.presentation.getPartIndex(this.loaded)
-			if (index != 1) ; if we didn't already load the first part
+			coll := this.loaded.Collection
+			, index := coll.IndexOf(this.loaded)
+
+			if (index > 1)
 			{
-				this.unloadPart()
-				this.loadPart(this.presentation.parts[index - 1]) ; load previous part
+				part := coll.Previous(this.loaded)
 			}
+			else
+			{
+				owner := coll.Owner
+				if (owner == this.presentation) ; ... first check if we're already in the highest level.
+					return ; if so, this was the first part. Stop here.
+				part := coll.Owner
+			}
+			this.unloadPart()
+			this.loadPart(part) ; load previous part
 		}
 		else
 		{
