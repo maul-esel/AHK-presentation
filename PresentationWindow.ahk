@@ -33,6 +33,8 @@
 	unloadPart()
 	{
 		this.hidePart(this.loaded)
+		this.loaded.step := 0
+		this.loaded := ""
 	}
 
 	createPart(part)
