@@ -29,4 +29,5 @@
 	parts := []
 
 	#include %A_ScriptDir%\Presentation.Part.ahk
+	#include %A_ScriptDir%\Presentation.PartCollection.ahk
 }
