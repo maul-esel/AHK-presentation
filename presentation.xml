@@ -1,4 +1,4 @@
-<presentation>
+﻿<presentation>
 	<part name="introduction"/>
 	<part name="version-history">
 		<browser file="\diagrams\versions.%s.svg" width="0.75" height="0.75" x="5" y="5"/>

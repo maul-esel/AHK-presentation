@@ -1,4 +1,4 @@
-class Translator
+﻿class Translator
 {
 	static Language := "de"
 

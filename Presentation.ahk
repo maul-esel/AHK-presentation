@@ -1,4 +1,4 @@
-class Presentation
+﻿class Presentation
 {
 	__New()
 	{
