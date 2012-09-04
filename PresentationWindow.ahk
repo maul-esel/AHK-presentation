@@ -118,15 +118,41 @@
 	continue()
 	{
 		ctrls := this._get_ctrls(this.loaded, ++this.loaded.step)
-		for i, ctrl in ctrls
-			ctrl.Show()
+		if (ctrls.maxIndex() > 0)
+		{
+			for i, ctrl in ctrls
+				ctrl.Show()
+		}
+		else ; no more controls to show, load next part
+		{
+			; TODO: support nested parts
+
+			index := this.presentation.getPartIndex(this.loaded) ; first find current part in array
+			if (index != this.presentation.parts.maxIndex()) ; do not load next part if this was already the last
+			{
+				this.unloadPart()
+				this.loadPart(this.presentation.parts[index + 1].name) ; load next part in array
+			}
+		}
 	}
 
 	back()
 	{
-		ctrls := this._get_ctrls(this.loaded, this.loaded.step--)
-		for i, ctrl in ctrls
-			ctrl.Hide()
+		if (this.loaded.step == 0) ; there are no negative steps - load the previous part
+		{
+			index := this.presentation.getPartIndex(this.loaded)
+			if (index != 1) ; if we didn't already load the first part
+			{
+				this.unloadPart()
+				this.loadPart(this.presentation.parts[index - 1].name) ; load previous part
+			}
+		}
+		else
+		{
+			ctrls := this._get_ctrls(this.loaded, this.loaded.step--)
+			for i, ctrl in ctrls
+				ctrl.Hide()
+		}
 	}
 
 	hidePart(part)
