@@ -80,10 +80,6 @@
 				{
 					ctrl.Font.Options := ctrl_font_opt
 				}
-				if (part.is_steps)
-				{
-					ctrl.Hide()
-				}
 			}
 			else if (ctrl_type = "browser")
 			{
@@ -94,6 +90,12 @@
 				ctrl.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\" ctrl_node.getAttribute("resource"))
 				ComObjError(err)
 			}
+
+			if (part.is_steps && ctrl_node.getAttribute("steps") != 0)
+			{
+				ctrl.Hide()
+			}
+			ctrl := ""
 		}
 
 		part.created := true
