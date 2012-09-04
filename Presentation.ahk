@@ -14,14 +14,14 @@
 		for i, part in this.parts
 			if (part.name = name)
 				return part
-		throw Exception("Part not found!")
+		throw Exception("Part not found!", -1)
 	}
 
 	getPartIndex(part)
 	{
 		if (i := Obj.in(this.parts, part))
 			return i
-		throw Exception("Part index not found!")
+		throw Exception("Part index not found!", -1)
 	}
 
 	_doc := ComObjCreate("MSXML2.DOMDocument")
