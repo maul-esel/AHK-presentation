@@ -7,10 +7,13 @@ class Part
 		this.name := node.getAttribute("name")
 		this.localized_name := Translator.getString(this.name)
 
+		this.children := new Presentation.PartCollection(this)
 		nodes := node.selectNodes("./part")
 		Loop % nodes.length
-			this.children.Insert(new Presentation.Part(nodes.item(A_Index - 1)))
+			this.children.Add(new Presentation.Part(nodes.item(A_Index - 1)))
 	}
+
+	Collection := ""
 
 	created := false
 
@@ -26,5 +29,5 @@ class Part
 
 	localized_name := ""
 
-	children := []
+	children := ""
 }

@@ -4,9 +4,10 @@
 	{
 		this._doc.load(A_ScriptDir . "\presentation.xml")
 
-		part_list := this._doc.selectNodes("/presentation/part")
+		this.parts := new Presentation.PartCollection(this)
+		, part_list := this._doc.selectNodes("/presentation/part")
 		Loop % part_list.length
-			this.parts.Insert(new Presentation.Part(part_list.item(A_Index - 1)))
+			this.parts.Add(new Presentation.Part(part_list.item(A_Index - 1)))
 	}
 
 	getPart(name)
@@ -26,7 +27,7 @@
 
 	_doc := ComObjCreate("MSXML2.DOMDocument")
 
-	parts := []
+	parts := ""
 
 	#include %A_ScriptDir%\Presentation.Part.ahk
 	#include %A_ScriptDir%\Presentation.PartCollection.ahk
