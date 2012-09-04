@@ -11,15 +11,21 @@
 		this.Color("white", "white")
 
 		tree := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w150 h" (0.78 * A_ScreenHeight))
-		for i, part in this.presentation.parts
-		{
-			item := tree.Items.Add(part.localized_name, "Expand")
-		}
+		this._read_parts(tree.Items, this.presentation.parts)
 
 		err := ComObjError(false)
 		header := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
 		ComObjError(err)
 		header.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
+	}
+
+	_read_parts(parent, collection)
+	{
+		for i, part in collection
+		{
+			item := parent.Add(part.localized_name, "Expand")
+			this._read_parts(item, part.children)
+		}
 	}
 
 	loadPart(part_name)
