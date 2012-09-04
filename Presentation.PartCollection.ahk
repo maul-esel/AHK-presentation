@@ -21,9 +21,8 @@ class PartCollection
 
 	IndexOf(part)
 	{
-		for i, c_part in this._elements
-			if (c_part == part)
-				return i
+		if (i := Obj.in(this._elements, part))
+			return i
 		throw Exception("Part not found in collection!", -1)
 	}
 
