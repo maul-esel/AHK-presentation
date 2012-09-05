@@ -1,21 +1,30 @@
 ﻿<presentation>
+	<styles>
+		<style name="h1"      font-opt="s20 bold underline" font-name="Tahoma" options=""/>
+		<style name="h2"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
+		<style name="h3"      font-opt="s12 bold underline" font-name="Tahoma" options=""/>
+		<style name="cite"    font-opt="s12 italic"         font-name="Tahoma" options=""/>
+		<style name="default" font-opt="s12"                font-name="Tahoma" options=""/>
+	</styles>
 	<part name="introduction" steps="true">
-		<text step="1" font-style="s20 bold underline" font-name="Tahoma" x="000" y="000" w="0.50" h="0.5" content="introduction"/>
-		<text step="2" font-style="s16 bold underline" font-name="Tahoma" x="000" y="035" w="0.50" h="0.5" content="introduction/what"/>
-		<text step="3" font-style="s12 italic"         font-name="Tahoma" x="000" y="075" w="0.50" h="0.5" content="introduction/cite"/>
-		<text step="4" font-style="s16 bold underline" font-name="Tahoma" x="000" y="150" w="0.50" h="0.5" content="introduction/advantages"/>
-		<text step="5" font-style="s12 bold underline" font-name="Tahoma" x="000" y="200" w="0.25" h="0.5" content="introduction/simplicity"/>
-		<text step="5" font-style="s12"                font-name="Tahoma" x="200" y="200" w="0.65" h="0.5" content="introduction/simplicity/text"/>
-		<text step="6" font-style="s12 bold underline" font-name="Tahoma" x="000" y="275" w="0.25" h="0.5" content="introduction/builtins"/>
-		<text step="6" font-style="s12"                font-name="Tahoma" x="200" y="275" w="0.65" h="0.5" content="introduction/builtins/text"/>
-		<text step="7" font-style="s12 bold underline" font-name="Tahoma" x="000" y="350" w="0.25" h="0.5" content="introduction/hotkeys"/>
-		<text step="7" font-style="s12"                font-name="Tahoma" x="200" y="350" w="0.65" h="0.5" content="introduction/hotkeys/text"/>
-		<text step="8" font-style="s12 bold underline" font-name="Tahoma" x="000" y="425" w="0.25" h="0.5" content="introduction/automation"/>
-		<text step="8" font-style="s12"                font-name="Tahoma" x="200" y="425" w="0.65" h="0.5" content="introduction/automation/text"/>
-		<text step="9" font-style="s12 bold underline" font-name="Tahoma" x="000" y="550" w="0.25" h="0.5" content="introduction/advanced"/>
-		<text step="9" font-style="s12"                font-name="Tahoma" x="200" y="550" w="0.65" h="0.5" content="introduction/advanced/text"/>
+		<text step="1" style="h1"      x="000" y="000" w="0.50" h="0.5" content="introduction"/>
+		<text step="2" style="h2"      x="000" y="035" w="0.50" h="0.5" content="introduction/what"/>
+		<text step="3" style="cite"    x="000" y="075" w="0.50" h="0.5" content="introduction/cite"/>
+		<text step="4" style="h2"      x="000" y="150" w="0.50" h="0.5" content="introduction/advantages"/>
+		<text step="5" style="h3"      x="000" y="200" w="0.25" h="0.5" content="introduction/simplicity"/>
+		<text step="5" style="default" x="200" y="200" w="0.65" h="0.5" content="introduction/simplicity/text"/>
+		<text step="6" style="h3"      x="000" y="275" w="0.25" h="0.5" content="introduction/builtins"/>
+		<text step="6" style="default" x="200" y="275" w="0.65" h="0.5" content="introduction/builtins/text"/>
+		<text step="7" style="h3"      x="000" y="350" w="0.25" h="0.5" content="introduction/hotkeys"/>
+		<text step="7" style="default" x="200" y="350" w="0.65" h="0.5" content="introduction/hotkeys/text"/>
+		<text step="8" style="h3"      x="000" y="425" w="0.25" h="0.5" content="introduction/automation"/>
+		<text step="8" style="default" x="200" y="425" w="0.65" h="0.5" content="introduction/automation/text"/>
+		<text step="9" style="h3"      x="000" y="550" w="0.25" h="0.5" content="introduction/advanced"/>
+		<text step="9" style="default" x="200" y="550" w="0.65" h="0.5" content="introduction/advanced/text"/>
 	</part>
-	<part name="version-history">
+	<part name="version-history" steps="true">
+		<text    step="1" style="h1" x="000" y="000" w="0.50" h="0.05" content="version-history"/>
+		<picture step="2" x="000" y="040" w="0.85" h="0.75" content="-" options="cRed"/>
 	</part>
 	<part name="usage-cases"/>
 	<part name="script-structure"/>

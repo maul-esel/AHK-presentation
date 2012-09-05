@@ -61,24 +61,29 @@
 			ctrl_node := ctrl_list.item(A_Index - 1)
 			ctrl_type := ctrl_node.nodeName
 
+			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+
 			ctrl_options := "x" . (ctrl_node.getAttribute("x") + 170)
 							. " y" . (ctrl_node.getAttribute("y") + 110)
 							. " w" . (ctrl_node.getAttribute("w") * A_ScreenWidth)
 							. " h" . (ctrl_node.getAttribute("h") * A_ScreenHeight)
-							. " " . ctrl_node.getAttribute("options")
+							. " " . ctrl_opt
+			, ctrl_opt := ""
 
 			if (ctrl_type.in(CGUI_controls))
 			{
 				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, Translator.getString(ctrl_node.getAttribute("content")))
 				part.controls.Insert(ctrl.hwnd)
 
-				if (ctrl_font := ctrl_node.getAttribute("font-name"))
+				if (ctrl_font)
 				{
 					ctrl.Font.Font := ctrl_font
+					, ctrl_font := ""
 				}
-				if (ctrl_font_opt := ctrl_node.getAttribute("font-style"))
+				if (ctrl_font_opt)
 				{
 					ctrl.Font.Options := ctrl_font_opt
+					, ctrl_font_opt := ""
 				}
 			}
 			else if (ctrl_type = "browser")
@@ -92,7 +97,7 @@
 				ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
 			}
 
-			if (part.is_steps && ctrl_node.getAttribute("steps") != 0)
+			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
 			{
 				ctrl.Hide()
 			}
@@ -198,6 +203,34 @@
 	{
 		for i, control in part.controls
 			this.Controls[control].Hide()
+	}
+
+	_process_styles(node, byRef font, byRef font_opt, byRef opt)
+	{
+		if (style := node.getAttribute("style"))
+		{
+			style_node := node.ownerDocument.selectSingleNode("/presentation/styles/style[@name='" . style . "']")
+			if (style_node)
+			{
+				if (t := style_node.getAttribute("font-name"))
+					font := t
+				if (t := style_node.getAttribute("font-opt"))
+					font_opt := t
+				if (t := style_node.getAttribute("options"))
+					opt := t
+			}
+			else
+			{
+				throw Exception("Unknown style name", -1)
+			}
+		}
+
+		if (t := node.getAttribute("font-name"))
+			font := t
+		if (t := node.getAttribute("font-style"))
+			font_opt .= t
+		if (t := node.getAttribute("options"))
+			opt .= t
 	}
 
 	PostDestroy()
