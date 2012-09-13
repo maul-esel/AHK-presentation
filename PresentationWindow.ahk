@@ -69,10 +69,16 @@
 
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 
-			ctrl_options := "x" . (ctrl_node.getAttribute("x") + 295)
-							. " y" . (ctrl_node.getAttribute("y") + 110)
-							. " w" . (ctrl_node.getAttribute("w") * A_ScreenWidth)
-							. " h" . (ctrl_node.getAttribute("h") * A_ScreenHeight)
+			ctrl_w := ctrl_node.getAttribute("w")
+			, ctrl_h := ctrl_node.getAttribute("h")
+
+			ctrl_x := ctrl_node.getAttribute("x")
+			, ctrl_y := ctrl_node.getAttribute("y")
+
+			ctrl_options := "x" . (295 + (ctrl_x ? ctrl_x : 0))
+							. " y" . (110 + (ctrl_y ? ctrl_y : 0))
+							. (ctrl_w ? " w" . (ctrl_w * A_ScreenWidth) : "")
+							. (ctrl_h ? " h" . (ctrl_h * A_ScreenHeight) : "")
 							. " " . ctrl_opt
 			, ctrl_opt := ""
 
