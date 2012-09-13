@@ -58,6 +58,7 @@
 	createPart(part)
 	{
 		static CGUI_controls := ["text", "edit", "button", "checkbox", "radio", "listview", "combobox", "dropdownlist", "listbox", "treeview", "tab", "groupbox", "picture", "progress", "activex", "syslinkcontrol"]
+		static READYSTATE_COMPLETE := 4
 
 		node := part.node
 
@@ -113,6 +114,9 @@
 
 				is_localized := ctrl_node.getAttribute("localized") = "true"
 				ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
+
+				while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
+					sleep 100
 			}
 
 			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
