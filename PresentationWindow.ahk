@@ -15,9 +15,9 @@
 		this._read_parts(this.NavigationBox.Items, this.presentation.parts)
 
 		err := ComObjError(false)
-		header := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
+		this.HeaderBar := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
 		ComObjError(err)
-		header.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
+		this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
 		for i, part in this.presentation.parts
 		{
@@ -33,6 +33,60 @@
 			this._read_parts(item, part.children)
 			item.part := part
 		}
+	}
+
+	_get_viewbox(node)
+	{
+		box := node.selectSingleNode("viewbox")
+		if (box)
+		{
+			return { "width" : box.getAttribute("width")
+					, "height" : box.getAttribute("height")
+					, "margin" : {  "left" : (t := box.getAttribute("margin-left"))   ? t : 0
+								,  "right" : (t := box.getAttribute("margin-right"))  ? t : 0
+								,    "top" : (t := box.getAttribute("margin-top"))    ? t : 0
+								, "bottom" : (t := box.getAttribute("margin-bottom")) ? t : 0 } }
+		}
+		if (node.parentNode)
+			return this._get_viewbox(node.parentNode)
+	}
+
+	_process_position(ctrl_node)
+	{
+		static static_margin := 10
+
+		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
+		viewbox := this._get_viewbox(ctrl_node) ; get viewbox dimensions
+		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
+					, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
+					, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
+					, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
+
+		ctrl := {}
+		for i, opt in ["x", "y", "w", "h"]
+		{
+			if ((t := ctrl_node.getAttribute(opt)) != "")
+				ctrl[opt] := t
+		}
+
+		pos := {}
+		if (ctrl.HasKey("x"))
+		{
+			pos.x := floor(ctrl.x / viewbox.width * panel.w + panel.x)
+		}
+		if (ctrl.HasKey("y"))
+		{
+			pos.y := floor(ctrl.y / viewbox.height * panel.h + panel.y)
+		}
+		if (ctrl.HasKey("w"))
+		{
+			pos.w := floor(ctrl.w / viewbox.width * panel.w)
+		}
+		if (ctrl.HasKey("h"))
+		{
+			pos.h := floor(ctrl.h / viewbox.height * panel.h)
+		}
+		return pos
 	}
 
 	loadPart(part)
@@ -69,18 +123,14 @@
 			ctrl_type := ctrl_node.nodeName
 
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+			pos := this._process_position(ctrl_node)
 
-			ctrl_w := ctrl_node.getAttribute("w")
-			, ctrl_h := ctrl_node.getAttribute("h")
-
-			ctrl_x := ctrl_node.getAttribute("x")
-			, ctrl_y := ctrl_node.getAttribute("y")
-
-			ctrl_options := "x" . (295 + (ctrl_x ? ctrl_x : 0))
-							. " y" . (110 + (ctrl_y ? ctrl_y : 0))
-							. (ctrl_w ? " w" . (ctrl_w * A_ScreenWidth) : "")
-							. (ctrl_h ? " h" . (ctrl_h * A_ScreenHeight) : "")
-							. " " . ctrl_opt
+			ctrl_options := ""
+			for property, value in pos
+			{
+				ctrl_options .= property . value . A_Space
+			}
+			ctrl_options .= ctrl_opt
 			, ctrl_opt := ""
 
 			if (ctrl_type.in(CGUI_controls))
