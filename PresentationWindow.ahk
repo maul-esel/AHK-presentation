@@ -73,7 +73,13 @@
 
 			if (ctrl_type.in(CGUI_controls))
 			{
-				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, Translator.getString(ctrl_node.getAttribute("content")))
+				content := ctrl_node.getAttribute("content")
+				if (!content)
+					content := ctrl_node.text
+				else
+					content := Translator.getString(content)
+
+				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl.hwnd)
 
 				if (ctrl_font)
