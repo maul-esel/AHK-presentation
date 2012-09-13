@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <lang>
 	<translation lang="de">
-		<string name="win-title">Pr&#228;sentation &#252;ber AutoHotkey</string>
+		<string name="win-title">AutoHotkey &#8212; die beste Skript-Sprache f&#252;r Windows.</string>
 		<string name="introduction">Einf&#252;hrung</string>
 		<string name="version-history">Versionsgeschichte</string>
 		<string name="usage-cases">Einsatzgebiete</string>
 		<string name="script-structure">Aufbau eines Skripts</string>
+		<string name="functions">Funktionen</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
 		<string name="gui">Benutzeroberfl&#228;chen</string>
 		<string name="hotkeys">Tastenkombinationen</string>
@@ -27,6 +28,13 @@
 		<string name="introduction/automation/text">Der andere Schwerpunkt von AutoHotkey ist die Automatisierung. Es gibt eine Unzahl an Befehlen zur Automatisierung von Fenstern, es lassen sich Tasten an Programme senden, Aktionen k&#246;nnen in bestimmten Zeitintervallen ausgef&#252;hrt werden usw.&#10;Dies l&#228;sst sich nicht nur in Spielen einsetzen, auch allt&#228;gliche Computerarbeit (z.B. im B&#252;ro) l&#228;sst sich vielfach erleichtern.</string>
 		<string name="introduction/advanced">&#8226; Fortgeschrittenes</string>
 		<string name="introduction/advanced/text">Neben den leicht zug&#228;nglichen Befehlen f&#252;r einfachere Skripte bieten besonders neuere Versionen von AutoHotkey auch die M&#246;glichkeit von Zugriffen auf fortgeschrittene Techniken. So ist es beispielsweise m&#246;glich, &#252;ber das Internet zu kommunizieren, in das Betriebssystem einzugreifen, Office-Programme zu automatisieren oder in anderen Sprachen programmierten Code auszuf&#252;hren.</string>
+
+		<string name="script-structure/file">Eine Skript-Datei</string>
+		<string name="script-structure/file/text">Ein AutoHotkey-Script ist einfach nur eine ganz normale Text-Datei. Meistens wird die Dateiendung &quot;.ahk&quot; benutzt.</string>
+		<string name="script-structure/auto-execute">Wo fangen wir an? &#8212; die &quot;auto-execute section&quot;</string>
+		<string name="script-structure/auto-execute/text">Wird ein Skript gestartet, wird zuerst die sogenannte &quot;auto-execute section&quot; ausgef&#252;hrt. Sie beginnt in der ersten Zeile der Datei und endet entweder am Ende der Datei oder beim ersten &quot;return&quot;-Befehl, was immer zuerst kommt.</string>
+		<string name="script-structure/functions">Funktionen</string>
+		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax ist fast dieselbe, nur das Wort &quot;function&quot;, das in Javascript vor jede Funktion kommt, wird nicht verwendet.</string>
 
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
