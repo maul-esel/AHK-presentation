@@ -10,7 +10,8 @@
 
 		this.Color("white", "white")
 
-		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w150 h" (0.78 * A_ScreenHeight))
+		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
+		this.NavigationBox.Font.Options := "s12"
 		this._read_parts(this.NavigationBox.Items, this.presentation.parts)
 
 		err := ComObjError(false)
@@ -63,7 +64,7 @@
 
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 
-			ctrl_options := "x" . (ctrl_node.getAttribute("x") + 170)
+			ctrl_options := "x" . (ctrl_node.getAttribute("x") + 295)
 							. " y" . (ctrl_node.getAttribute("y") + 110)
 							. " w" . (ctrl_node.getAttribute("w") * A_ScreenWidth)
 							. " h" . (ctrl_node.getAttribute("h") * A_ScreenHeight)
