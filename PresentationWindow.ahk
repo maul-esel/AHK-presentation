@@ -169,6 +169,30 @@
 					sleep 100
 			}
 
+			event_list := ctrl_node.selectNodes("event")
+			Loop % event_list.length
+			{
+				event_node := event_list.item(A_Index - 1)
+				event_name := event_node.getAttribute("name")
+				event_handler := event_node.getAttribute("handler")
+				event_handler_type := event_node.getAttribute("handler-type")
+
+				if event_handler_type not in function,label
+				{
+					throw Exception("Unknown event handler type!", -1)
+				}
+				else if (event_handler_type = "function")
+				{
+					if (!IsFunc(event_handler))
+						throw Exception("Unknown function '" . event_handler . "' called!", -1)
+					event_handler := Func(event_handler)
+				}
+				else if (event_handler = "label")
+					event_handler := Label(event_handler)
+
+				ctrl[event_name].handler := event_handler
+			}
+
 			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
 			{
 				ctrl.Hide()
