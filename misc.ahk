@@ -24,7 +24,7 @@ RunEditor()
 	Send {Enter}
 	sleep 2000
 
-	Run explorer.exe /n`,/root`,"%A_ScriptDir%"`,/select`,"%script_file%", , , pid_exp
+	Run explorer.exe /n`,/root`,"%A_ScriptDir%"`,/select`,"%script_file%"
 	sleep 3000
 	Process, Close, %pid%
 }

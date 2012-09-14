@@ -173,9 +173,9 @@
 			Loop % event_list.length
 			{
 				event_node := event_list.item(A_Index - 1)
-				event_name := event_node.getAttribute("name")
-				event_handler := event_node.getAttribute("handler")
-				event_handler_type := event_node.getAttribute("handler-type")
+				, event_name := event_node.getAttribute("name")
+				, event_handler := event_node.getAttribute("handler")
+				, event_handler_type := event_node.getAttribute("handler-type")
 
 				if event_handler_type not in function,label
 				{
