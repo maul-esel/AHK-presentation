@@ -7,6 +7,7 @@
 		<string name="usage-cases">Einsatzgebiete</string>
 		<string name="script-structure">Aufbau eines Skripts</string>
 		<string name="functions">Funktionen</string>
+		<string name="commands">Befehle</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
 		<string name="gui">Benutzeroberfl&#228;chen</string>
 		<string name="hotkeys">Tastenkombinationen</string>
@@ -33,8 +34,16 @@
 		<string name="script-structure/file/text">Ein AutoHotkey-Script ist einfach nur eine ganz normale Text-Datei. Meistens wird die Dateiendung &quot;.ahk&quot; benutzt.</string>
 		<string name="script-structure/auto-execute">Wo fangen wir an? &#8212; die &quot;auto-execute section&quot;</string>
 		<string name="script-structure/auto-execute/text">Wird ein Skript gestartet, wird zuerst die sogenannte &quot;auto-execute section&quot; ausgef&#252;hrt. Sie beginnt in der ersten Zeile der Datei und endet entweder am Ende der Datei oder beim ersten &quot;return&quot;-Befehl, was immer zuerst kommt.</string>
+
 		<string name="script-structure/functions">Funktionen</string>
-		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax ist fast dieselbe, nur das Wort &quot;function&quot;, das in Javascript vor jede Funktion kommt, wird nicht verwendet.</string>
+		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax zum Aufrufen ist exakt dieselbe:</string>
+		<string name="script-structure/functions/UDF">Benutzerdefinierte Funktionen</string>
+		<string name="script-structure/functions/UDF/text">Die Syntax ist fast dieselbe wie in Javascript, nur das Wort &quot;function&quot;, das in Javascript vor jede Funktion kommt, wird nicht verwendet:</string>
+
+		<string name="script-structure/commands">Befehle</string>
+		<string name="script-structure/commands/text">Anders als in den meisten anderen Sprachen gibt es neben Funktionen in AutoHotkey noch &quot;Befehle&quot;. Diese tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede, die leicht zu Verwirrung führen k&#246;nnen.&#10;&#10;In AutoHotkey v2 sind Befehle deshalb identisch mit Funktionen.</string>
+		<string name="script-structure/commands/differences">Unterschiede</string>
+		<string name="script-structure/commands/differences/text">&#8226; Syntax: es werden keine Klammern verwendet&#10;&#8226; Variablen werden anders dargestellt&#10;&#8226; Benutzerdefinierte Befehle sind nicht möglich.</string>
 
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>

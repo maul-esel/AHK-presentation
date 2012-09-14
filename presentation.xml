@@ -27,15 +27,15 @@
 	<part name="version-history" steps="true">
 		<text    step="1" style="h1" x="00" y="0.0" w="100" h="5" content="version-history"/>
 		<!--picture step="2" x="00" y="7.5">C:\Dokumente und Einstellungen\___\Desktop\gFS\resources\diagram.png</picture-->
-		<browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/>
+		<!--browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/-->
 	</part>
 	<part name="usage-cases"/>
 	<part name="script-structure" steps="true">
-		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
-		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
-		<text   step="3" style="default" x="05" y="12.5" w="075" h="10" content="script-structure/file/text"/>
-		<button step="3" style="default" x="05" y="20.0" w="020" h="05">
-			Notepad++
+		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05.0" content="script-structure"/>
+		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05.0" content="script-structure/file"/>
+		<text   step="3" style="default" x="05" y="12.5" w="075" h="07.5" content="script-structure/file/text"/>
+		<button step="3" style="default" x="05" y="20.0" w="020" h="05.0">
+			Skript erstellen
 			<event name="click" handler-type="function" handler="RunEditor"/>
 		</button>
 		<text   step="4" style="h2"      x="00" y="30.0" w="100" h="05" content="script-structure/auto-execute"/>
@@ -44,13 +44,22 @@
 		<part name="functions" steps="true">
 			<text step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/functions"/>
 			<text step="2" style="default" x="05" y="05.0" w="095" h="20" content="script-structure/functions/text"/>
-			<edit step="3"                 x="05" y="12.5" w="095" h="25">
+			<edit step="3" style="code"    x="05" y="10.0" w="095" h="10">sinus := sin(3.141593)</edit>
+			<text step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
+			<text step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
+			<edit step="6" style="code"    x="05" y="37.5" w="095" h="15">
 Hello()
 {
-	; comment
 	MsgBox Hello
 }
 			</edit>
+		</part>
+		<part name="commands" steps="true">
+			<text step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
+			<text step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
+			<text step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
+			<text step="4" style="default" x="05" y="25.0" w="095" h="10" content="script-structure/commands/differences/text"/>
+			<edit step="5" style="code"    x="05" y="35.0" w="095" h="05">MsgBox, 64, AutoHotkey, %text%</edit> 
 		</part>
 	</part>
 	<part name="functionality">
