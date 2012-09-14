@@ -23,7 +23,8 @@ RunEditor()
 	sleep 3000
 	Send {Enter}
 	sleep 2000
-	RunWait %A_ScriptDir%\AutoHotkey.exe "%script_file%"
 
+	Run explorer.exe /n`,/root`,"%A_ScriptDir%"`,/select`,"%script_file%", , , pid_exp
+	sleep 3000
 	Process, Close, %pid%
 }
