@@ -31,6 +31,7 @@ return
 #include Translator.ahk
 #include Presentation.ahk
 #include PresentationWindow.ahk
+#Include LabelReference.ahk
 ;*********** </INCLUDES> **********
 
 #R::Reload
