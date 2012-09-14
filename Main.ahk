@@ -32,6 +32,7 @@ return
 #include Presentation.ahk
 #include PresentationWindow.ahk
 #Include LabelReference.ahk
+#include misc.ahk
 ;*********** </INCLUDES> **********
 
 #R::Reload
