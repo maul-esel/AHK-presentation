@@ -119,11 +119,18 @@
 		ctrl_list := node.selectNodes("*")
 		Loop % ctrl_list.length
 		{
-			ctrl_node := ctrl_list.item(A_Index - 1)
-			ctrl_type := ctrl_node.nodeName
+			exec_button := false
+			, ctrl_node := ctrl_list.item(A_Index - 1)
+			, ctrl_type := ctrl_node.nodeName
 
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 			pos := this._process_position(ctrl_node)
+
+			if (ctrl_type = "edit" && ctrl_node.getAttribute("execute").in(["true", "1"]))
+			{
+				exec_button := true
+				, pos.w -= 100
+			}
 
 			ctrl_options := ""
 			for property, value in pos
@@ -153,6 +160,13 @@
 				{
 					ctrl.Font.Options := ctrl_font_opt
 					, ctrl_font_opt := ""
+				}
+
+				if (exec_button)
+				{
+					button := this.AddControl("Button", part . A_Index . "exec", "w100 x" (pos.x + pos.w) " y" pos.y " h" pos.h, Translator.getString("execute"))
+					, ctrl.exec_button := button, button.code_edit := ctrl
+					, button.Click.Handler := new Delegate(this, "ExecEditCode")
 				}
 			}
 			else if (ctrl_type = "browser")
@@ -196,6 +210,8 @@
 			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
 			{
 				ctrl.Hide()
+				if (exec_button)
+					ctrl.exec_button.Hide()
 			}
 			ctrl := ""
 		}
@@ -237,7 +253,11 @@
 		if (ctrls.maxIndex() > 0)
 		{
 			for i, ctrl in ctrls
+			{
 				ctrl.Show()
+				if (ctrl.exec_button)
+					ctrl.exec_button.Show()
+			}
 		}
 		else ; no more controls to show, load next part
 		{
@@ -291,14 +311,22 @@
 		{
 			ctrls := this._get_ctrls(this.loaded, this.loaded.step--)
 			for i, ctrl in ctrls
+			{
 				ctrl.Hide()
+				if (ctrl.exec_button)
+					ctrl.exec_button.Hide()
+			}
 		}
 	}
 
 	hidePart(part)
 	{
 		for i, control in part.controls
+		{
 			this.Controls[control].Hide()
+			if (this.Controls[control].exec_button)
+				this.Controls[control].exec_button.Hide()
+		}
 	}
 
 	_process_styles(node, byRef font, byRef font_opt, byRef opt)
@@ -338,5 +366,15 @@
 	{
 		this.unloadPart()
 		this.loadPart(item.part)
+	}
+
+	ExecEditCode(button)
+	{
+		static temp_file := A_ScriptDir . "\temp.ahk"
+
+		if (FileExist(temp_file))
+			FileDelete %temp_file%
+		FileAppend % button.code_edit.Text, %temp_file%
+		Run %A_ScriptDir%\AutoHotkey.exe "%temp_file%"
 	}
 }
