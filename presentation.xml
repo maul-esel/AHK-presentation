@@ -74,6 +74,7 @@ Hello()
 		<part name="automation"/>
 		<part name="extensibility"/>
 	</part>
+	<part name="programs"/>
 	<part name="community"/>
 	<part name="end"/>
 </presentation>
