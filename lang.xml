@@ -6,6 +6,7 @@
 		<string name="version-history">Versionsgeschichte</string>
 		<string name="usage-cases">Einsatzgebiete</string>
 		<string name="script-structure">Aufbau eines Skripts</string>
+		<string name="variables">Variablen</string>
 		<string name="functions">Funktionen</string>
 		<string name="commands">Befehle</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
@@ -34,6 +35,9 @@
 		<string name="script-structure/file/text">Ein AutoHotkey-Script ist einfach nur eine ganz normale Text-Datei. Meistens wird die Dateiendung &quot;.ahk&quot; benutzt.</string>
 		<string name="script-structure/auto-execute">Wo fangen wir an? &#8212; die &quot;auto-execute section&quot;</string>
 		<string name="script-structure/auto-execute/text">Wird ein Skript gestartet, wird zuerst die sogenannte &quot;auto-execute section&quot; ausgef&#252;hrt. Sie beginnt in der ersten Zeile der Datei und endet entweder am Ende der Datei oder beim ersten &quot;return&quot;-Befehl, was immer zuerst kommt.</string>
+
+		<string name="script-structure/variables">Variablen</string>
+		<string name="script-structure/variables/text">Variablen lassen sich schnell und einfach nutzen. Anders als in Javascript müssen Variablen nicht einmal deklariert werden (kein &quot;var&quot; o. &#196;. vor dem Namen) - sie enthalten dann standardmäßig einen leeren String.&#10;&#10;Zuweisen lassen sich Werte mit &quot;:=&quot; :</string>
 
 		<string name="script-structure/functions">Funktionen</string>
 		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax zum Aufrufen ist exakt dieselbe:</string>
