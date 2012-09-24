@@ -33,6 +33,8 @@ return
 #include PresentationWindow.ahk
 #Include LabelReference.ahk
 #include misc.ahk
+
+#Include MeasureText.ahk
 ;*********** </INCLUDES> **********
 
 #R::Reload
