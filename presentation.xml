@@ -66,7 +66,11 @@ Hello()
 			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
 			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
 			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
-			<text 	step="4" style="default" x="05" y="25.0" w="095" h="10" content="script-structure/commands/differences/text"/>
+			<list step="4" style="default" x="05" y="25.0" w="095" h="10" steps="true" marker="bullet">
+				<item content="script-structure/commands/differences/syntax"/>
+				<item content="script-structure/commands/differences/variables"/>
+				<item content="script-structure/commands/differences/user-defined"/>
+			</list>
 			<executableCode step="5" style="code"    x="05" y="35.0" w="095" h="15">
 text := &quot;test&quot;
 MsgBox, 64, AutoHotkey, %text%
