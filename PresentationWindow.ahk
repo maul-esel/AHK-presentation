@@ -6,18 +6,18 @@
 		this.DestroyOnClose := true
 
 		this.presentation := pres
-		this.Title := Translator.getString("win-title")
+		, this.Title := Translator.getString("win-title")
 
 		this.Color("white", "white")
 
 		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
-		this.NavigationBox.Font.Options := "s12"
-		this._read_parts(this.NavigationBox.Items, this.presentation.parts)
+		, this.NavigationBox.Font.Options := "s12"
+		, this._read_parts(this.NavigationBox.Items, this.presentation.parts)
 
 		err := ComObjError(false)
-		this.HeaderBar := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
-		ComObjError(err)
-		this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
+		, this.HeaderBar := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
+		, ComObjError(err)
+		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
 		for i, part in this.presentation.parts
 		{
