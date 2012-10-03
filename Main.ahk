@@ -39,7 +39,8 @@ return
 #Include MeasureText.ahk
 ;*********** </INCLUDES> **********
 
-#R::Reload
+^!R::Reload
+^!C::gui.QuickEdit.Visible ? gui.QuickEdit.SlideOut() : gui.QuickEdit.SlideIn()
 
-#Z::gui.continue()
-#Y::gui.back()
+^!Z::gui.continue()
+^!Y::gui.back()
