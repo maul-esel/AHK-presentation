@@ -20,6 +20,7 @@ return
 ;*********** <INCLUDES> ***********
 #include %A_ScriptDir%\CGUI
 #include CGUI.ahk
+#Include CHiEditControl.ahk
 
 #include %A_ScriptDir%\Canvas
 #include Canvas.ahk
@@ -31,6 +32,7 @@ return
 #include Translator.ahk
 #include Presentation.ahk
 #include PresentationWindow.ahk
+#include QuickEditWindow.ahk
 #Include LabelReference.ahk
 #include misc.ahk
 

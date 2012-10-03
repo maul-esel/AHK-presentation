@@ -53,5 +53,7 @@
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
 		<string name="execute">Ausf&#252;hren</string>
+		<string name="undo">R&#252;ckg&#228;ngig</string>
+		<string name="redo">Wiederholen</string>
 	</translation>
 </lang>

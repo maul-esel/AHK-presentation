@@ -7,6 +7,7 @@
 
 		this.presentation := pres
 		, this.Title := Translator.getString("win-title")
+		, this.Caption := false
 
 		this.Color("white", "white")
 
@@ -23,6 +24,8 @@
 		{
 			this.createPart(part)
 		}
+
+		this.QuickEdit := new QuickEditWindow(this)
 	}
 
 	_read_parts(parent, collection)
