@@ -221,12 +221,10 @@
 				ctrl[event_name].handler := event_handler
 			}
 
-			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
-			{
-				ctrl.Hide()
-				if (exec_button)
-					ctrl.exec_button.Hide()
-			}
+			; hide controls for now, later to be shown by <showPart()>
+			ctrl.Hide()
+			if (exec_button)
+				ctrl.exec_button.Hide()
 			ctrl := ""
 		}
 
