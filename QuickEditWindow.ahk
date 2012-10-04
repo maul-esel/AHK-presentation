@@ -69,7 +69,7 @@ class QuickEditWindow extends CGUI
 	{
 		static AW_SLIDE := 0x00040000, AW_HOR_NEGATIVE := 0x00000002
 		DllCall("AnimateWindow", "Ptr", this.hwnd, "UInt", 300, "UInt", AW_SLIDE|AW_HOR_NEGATIVE, "UInt")
-		this.QuickEdit.Text := this.QuickEdit.Text
+		this.QuickEdit.Redraw()
 	}
 
 	SlideOut()
