@@ -158,7 +158,7 @@
 				{
 					for property, color in { "back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
 						ctrl.Colors[property] := color
-					if (!ctrl_node.getAttribute("highlight").in(0, "false"))
+					if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
 					{
 						ctrl.hilight := true
 						, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
