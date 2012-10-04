@@ -7,10 +7,8 @@
 	__New(pres)
 	{
 		Base.__New()
-
-		this.presentation := pres
-
-		this.Color("white", "white")
+		, this.presentation := pres
+		, this.Color("white", "white")
 
 		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
 		, this.NavigationBox.Font.Options := "s12"
@@ -22,9 +20,7 @@
 		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
 		for i, part in this.presentation.parts
-		{
 			this.createPart(part)
-		}
 
 		this.QuickEdit := new QuickEditWindow(this)
 	}
@@ -34,8 +30,8 @@
 		for i, part in collection
 		{
 			item := parent.Add(part.localized_name, "Expand")
-			this._read_parts(item, part.children)
-			item.part := part
+			, this._read_parts(item, part.children)
+			, item.part := part
 		}
 	}
 
@@ -61,7 +57,7 @@
 
 		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
 		viewbox := this._get_viewbox(ctrl_node) ; get viewbox dimensions
-		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
+		, panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
 					, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
 					, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
 					, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
@@ -101,16 +97,16 @@
 		}
 
 		this.showPart(part)
-		this.loaded := part
+		, this.loaded := part
 
-		this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name)
+		, this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name)
 	}
 
 	unloadPart()
 	{
 		this.hidePart(this.loaded)
-		this.loaded.step := 0
-		this.loaded := ""
+		, this.loaded.step := 0
+		, this.loaded := ""
 	}
 
 	createPart(part)
@@ -128,7 +124,7 @@
 			, ctrl_type := ctrl_node.nodeName
 
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-			pos := this._process_position(ctrl_node)
+			, pos := this._process_position(ctrl_node)
 
 			if (ctrl_type.in(["edit", "hiedit"]) && ctrl_node.getAttribute("execute").in(["true", "1"]))
 			{
@@ -187,12 +183,12 @@
 			else if (ctrl_type = "browser")
 			{
 				err := ComObjError(false)
-				ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
-				ComObjError(err)
-				part.controls.Insert(ctrl.hwnd)
+				, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
+				, ComObjError(err)
+				, part.controls.Insert(ctrl.hwnd)
 
-				is_localized := ctrl_node.getAttribute("localized") = "true"
-				ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
+				, is_localized := ctrl_node.getAttribute("localized") = "true"
+				, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
 
 				while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
 					sleep 100
@@ -246,7 +242,7 @@
 	_get_ctrls(part, step)
 	{
 		nodes := part.node.selectNodes("*")
-		ctrls := []
+		, ctrls := []
 
 		Loop % nodes.length
 		{
@@ -254,8 +250,8 @@
 			if (node.getAttribute("step") == step)
 			{
 				ctrl_hwnd := part.Controls[A_Index]
-				ctrl := this.Controls[ctrl_hwnd]
-				ctrls.Insert(ctrl)
+				, ctrl := this.Controls[ctrl_hwnd]
+				, ctrls.Insert(ctrl)
 			}
 		}
 
@@ -297,7 +293,7 @@
 			}
 
 			this.unloadPart()
-			this.loadPart(part) ; load next part in array
+			, this.loadPart(part) ; load next part in array
 		}
 	}
 
@@ -320,7 +316,7 @@
 				part := coll.Owner
 			}
 			this.unloadPart()
-			this.loadPart(part) ; load previous part
+			, this.loadPart(part) ; load previous part
 		}
 		else
 		{
@@ -380,7 +376,7 @@
 	NavigationBox_ItemSelected(item)
 	{
 		this.unloadPart()
-		this.loadPart(item.part)
+		, this.loadPart(item.part)
 	}
 
 	ExecEditCode(button)
