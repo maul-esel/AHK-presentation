@@ -24,7 +24,7 @@ class Part
 
 	steps := 0
 
-	step := 0
+	currentStep := 0
 
 	node := ""
 
