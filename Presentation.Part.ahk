@@ -11,6 +11,9 @@ class Part
 		nodes := node.selectNodes("./part")
 		Loop % nodes.length
 			this.children.Add(new Presentation.Part(nodes.item(A_Index - 1)))
+
+		if (this.is_steps)
+			this.steps := (s := node.selectSingleNode("./*/@step[not(. < ../preceding-sibling::*/@step) and not(. < ../following-sibling::*/@step)]").nodeValue) ? s : 0
 	}
 
 	Collection := ""
@@ -18,6 +21,8 @@ class Part
 	created := false
 
 	controls := []
+
+	steps := 0
 
 	step := 0
 
