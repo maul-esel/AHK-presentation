@@ -28,6 +28,13 @@
 		this.QuickEdit := new QuickEditWindow(this)
 	}
 
+	disableLoadHandler := 0 ; internal count of to-be-ignored item selection events
+	; Usually, selecting a part from the treeview will automatically load that part.
+	; However, this should not happen if an item is selected programatically.
+	; To prevent this, the caller should previously increase this field.
+	; The event handler (<NavigationBox_ItemSelected()>) then checks if it is > 0. If so, he ignores the event.
+	; Also, it will be decreased by the event handler automatically.
+
 	_read_parts(parent, collection)
 	{
 		for i, part in collection
@@ -376,8 +383,11 @@
 
 	NavigationBox_ItemSelected(item)
 	{
-		this.unloadPart()
-		this.loadPart(item.part)
+		if (!this.disableLoadHandler--)
+		{
+			this.unloadPart()
+			this.loadPart(item.part)
+		}
 	}
 
 	ExecEditCode(button)
