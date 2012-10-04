@@ -114,7 +114,7 @@
 
 	createPart(part)
 	{
-		static CGUI_controls := ["text", "edit", "button", "checkbox", "radio", "listview", "combobox", "dropdownlist", "listbox", "treeview", "tab", "groupbox", "picture", "progress", "activex", "syslinkcontrol"]
+		static CGUI_controls := ["text", "edit", "button", "checkbox", "radio", "listview", "combobox", "dropdownlist", "listbox", "treeview", "tab", "groupbox", "picture", "progress", "activex", "syslinkcontrol", "hiedit"]
 		static READYSTATE_COMPLETE := 4
 
 		node := part.node
@@ -153,6 +153,17 @@
 
 				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl.hwnd)
+
+				if (ctrl_type = "hiedit")
+				{
+					for property, color in { "back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
+						ctrl.Colors[property] := color
+					if (!ctrl_node.getAttribute("highlight").in(0, "false"))
+					{
+						ctrl.hilight := true
+						, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
+					}
+				}
 
 				if (ctrl_font)
 				{
