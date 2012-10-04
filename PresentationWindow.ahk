@@ -129,7 +129,7 @@
 			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 			pos := this._process_position(ctrl_node)
 
-			if (ctrl_type = "edit" && ctrl_node.getAttribute("execute").in(["true", "1"]))
+			if (ctrl_type.in(["edit", "hiedit"]) && ctrl_node.getAttribute("execute").in(["true", "1"]))
 			{
 				exec_button := true
 				, pos.w -= 100
