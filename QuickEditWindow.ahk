@@ -19,7 +19,7 @@ class QuickEditWindow extends CGUI
 	Position := { "X" : A_ScreenWidth - this.WindowWidth - 5, "Y" : A_ScreenHeight - this.WindowHeight - 5 }
 	Region := "0-0 W" this.WindowWidth " H" this.WindowHeight " R10-10"
 
-	static color_set := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red" }
+	static color_set := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
 
 	__New(parent)
 	{
@@ -29,9 +29,13 @@ class QuickEditWindow extends CGUI
 		, this.Owner := parent.Hwnd
 
 		this.QuickEdit.Size := { "Width" : this.Width - 10, "Height" : this.Height - 30 - 5 }
+		, this.QuickEdit.Hilight := true
 		, this.QuickEdit.LineNumbersBarState := "show"
 		, this.QuickEdit.SelectionBarWidth := 15
 		, this.QuickEdit.LineNumbersWidth := 20
+		, this.QuickEdit.Font.Font := "Consolas"
+		, this.QuickEdit.Font.Options := "s24"
+		, this.QuickEdit.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
 
 		for property, color in QuickEditWindow.color_set
 		{
