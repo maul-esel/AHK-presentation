@@ -42,30 +42,32 @@
 		<text   step="5" style="default" x="05" y="35.0" w="075" h="20" content="script-structure/auto-execute/text"/>
 
 		<part name="variables" steps="true">
-			<text step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/variables"/>
-			<text step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/variables/text"/>
-			<edit step="3" style="code"    x="05" y="20.0" w="095" h="10">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</edit>
+			<text	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/variables"/>
+			<text	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/variables/text"/>
+			<hiedit	step="3" style="code"    x="05" y="20.0" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
 
 		<part name="functions" steps="true">
-			<text step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/functions"/>
-			<text step="2" style="default" x="05" y="05.0" w="095" h="20" content="script-structure/functions/text"/>
-			<edit step="3" style="code"    x="05" y="10.0" w="095" h="10">PI := 3.141593&#10;sinus := sin(PI)</edit>
-			<text step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
-			<text step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
-			<edit step="6" style="code"    x="05" y="37.5" w="095" h="15">
+			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/functions"/>
+			<text 	step="2" style="default" x="05" y="05.0" w="095" h="20" content="script-structure/functions/text"/>
+			<hiedit step="3" style="code"    x="05" y="10.0" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
+			<text 	step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
+			<text 	step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
+			<hiedit step="6" style="code"    x="05" y="37.5" w="095" h="15" highlight="true" execute="true">
 Hello()
 {
 	MsgBox Hello
 }
-			</edit>
+
+Hello()
+			</hiedit>
 		</part>
 		<part name="commands" steps="true">
-			<text step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
-			<text step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
-			<text step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
-			<text step="4" style="default" x="05" y="25.0" w="095" h="10" content="script-structure/commands/differences/text"/>
-			<edit step="5" style="code"    x="05" y="35.0" w="095" h="15" execute="true">text := &quot;test&quot;&#10;MsgBox, 64, AutoHotkey, %text%&#10;&#10;; MsgBox(64, &quot;AutoHotkey&quot;, text) ; AutoHotkey v2</edit>
+			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
+			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
+			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
+			<text 	step="4" style="default" x="05" y="25.0" w="095" h="10" content="script-structure/commands/differences/text"/>
+			<hiedit step="5" style="code"    x="05" y="35.0" w="095" h="15" highlight="true" execute="true">text := &quot;test&quot;&#10;MsgBox, 64, AutoHotkey, %text%&#10;&#10;; MsgBox(64, &quot;AutoHotkey&quot;, text) ; AutoHotkey v2</hiedit>
 		</part>
 	</part>
 	<part name="functionality">
