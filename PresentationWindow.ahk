@@ -1,13 +1,14 @@
 ﻿class PresentationWindow extends CGUI
 {
+	DestroyOnClose := true
+	Caption := false
+	Title := Translator.getString("win-title")
+
 	__New(pres)
 	{
 		Base.__New()
-		this.DestroyOnClose := true
 
 		this.presentation := pres
-		, this.Title := Translator.getString("win-title")
-		, this.Caption := false
 
 		this.Color("white", "white")
 
