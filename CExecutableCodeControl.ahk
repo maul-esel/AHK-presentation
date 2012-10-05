@@ -9,6 +9,7 @@ class CExecutableCodeControl extends CCompoundControl
 	{
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
+		, this.Insert("_", {})
 
 		this.AddContainerControl(GUI, "HiEdit", "CodeEdit", "x" x " y" y " w" (w - 100) " h" h, Code)
 		, hiEdit := this.Container.CodeEdit
