@@ -6,13 +6,15 @@
 
 	static HiEdit_ColorSet := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
 
+	QuickEdit := new QuickEditWindow(this)
+	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
+
 	__New(pres)
 	{
 		Base.__New()
 		, this.presentation := pres
 		, this.Color("white", "white")
 
-		this.NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
 		, this.NavigationBox.Font.Options := "s12"
 		, this._read_parts(this.NavigationBox.Items, this.presentation.parts)
 
@@ -23,8 +25,6 @@
 
 		for i, part in this.presentation.parts
 			this.createPart(part)
-
-		this.QuickEdit := new QuickEditWindow(this)
 	}
 
 	_read_parts(parent, collection)
