@@ -27,6 +27,20 @@
 			this.createPart(part)
 	}
 
+	disableLoadHandler := 0 ; internal count of to-be-ignored item selection events
+	; Usually, selecting a part from the treeview will automatically load that part.
+	; However, this should not happen if an item is selected programatically.
+	; To prevent this, the caller should previously increase this field.
+	; The event handler (<NavigationBox_ItemSelected()>) then checks if it is > 0. If so, he ignores the event.
+	; Also, it will be decreased by the event handler automatically.
+
+	_find_latest_descendant(part)
+	{
+		if (i := part.children.Count())
+			return this._find_latest_descendant(part.children.Previous())
+		return part
+	}
+
 	_read_parts(parent, collection)
 	{
 		for i, part in collection
@@ -91,24 +105,25 @@
 		return pos
 	}
 
-	loadPart(part)
+	loadPart(part, step = 0)
 	{
 		if (!part.created)
-		{
 			this.createPart(part)
-		}
 
-		this.showPart(part)
-		, this.loaded := part
+		this.hidePart(part, step + 1) ; hide future steps (in case we're moving backwards)
+		, this.showPart(part, step) ; show previous steps
+		, this.currentPart := part
+		, this.currentPart.currentStep := step
 
+		, this.disableLoadHandler++ ; increase count of to-be-ignored item selection events
 		, this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name)
 	}
 
-	unloadPart()
+	unloadPart(step = -1)
 	{
-		this.hidePart(this.loaded)
-		, this.loaded.step := 0
-		, this.loaded := ""
+		this.hidePart(this.currentPart, step)
+		, this.currentPart.currentStep := 0 ; reset part-internal step position
+		, this.currentPart := "" ; clear current part reference
 	}
 
 	createPart(part)
@@ -145,6 +160,7 @@
 
 				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl.hwnd)
+				ctrl._.XMLNode := ctrl_node
 
 				if (ctrl_type = "hiedit")
 				{
@@ -206,69 +222,87 @@
 				ctrl[event_name].handler := event_handler
 			}
 
-			if (part.is_steps && ctrl_node.getAttribute("step") != 0)
-			{
-				ctrl.Hide()
-				if (exec_button)
-					ctrl.exec_button.Hide()
-			}
-			ctrl := ""
+			; hide controls for now, later to be shown by <showPart()>
+			ctrl.Hide()
+			, ctrl := ""
 		}
 
 		part.created := true
 	}
 
-	showPart(part)
+	showPart(part, step = 0)
 	{
-		if (!part.is_steps)
+		for i, control in part.controls
 		{
-			for i, control in part.controls
-				this.Controls[control].Show()
+			ctrl := this.Controls[control]
+			if (step == 0 || step == "")
+			{
+				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
+				{
+					ctrl.Show()
+				}
+			}
+			else if (step == -1)
+			{
+				ctrl.Show()
+			}
+			else
+			{
+				if (ctrl._.XMLNode.getAttribute("step") <= step)
+				{
+					ctrl.Show()
+				}
+			}
 		}
 	}
 
-	_get_ctrls(part, step)
+	hidePart(part, step = 0)
 	{
-		nodes := part.node.selectNodes("*")
-		, ctrls := []
-
-		Loop % nodes.length
+		for i, control in part.controls
 		{
-			node := nodes.item(A_Index - 1)
-			if (node.getAttribute("step") == step)
+			ctrl := this.Controls[control]
+			if (step = 0 || step = "")
 			{
-				ctrl_hwnd := part.Controls[A_Index]
-				, ctrl := this.Controls[ctrl_hwnd]
-				, ctrls.Insert(ctrl)
+				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
+				{
+					ctrl.Hide()
+					if (ctrl.exec_button)
+						ctrl.exec_button.Hide()
+				}
+			}
+			else if (step == -1)
+			{
+				ctrl.Hide()
+				if (ctrl.exec_button)
+					ctrl.exec_button.Hide()
+			}
+			else
+			{
+				if (ctrl._.XMLNode.getAttribute("step") >= step)
+				{
+					ctrl.Hide()
+				}
 			}
 		}
-
-		return ctrls
 	}
 
 	continue()
 	{
-		ctrls := this._get_ctrls(this.loaded, ++this.loaded.step)
-		if (ctrls.maxIndex() > 0)
+		if (this.currentPart.currentStep < this.currentPart.steps) ; just load the next step
 		{
-			for i, ctrl in ctrls
-				ctrl.Show()
+			this.loadPart(this.currentPart, ++this.currentPart.currentStep)
 		}
 		else ; no more controls to show, load next part
 		{
-			coll := this.loaded.Collection
-			, index := coll.IndexOf(this.loaded)
+			coll := this.currentPart.Collection
+			, current_index := coll.IndexOf(this.currentPart)
 			, max_index := coll.Count()
 
-			if (this.loaded.children.count() > 0) ; check for nested parts
-			{
-				part := this.loaded.children.Next("")
-			}
-			else if (index < max_index) ; check for parts on same level
-			{
-				part := coll.Next(this.loaded) ; load the next on this level
-			}
-			else if (index == max_index) ; already displayed last part on this level, so...
+			if (this.currentPart.children.count() > 0) ; check for nested parts
+				part := this.currentPart.children.Next("")
+			else if (current_index < max_index) ; check for parts on same level
+				part := coll.Next(this.currentPart) ; load the next on this level
+			else if (current_index == max_index) ; already displayed last part on this level, so...
 			{
 				owner := coll.Owner
 				if (owner == this.presentation) ; ... first check if we're already in the highest level.
@@ -277,43 +311,36 @@
 			}
 
 			this.unloadPart()
-			, this.loadPart(part) ; load next part in array
+			, this.loadPart(part, 0) ; load next part
 		}
 	}
 
 	back()
 	{
-		if (this.loaded.step == 0) ; there are no negative steps - load the previous part
+		if (this.currentPart.currentStep > 0) ; check for previous steps
 		{
-			coll := this.loaded.Collection
-			, index := coll.IndexOf(this.loaded)
+			this.loadPart(this.currentPart, --this.currentPart.currentStep)
+		}
+		else ; first step of this part already loaded - go to previous part
+		{
+			coll := this.currentPart.Collection
+			, index := coll.IndexOf(this.currentPart)
 
-			if (index > 1)
+			if (index > 1) ; get me the previous part, or its latest descendant
 			{
-				part := coll.Previous(this.loaded)
+				part := this._find_latest_descendant(coll.Previous(this.currentPart))
 			}
-			else
+			else ; no previous part, so ...
 			{
 				owner := coll.Owner
 				if (owner == this.presentation) ; ... first check if we're already in the highest level.
 					return ; if so, this was the first part. Stop here.
-				part := coll.Owner
+				part := coll.Owner ; else go one level up
 			}
-			this.unloadPart()
-			, this.loadPart(part) ; load previous part
-		}
-		else
-		{
-			ctrls := this._get_ctrls(this.loaded, this.loaded.step--)
-			for i, ctrl in ctrls
-				ctrl.Hide()
-		}
-	}
 
-	hidePart(part)
-	{
-		for i, control in part.controls
-			this.Controls[control].Hide()
+			this.unloadPart()
+			this.loadPart(part, part.steps) ; load previous part, latest step
+		}
 	}
 
 	_process_styles(node, byRef font, byRef font_opt, byRef opt)
@@ -351,7 +378,10 @@
 
 	NavigationBox_ItemSelected(item)
 	{
-		this.unloadPart()
-		, this.loadPart(item.part)
+		if (!this.disableLoadHandler--)
+		{
+			this.unloadPart()
+			, this.loadPart(item.part)
+		}
 	}
 }

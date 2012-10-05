@@ -3,6 +3,7 @@
 	__New()
 	{
 		this._doc.load(A_ScriptDir . "\presentation.xml")
+		, this._doc.setProperty("SelectionLanguage", "XPath")
 
 		this.parts := new Presentation.PartCollection(this)
 		, part_list := this._doc.selectNodes("/presentation/part")
