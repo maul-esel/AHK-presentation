@@ -10,10 +10,9 @@ SetWorkingDir %A_ScriptDir%
 String.init()
 
 pres := new Presentation()
-gui := new PresentationWindow(pres)
-
-gui.Maximize()
-gui.Show()
+, gui := new PresentationWindow(pres)
+, gui.Maximize()
+, gui.Show()
 
 return
 
