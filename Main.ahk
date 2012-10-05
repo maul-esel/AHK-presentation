@@ -30,11 +30,13 @@ return
 #include %A_ScriptDir%
 #include Translator.ahk
 #include Presentation.ahk
+
+#Include CExecutableCodeControl.ahk
 #include PresentationWindow.ahk
 #include QuickEditWindow.ahk
+
 #Include LabelReference.ahk
 #include misc.ahk
-
 #Include MeasureText.ahk
 ;*********** </INCLUDES> **********
 
