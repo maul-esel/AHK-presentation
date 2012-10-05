@@ -35,6 +35,13 @@
 	; The event handler (<NavigationBox_ItemSelected()>) then checks if it is > 0. If so, he ignores the event.
 	; Also, it will be decreased by the event handler automatically.
 
+	_find_latest_descendant(part)
+	{
+		if (i := part.children.Count())
+			return this._find_latest_descendant(part.children.Previous())
+		return part
+	}
+
 	_read_parts(parent, collection)
 	{
 		for i, part in collection
@@ -345,9 +352,9 @@
 			coll := this.currentPart.Collection
 			, index := coll.IndexOf(this.currentPart)
 
-			if (index > 1) ; get me the previous part
+			if (index > 1) ; get me the previous part, or its latest descendant
 			{
-				part := coll.Previous(this.currentPart)
+				part := this._find_latest_descendant(coll.Previous(this.currentPart))
 			}
 			else ; no previous part, so ...
 			{
