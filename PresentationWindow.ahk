@@ -111,7 +111,7 @@
 
 	createPart(part)
 	{
-		static CGUI_controls := ["text", "edit", "button", "checkbox", "radio", "listview", "combobox", "dropdownlist", "listbox", "treeview", "tab", "groupbox", "picture", "progress", "activex", "syslinkcontrol", "hiedit"]
+		static CGUI_controls := Obj.keys(CGUI.RegisteredControls)
 		static READYSTATE_COMPLETE := 4
 
 		node := part.node
