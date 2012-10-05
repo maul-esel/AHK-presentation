@@ -4,6 +4,8 @@
 	Caption := false
 	Title := Translator.getString("win-title")
 
+	static HiEdit_ColorSet := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
+
 	__New(pres)
 	{
 		Base.__New()
@@ -153,7 +155,7 @@
 
 				if (ctrl_type = "hiedit")
 				{
-					for property, color in { "back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
+					for property, color in PresentationWindow.HiEdit_ColorSet
 						ctrl.Colors[property] := color
 					if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
 					{

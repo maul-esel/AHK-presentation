@@ -19,8 +19,6 @@ class QuickEditWindow extends CGUI
 	Position := { "X" : A_ScreenWidth - this.WindowWidth - 5, "Y" : A_ScreenHeight - this.WindowHeight - 5 }
 	Region := "0-0 W" this.WindowWidth " H" this.WindowHeight " R10-10"
 
-	static color_set := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
-
 	__New(parent)
 	{
 		Base.__New()
@@ -37,7 +35,7 @@ class QuickEditWindow extends CGUI
 		, this.QuickEdit.Font.Options := "s24"
 		, this.QuickEdit.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
 
-		for property, color in QuickEditWindow.color_set
+		for property, color in PresentationWindow.HiEdit_ColorSet
 		{
 			this.QuickEdit.colors[property] := color
 		}
