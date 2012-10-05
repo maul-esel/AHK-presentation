@@ -53,21 +53,26 @@
 			<hiedit step="3" style="code"    x="05" y="10.0" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
 			<text 	step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
 			<text 	step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
-			<hiedit step="6" style="code"    x="05" y="37.5" w="095" h="15" highlight="true" execute="true">
+			<executableCode step="6" style="code"    x="05" y="37.5" w="095" h="15">
 Hello()
 {
 	MsgBox Hello
 }
 
 Hello()
-			</hiedit>
+			</executableCode>
 		</part>
 		<part name="commands" steps="true">
 			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
 			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
 			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
 			<text 	step="4" style="default" x="05" y="25.0" w="095" h="10" content="script-structure/commands/differences/text"/>
-			<hiedit step="5" style="code"    x="05" y="35.0" w="095" h="15" highlight="true" execute="true">text := &quot;test&quot;&#10;MsgBox, 64, AutoHotkey, %text%&#10;&#10;; MsgBox(64, &quot;AutoHotkey&quot;, text) ; AutoHotkey v2</hiedit>
+			<executableCode step="5" style="code"    x="05" y="35.0" w="095" h="15">
+text := &quot;test&quot;
+MsgBox, 64, AutoHotkey, %text%
+
+; MsgBox(64, &quot;AutoHotkey&quot;, text) ; AutoHotkey v2
+			</executableCode>
 		</part>
 	</part>
 	<part name="functionality">
