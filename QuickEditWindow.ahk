@@ -4,6 +4,7 @@ class QuickEditWindow extends CGUI
 
 	btn_Undo := this.AddControl("Button", "btn_Undo", "x5 y5 w100 h20", Translator.getString("undo"))
 	btn_Redo := this.AddControl("Button", "btn_Redo", "x110 y5 w100 h20", Translator.getString("redo"))
+	btn_Clear := this.AddControl("Button", "btn_Clear", "x215 y5 w100 h20", Translator.getString("clear"))
 	btn_Execute := this.AddControl("Button", "btn_Execute", "x100 y5 w100 h20", Translator.getString("execute"))
 
 	Caption := false
@@ -51,6 +52,11 @@ class QuickEditWindow extends CGUI
 	btn_Redo_Click()
 	{
 		this.QuickEdit.Redo()
+	}
+
+	btn_Clear_Click()
+	{
+		this.QuickEdit.Text := ""
 	}
 
 	btn_Execute_Click()
