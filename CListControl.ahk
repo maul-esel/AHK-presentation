@@ -9,27 +9,98 @@ class CListControl extends CCompoundControl
 
 	__New(Name, Options, self, GUINum)
 	{
-		static margin_marker := 25, item_margin := 5
-
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
-		, this.Insert("_", {})
+		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h })
+		, this.Font := new CListControl.CListFont(this, this._update)
 
 		content := self.selectNodes("item")
-		Loop % content.length
+		Loop % this._.item_count := content.length
 		{
 			item := content.item(A_Index - 1)
 
-			this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" margin_marker " h" h, this._get_marker(A_Index))
-			this.AddContainerControl(GUI, "Text", "item" A_Index, "x" (x+margin_marker) " y" y " w" (w-margin_marker) " h" h, Translator.getString(item.getAttribute("content")))
-
-			y += MeasureTextHeight(item.text, w-margin_marker) + item_margin
+			; don't care about positions as this is handled by the _update() method.
+			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h, this._get_marker(A_Index))
+			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h, Translator.getString(item.getAttribute("content")))
 		}
+		this._update() ; do initial repositioning
+
 		return Name
+	}
+
+	_update()
+	{
+		static marker_margin := 5
+
+		; ===== get all markers + widths =====
+		markers := [], marker_widths := []
+		Loop % this._.item_count
+		{
+			markers[A_Index] := this._get_marker(A_Index)
+			, marker_widths[A_Index] := MeasureText(markers[A_Index], this.Font.Options, this.Font.Font).W
+		}
+
+		; ===== get maximum marker width => item width =====
+		max_marker_width := Math.maxObj(marker_widths)
+		, item_width := this._.w - max_marker_width
+
+		; ===== calculate item heights =====
+		items := [], item_heights := [], total_item_height := 0
+		Loop % this._.item_count
+		{
+			items[A_Index] := this.Container["item" A_Index].Text
+			, item_heights[A_Index] := MeasureTextHeight(items[A_Index], item_width, this.Font.Options, this.Font.Font)
+			, total_item_height += item_heights[A_Index]
+		}
+
+		; ===== calculate margin between items =====
+		item_margin := (this._.h - total_item_height) / (this._.item_count - 1)
+
+		; ===== change fonts and reposition =====
+		height_offset := 0
+		Loop % this._.item_count
+		{
+			marker := this.Container["marker" A_Index]
+			, marker.Font.Font := this.Font.Font
+			, marker.Font.Options := this.Font.Options
+			, marker.Width := max_marker_width
+			, marker.Y := this._.y + height_offset
+			, marker.X := this._.x
+
+			item := this.Container["item" A_Index]
+			, item.Font.Font := this.Font.Font
+			, item.Font.Options := this.Font.Options
+			, item.Width := item_width
+			, item.Height := item_heights[A_Index]
+			, item.Y := this._.y + height_offset
+			, item.X := this._.x + max_marker_width + marker_margin
+
+			height_offset += item_heights[A_Index] + item_margin
+		}
 	}
 
 	_get_marker(i)
 	{
 		return Chr(8226)
+	}
+
+	class CListFont
+	{
+		__New(ctrl, changeCallback)
+		{
+			this.Insert("_", { "changeCallback" : changeCallback, "ctrl" : ctrl })
+		}
+
+		__Get(property)
+		{
+			return this._[property]
+		}
+
+		__Set(property, value)
+		{
+			this._[property] := value
+			, this._.changeCallback.(this._.ctrl)
+			return value
+		}
 	}
 }
