@@ -66,7 +66,7 @@ class QuickEditWindow extends CGUI
 		if (FileExist(temp_file))
 			FileDelete %temp_file%
 		FileAppend % this.QuickEdit.Text, %temp_file%
-		Run %A_ScriptDir%\AutoHotkey.exe "%temp_file%"
+		Run % (A_IsCompiled ? A_ScriptDir . "\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
 	}
 
 	SlideIn()

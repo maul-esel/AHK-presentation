@@ -49,6 +49,6 @@ class CExecutableCodeControl extends CCompoundControl
 		if (FileExist(temp_file))
 			FileDelete %temp_file%
 		FileAppend % this.Code, %temp_file%
-		Run %A_ScriptDir%\AutoHotkey.exe "%temp_file%"
+		Run % (A_IsCompiled ? A_ScriptDir . "\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
 	}
 }
