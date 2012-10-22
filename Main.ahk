@@ -32,6 +32,7 @@ return
 #include Presentation.ahk
 
 #Include CExecutableCodeControl.ahk
+#Include CListControl.ahk
 #include PresentationWindow.ahk
 #include QuickEditWindow.ahk
 
