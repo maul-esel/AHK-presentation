@@ -153,10 +153,12 @@
 			if (ctrl_type.in(CGUI_controls))
 			{
 				content := ctrl_node.getAttribute("content")
-				if (!content)
+				if (content)
+					content := Translator.getString(content)
+				else if (ctrl_node.text)
 					content := ctrl_node.text
 				else
-					content := Translator.getString(content)
+					content := ctrl_node
 
 				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl.hwnd)
