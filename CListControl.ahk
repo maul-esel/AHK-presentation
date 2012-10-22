@@ -9,7 +9,7 @@ class CListControl extends CCompoundControl
 
 	__New(Name, Options, self, GUINum)
 	{
-		static margin_marker := 25
+		static margin_marker := 25, item_margin := 5
 
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
@@ -23,7 +23,7 @@ class CListControl extends CCompoundControl
 			this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" margin_marker " h" h, this._get_marker(A_Index))
 			this.AddContainerControl(GUI, "Text", "item" A_Index, "x" (x+margin_marker) " y" y " w" (w-margin_marker) " h" h, Translator.getString(item.getAttribute("content")))
 
-			y += MeasureTextHeight(item.text, w-margin_marker)
+			y += MeasureTextHeight(item.text, w-margin_marker) + item_margin
 		}
 		return Name
 	}
