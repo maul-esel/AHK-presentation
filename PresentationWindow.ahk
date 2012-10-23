@@ -160,7 +160,7 @@
 				else
 					content := ctrl_node
 
-				ctrl := this.AddControl(ctrl_type, part.name . A_Index, ctrl_options, content)
+				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl.hwnd)
 				ctrl._.XMLNode := ctrl_node
 
