@@ -9,10 +9,14 @@ SetWorkingDir %A_ScriptDir%
 
 String.init()
 
-pres := new Presentation()
+s := new splashScreen() ; show splashscreen
+
+, pres := new Presentation()
 , gui := new PresentationWindow(pres)
 , gui.Maximize()
 , gui.Show()
+
+, s.Close() ; end splashscreen
 
 return
 
@@ -34,6 +38,7 @@ return
 #Include CExecutableCodeControl.ahk
 #include PresentationWindow.ahk
 #include QuickEditWindow.ahk
+#include SplashScreen.ahk
 
 #Include LabelReference.ahk
 #include misc.ahk
