@@ -1,3 +1,12 @@
+CreateAllParts(parts, gui)
+{
+	for i, part in parts
+	{
+		gui.createPart(part)
+		, CreateAllParts(part.children, gui)
+	}
+}
+
 RunEditor()
 {
 	static script_file := A_ScriptDir . "\test.ahk"

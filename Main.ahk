@@ -13,6 +13,7 @@ s := new splashScreen() ; show splashscreen
 
 , pres := new Presentation()
 , gui := new PresentationWindow(pres)
+, CreateAllParts(pres.parts, gui)
 , gui.Maximize()
 , gui.Show()
 
