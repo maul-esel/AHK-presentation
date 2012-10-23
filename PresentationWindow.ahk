@@ -161,7 +161,7 @@
 					content := ctrl_node
 
 				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
-				part.controls.Insert(ctrl.hwnd)
+				part.controls.Insert(ctrl)
 				ctrl._.XMLNode := ctrl_node
 
 				if (ctrl_type = "hiedit")
@@ -191,7 +191,7 @@
 				err := ComObjError(false)
 				, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
 				, ComObjError(err)
-				, part.controls.Insert(ctrl.hwnd)
+				, part.controls.Insert(ctrl)
 
 				, is_localized := ctrl_node.getAttribute("localized") = "true"
 				, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
@@ -234,9 +234,8 @@
 
 	showPart(part, step = 0)
 	{
-		for i, control in part.controls
+		for i, ctrl in part.controls
 		{
-			ctrl := this.Controls[control]
 			if (step == 0 || step == "")
 			{
 				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
@@ -260,9 +259,8 @@
 
 	hidePart(part, step = 0)
 	{
-		for i, control in part.controls
+		for i, ctrl in part.controls
 		{
-			ctrl := this.Controls[control]
 			if (step = 0 || step = "")
 			{
 				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
