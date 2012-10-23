@@ -3,7 +3,49 @@
 
 class CListControl extends CCompoundControl
 {
+	; ===== iterator control =====
+	initialIndex := 1
 	canIterate := true
+
+	Next()
+	{
+		if (this._.currIndex < this._.item_count)
+		{
+			this._.currIndex++
+			if (this.Visible)
+				this.ShowCurrent()
+			return true
+		}
+		return false
+	}
+
+	Previous()
+	{
+		if (this._.currIndex > this.initialIndex)
+		{
+			this._.currIndex--
+			if (this.Visible)
+				this.ShowCurrent()
+			return true
+		}
+		return false
+	}
+
+	Show()
+	{
+		this.Visible := true
+		, this.ShowCurrent()
+	}
+
+	ShowCurrent()
+	{
+		Loop % this._.item_count
+		{
+			this.Container["marker" A_Index].visible := A_Index <= this._.currIndex
+			, this.Container["item" A_Index].visible := A_Index <= this._.currIndex
+		}
+	}
+	; ============================
 
 	static registration := CGUI.RegisterControl("List", CListControl)
 
@@ -11,7 +53,7 @@ class CListControl extends CCompoundControl
 	{
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
-		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h })
+		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex })
 		, this.Font := new CListControl.CListFont(this, this._update)
 
 		content := self.selectNodes("item")
