@@ -53,7 +53,7 @@ class CListControl extends CCompoundControl
 	{
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
-		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex })
+		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self })
 		, this.Font := new CListControl.CListFont(this, this._update)
 
 		content := self.selectNodes("item")
@@ -123,7 +123,13 @@ class CListControl extends CCompoundControl
 
 	_get_marker(i)
 	{
-		return Chr(8226)
+		static ul_markers := { "bullet" : Chr(0x2022), "white-bullet" : Chr(0x25E6), "triangle" : Chr(0x2023), "arrow" : Chr(0x2192), "double-arrow" : Chr(0x21D2) }, default_marker := "bullet"
+
+		marker := (marker := this._.node.getAttribute("marker")) ? marker : default_marker
+		if (ul_markers.hasKey(marker))
+			return ul_markers[marker]
+
+		return marker ; fallback: the specified string itself is the marker
 	}
 
 	class CListFont
