@@ -162,6 +162,7 @@
 
 				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
 				part.controls.Insert(ctrl)
+
 				ctrl._.XMLNode := ctrl_node
 
 				if (ctrl_type = "hiedit")
@@ -288,7 +289,23 @@
 
 	continue()
 	{
-		if (this.currentPart.currentStep < this.currentPart.steps) ; just load the next step
+		handled := false
+		for i, ctrl in this.currentPart.controls
+		{
+			if (ctrl._.XMLNode.getAttribute("step") = this.currentPart.currentStep) ; filter controls in latest step
+			{
+				if (ctrl.canIterate) ; is it an iterator control?
+				{
+					handled := handled || ctrl.Next() ; if so, call Next(). If it really could step further, `handled` is `true` now
+				}
+			}
+		}
+
+		if (handled)
+		{
+			return
+		}
+		else if (this.currentPart.currentStep < this.currentPart.steps) ; just load the next step
 		{
 			this.loadPart(this.currentPart, ++this.currentPart.currentStep)
 		}
@@ -317,7 +334,23 @@
 
 	back()
 	{
-		if (this.currentPart.currentStep > 0) ; check for previous steps
+		handled := false
+		for i, ctrl in this.currentPart.controls
+		{
+			if (ctrl._.XMLNode.getAttribute("step") = this.currentPart.currentStep) ; filter controls in latest step
+			{
+				if (ctrl.canIterate) ; is it an iterator control?
+				{
+					handled := handled || ctrl.Previous() ; if so, call Previous(). If it really could step back, `handled` is `true` now
+				}
+			}
+		}
+
+		if (handled)
+		{
+			return
+		}
+		else if (this.currentPart.currentStep > 0) ; check for previous steps
 		{
 			this.loadPart(this.currentPart, --this.currentPart.currentStep)
 		}
