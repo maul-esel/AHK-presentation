@@ -54,7 +54,7 @@ class CListControl extends CCompoundControl
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
 		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self, "GuiNum" : GUINum })
-		, this.Font := new CListControl.CListFont(this, this._update)
+		, this.Font := new CProxyFont(new Delegate(this, "_update"))
 
 		content := self.selectNodes("item")
 		Loop % this._.item_count := content.length
@@ -142,25 +142,5 @@ class CListControl extends CCompoundControl
 			return marker_prefix . i . marker_suffix
 
 		return marker_prefix . marker . marker_suffix ; fallback: the specified string itself is the marker
-	}
-
-	class CListFont
-	{
-		__New(ctrl, changeCallback)
-		{
-			this.Insert("_", { "changeCallback" : changeCallback, "ctrl" : ctrl })
-		}
-
-		__Get(property)
-		{
-			return this._[property]
-		}
-
-		__Set(property, value)
-		{
-			this._[property] := value
-			, this._.changeCallback.(this._.ctrl)
-			return value
-		}
 	}
 }
