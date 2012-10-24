@@ -1,3 +1,18 @@
+CreateAllParts(parts, gui)
+{
+	for i, part in parts
+	{
+		gui.createPart(part)
+		, CreateAllParts(part.children, gui)
+	}
+}
+
+SetRedraw(win, allow = false)
+{
+	static WM_SETREDRAW := 0x000B
+	SendMessage, WM_SETREDRAW, allow, 0,, % "ahk_id " win.hwnd
+}
+
 RunEditor()
 {
 	static script_file := A_ScriptDir . "\test.ahk"
