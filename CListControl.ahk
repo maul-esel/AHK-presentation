@@ -74,7 +74,7 @@ class CListControl extends CCompoundControl
 
 	_update()
 	{
-		static marker_margin := 5
+		static marker_margin := 5, item_padding := 5
 
 		; ===== get all markers + widths =====
 		markers := [], marker_widths := []
@@ -93,7 +93,7 @@ class CListControl extends CCompoundControl
 		Loop % this._.item_count
 		{
 			items[A_Index] := this.Container["item" A_Index].Text
-			, item_heights[A_Index] := MeasureTextHeight(items[A_Index], item_width, this.Font.Options, this.Font.Font)
+			, item_heights[A_Index] := MeasureTextHeight(items[A_Index], item_width, this.Font.Options, this.Font.Font) + item_padding
 			, total_item_height += item_heights[A_Index]
 		}
 
