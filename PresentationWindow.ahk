@@ -152,16 +152,9 @@
 
 			if (ctrl_type.in(CGUI_controls))
 			{
-				content := ctrl_node.getAttribute("content")
-				if (content)
-					content := Translator.getString(content)
-				else if (ctrl_node.text)
-					content := ctrl_node.text
-				else
-					content := ctrl_node
-
-				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
-				part.controls.Insert(ctrl)
+				content := this.GetElementContent(ctrl_node)
+				, ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
+				, part.controls.Insert(ctrl)
 
 				ctrl._.XMLNode := ctrl_node
 
@@ -402,6 +395,17 @@
 			font_opt .= t
 		if (t := node.getAttribute("options"))
 			opt .= t
+	}
+
+	GetElementContent(node)
+	{
+		content := node.getAttribute("content")
+		if (content)
+			return Translator.getString(content)
+		else if (node.text)
+			return node.text
+		else
+			return node
 	}
 
 	PostDestroy()

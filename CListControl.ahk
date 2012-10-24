@@ -63,7 +63,7 @@ class CListControl extends CCompoundControl
 
 			; don't care about positions as this is handled by the _update() method.
 			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h, this._get_marker(A_Index))
-			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h, Translator.getString(item.getAttribute("content")))
+			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h, GUI.GetElementContent(item))
 		}
 		this._update() ; do initial repositioning
 
