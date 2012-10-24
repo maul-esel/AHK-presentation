@@ -53,7 +53,7 @@ class CListControl extends CCompoundControl
 	{
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
-		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self })
+		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self, "GuiNum" : GUINum })
 		, this.Font := new CListControl.CListFont(this, this._update)
 
 		content := self.selectNodes("item")
@@ -61,9 +61,11 @@ class CListControl extends CCompoundControl
 		{
 			item := content.item(A_Index - 1)
 
+			, opt := ""
+			, GUI.ProcessStyles(item, "", "", opt) ; ignore font for now, later to be handled in _update
 			; don't care about positions as this is handled by the _update() method.
-			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h, this._get_marker(A_Index))
-			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h, GUI.GetElementContent(item))
+			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h A_Space opt, this._get_marker(A_Index))
+			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h A_Space opt, GUI.GetElementContent(item))
 		}
 		this._update() ; do initial repositioning
 
@@ -100,18 +102,23 @@ class CListControl extends CCompoundControl
 
 		; ===== change fonts and reposition =====
 		height_offset := 0
+		, GUI := CGUI.GUIList[this._.GUINum]
 		Loop % this._.item_count
 		{
+			node := this._.node.selectSingleNode("item[" A_Index  "]")
+			, font := font_opt := ""
+			, GUI.ProcessStyles(node, font, font_opt, "") ; options are only set on startup
+
 			marker := this.Container["marker" A_Index]
-			, marker.Font.Font := this.Font.Font
-			, marker.Font.Options := this.Font.Options
+			, marker.Font.Font := font ? font : this.Font.Font
+			, marker.Font.Options := font_opt ? font_opt : this.Font.Options
 			, marker.Width := max_marker_width
 			, marker.Y := this._.y + height_offset
 			, marker.X := this._.x
 
 			item := this.Container["item" A_Index]
-			, item.Font.Font := this.Font.Font
-			, item.Font.Options := this.Font.Options
+			, item.Font.Font := font ? font : this.Font.Font
+			, item.Font.Options := font_opt ? font_opt : this.Font.Options
 			, item.Width := item_width
 			, item.Height := item_heights[A_Index]
 			, item.Y := this._.y + height_offset
