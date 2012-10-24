@@ -131,6 +131,8 @@ class CListControl extends CCompoundControl
 
 		if (ul_markers.hasKey(marker))
 			return marker_prefix . ul_markers[marker] . marker_suffix
+		else if (marker = "number")
+			return marker_prefix . i . marker_suffix
 
 		return marker_prefix . marker . marker_suffix ; fallback: the specified string itself is the marker
 	}
