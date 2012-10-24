@@ -144,13 +144,16 @@
 			if (ctrl_type.in(CGUI_controls))
 			{
 				content := ctrl_node.getAttribute("content")
-				if (!content)
+				if (content)
+					content := Translator.getString(content)
+				else if (ctrl_node.text)
 					content := ctrl_node.text
 				else
-					content := Translator.getString(content)
+					content := ctrl_node
 
-				ctrl := this.AddControl(ctrl_type, part . A_Index, ctrl_options, content)
-				part.controls.Insert(ctrl.hwnd)
+				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
+				part.controls.Insert(ctrl)
+
 				ctrl._.XMLNode := ctrl_node
 
 				if (ctrl_type = "hiedit")
@@ -180,7 +183,7 @@
 				err := ComObjError(false)
 				, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
 				, ComObjError(err)
-				, part.controls.Insert(ctrl.hwnd)
+				, part.controls.Insert(ctrl)
 
 				, is_localized := ctrl_node.getAttribute("localized") = "true"
 				, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
@@ -223,9 +226,8 @@
 
 	showPart(part, step = 0)
 	{
-		for i, control in part.controls
+		for i, ctrl in part.controls
 		{
-			ctrl := this.Controls[control]
 			if (step == 0 || step == "")
 			{
 				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
@@ -249,9 +251,8 @@
 
 	hidePart(part, step = 0)
 	{
-		for i, control in part.controls
+		for i, ctrl in part.controls
 		{
-			ctrl := this.Controls[control]
 			if (step = 0 || step = "")
 			{
 				if (!(s := ctrl._.XMLNode.getAttribute("step")) || s == 0)
@@ -279,7 +280,23 @@
 
 	continue()
 	{
-		if (this.currentPart.currentStep < this.currentPart.steps) ; just load the next step
+		handled := false
+		for i, ctrl in this.currentPart.controls
+		{
+			if (ctrl._.XMLNode.getAttribute("step") = this.currentPart.currentStep) ; filter controls in latest step
+			{
+				if (ctrl.canIterate) ; is it an iterator control?
+				{
+					handled := handled || ctrl.Next() ; if so, call Next(). If it really could step further, `handled` is `true` now
+				}
+			}
+		}
+
+		if (handled)
+		{
+			return
+		}
+		else if (this.currentPart.currentStep < this.currentPart.steps) ; just load the next step
 		{
 			this.loadPart(this.currentPart, ++this.currentPart.currentStep)
 		}
@@ -308,7 +325,23 @@
 
 	back()
 	{
-		if (this.currentPart.currentStep > 0) ; check for previous steps
+		handled := false
+		for i, ctrl in this.currentPart.controls
+		{
+			if (ctrl._.XMLNode.getAttribute("step") = this.currentPart.currentStep) ; filter controls in latest step
+			{
+				if (ctrl.canIterate) ; is it an iterator control?
+				{
+					handled := handled || ctrl.Previous() ; if so, call Previous(). If it really could step back, `handled` is `true` now
+				}
+			}
+		}
+
+		if (handled)
+		{
+			return
+		}
+		else if (this.currentPart.currentStep > 0) ; check for previous steps
 		{
 			this.loadPart(this.currentPart, --this.currentPart.currentStep)
 		}

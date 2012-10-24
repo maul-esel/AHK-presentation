@@ -48,7 +48,9 @@
 		<string name="script-structure/commands">Befehle</string>
 		<string name="script-structure/commands/text">Anders als in den meisten anderen Sprachen gibt es neben Funktionen in AutoHotkey noch &quot;Befehle&quot;. Diese tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede, die leicht zu Verwirrung f&#252;hren k&#246;nnen.&#10;&#10;In AutoHotkey v2 sind Befehle deshalb identisch mit Funktionen.</string>
 		<string name="script-structure/commands/differences">Unterschiede</string>
-		<string name="script-structure/commands/differences/text">&#8226; Syntax: es werden keine Klammern verwendet&#10;&#8226; Variablen werden anders dargestellt&#10;&#8226; Benutzerdefinierte Befehle sind nicht m&#246;glich.</string>
+		<string name="script-structure/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
+		<string name="script-structure/commands/differences/variables">Variablen werden anders dargestellt</string>
+		<string name="script-structure/commands/differences/user-defined">Benutzerdefinierte Befehle sind nicht m&#246;glich</string>
 
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
