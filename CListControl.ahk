@@ -126,10 +126,13 @@ class CListControl extends CCompoundControl
 		static ul_markers := { "bullet" : Chr(0x2022), "white-bullet" : Chr(0x25E6), "triangle" : Chr(0x2023), "arrow" : Chr(0x2192), "double-arrow" : Chr(0x21D2) }, default_marker := "bullet"
 
 		marker := (marker := this._.node.getAttribute("marker")) ? marker : default_marker
-		if (ul_markers.hasKey(marker))
-			return ul_markers[marker]
+		, marker_prefix := this._.node.getAttribute("marker-prefix")
+		, marker_suffix := this._.node.getAttribute("marker-suffix")
 
-		return marker ; fallback: the specified string itself is the marker
+		if (ul_markers.hasKey(marker))
+			return marker_prefix . ul_markers[marker] . marker_suffix
+
+		return marker_prefix . marker . marker_suffix ; fallback: the specified string itself is the marker
 	}
 
 	class CListFont
