@@ -21,15 +21,15 @@
 		<string name="introduction/what">Was ist AutoHotkey?</string>
 		<string name="introduction/cite">&#187;AutoHotkey ist eine freie Open-Source-Scriptsprache f&#252;r Windows.&#171;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#8212; de.autohotkey.com</string>
 		<string name="introduction/advantages">Was sind die Vorteile von AutoHotkey?</string>
-		<string name="introduction/simplicity">&#8226; Einfachheit</string>
+		<string name="introduction/simplicity">Einfachheit</string>
 		<string name="introduction/simplicity/text">AutoHotkey ist relativ einfach zu erlernen, auch und besonders f&#252;r Programmier-Anf&#228;nger. Skripts f&#252;r die t&#228;gliche Arbeit am Computer lassen sich in kurzer Zeit erstellen. Zudem ist AutoHotkey eine eher &quot;laxe&quot; Sprache.</string>
-		<string name="introduction/builtins">&#8226; Eingebautes</string>
+		<string name="introduction/builtins">Eingebautes</string>
 		<string name="introduction/builtins/text">AutoHotkey hat zahlreiche n&#252;tzliche Funktionen fertig integriert. W&#228;hrend es in anderen Sprachen beispielsweise recht kompliziert sein, ein UI zu erstellen, l&#228;sst sich dies in AutoHotkey mit wenigen Befehlen erledigen. </string>
-		<string name="introduction/hotkeys">&#8226; Tastenkombinationen</string>
+		<string name="introduction/hotkeys">Tastenkombinationen</string>
 		<string name="introduction/hotkeys/text">Tastenkombinationen, sogenannte &quot;hotkeys&quot;, sind, wie schon der Name verr&#228;t, ein besonderer Schwerpunkt in AutoHotkey. Sie lassen sich mit nur einer Codezeile erstellen. Dank dieser Funktionalit&#228;t wird AutoHotkey auch oft zur Automatisierung von Computerspielen verwendet.</string>
-		<string name="introduction/automation">&#8226; Automatisierung</string>
+		<string name="introduction/automation">Automatisierung</string>
 		<string name="introduction/automation/text">Der andere Schwerpunkt von AutoHotkey ist die Automatisierung. Es gibt eine Unzahl an Befehlen zur Automatisierung von Fenstern, es lassen sich Tasten an Programme senden, Aktionen k&#246;nnen in bestimmten Zeitintervallen ausgef&#252;hrt werden usw.&#10;Dies l&#228;sst sich nicht nur in Spielen einsetzen, auch allt&#228;gliche Computerarbeit (z.B. im B&#252;ro) l&#228;sst sich vielfach erleichtern.</string>
-		<string name="introduction/advanced">&#8226; Fortgeschrittenes</string>
+		<string name="introduction/advanced">Fortgeschrittenes</string>
 		<string name="introduction/advanced/text">Neben den leicht zug&#228;nglichen Befehlen f&#252;r einfachere Skripte bieten besonders neuere Versionen von AutoHotkey auch die M&#246;glichkeit von Zugriffen auf fortgeschrittene Techniken. So ist es beispielsweise m&#246;glich, &#252;ber das Internet zu kommunizieren, in das Betriebssystem einzugreifen, Office-Programme zu automatisieren oder in anderen Sprachen programmierten Code auszuf&#252;hren.</string>
 
 		<string name="script-structure/file">Eine Skript-Datei</string>
