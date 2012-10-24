@@ -2,8 +2,9 @@ CreateAllParts(parts, gui)
 {
 	for i, part in parts
 	{
-		gui.createPart(part)
-		, CreateAllParts(part.children, gui)
+		if (!part.created)
+			gui.createPart(part)
+		CreateAllParts(part.children, gui)
 	}
 }
 
