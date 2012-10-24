@@ -132,14 +132,13 @@
 		static READYSTATE_COMPLETE := 4
 
 		node := part.node
-
-		ctrl_list := node.selectNodes("*")
+		, ctrl_list := node.selectNodes("*")
 		Loop % ctrl_list.length
 		{
 			ctrl_node := ctrl_list.item(A_Index - 1)
 			, ctrl_type := ctrl_node.nodeName
 
-			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+			this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 			, pos := this._process_position(ctrl_node)
 
 			ctrl_options := ""
@@ -369,7 +368,7 @@
 		}
 	}
 
-	_process_styles(node, byRef font, byRef font_opt, byRef opt)
+	ProcessStyles(node, byRef font, byRef font_opt, byRef opt)
 	{
 		if (style := node.getAttribute("style"))
 		{
