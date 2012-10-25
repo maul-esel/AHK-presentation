@@ -9,14 +9,21 @@ class Item extends CCompoundControl
 		, content := GUI.GetElementContent(item_node)
 		, GUI.ProcessStyles(item_node, font, font_opt, opt)
 
-		if (content == item_node && (children := item_node.selectNodes("*")).length > 0) ; has > 0 subcontrols
+		Random r
+		this._.r := r
+		if (content == item_node) ; has subcontrols
 		{
-			; ...
+			children := item_node.selectNodes("*")
+			Loop % children.length
+			{
+				ctrl_node := children.item(A_Index - 1)
+				, ctrl := GUI.CreateControl(ctrl_node, name := "list_item" . r . "_" . A_Index)
+				, this.Container.Insert(name, ctrl)
+			}
 		}
 		else ; is pure text item
 		{
-			Random r
-			, this.AddContainerControl(GUI, "Text", "list_item" (this._.r := r), opt, this._.text := content)
+			this.AddContainerControl(GUI, "Text", "list_item" . r, opt, this._.text := content)
 		}
 
 		if (font)
@@ -29,7 +36,7 @@ class Item extends CCompoundControl
 	GetRequiredHeight(w)
 	{
 		font := this.Container["list_item" this._.r].Font
-		return this._.hasKey("text") ? MeasureTextHeight(this._.text, w, font.Options, font.font) : this.Boundaries.H
+		return this._.hasKey("text") ? MeasureTextHeight(this._.text, w, font.Options, font.font) : this.Boundaries.Height
 	}
 
 	Move(x, y, w, h)
