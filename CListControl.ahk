@@ -31,100 +31,101 @@ class CListControl extends CCompoundControl
 		return false
 	}
 
-	Show()
-	{
-		this.Visible := true
-		, this.ShowCurrent()
-	}
-
 	ShowCurrent()
 	{
 		Loop % this._.item_count
 		{
-			this.Container["marker" A_Index].visible := A_Index <= this._.currIndex
-			, this.Container["item" A_Index].visible := A_Index <= this._.currIndex
+			if (visible := A_Index <= this._.currIndex)
+				this.Items[A_Index].Show()
+			else
+				this.Items[A_Index].Hide()
+			this.Container["marker" A_Index].Visible := visible
 		}
 	}
 	; ============================
 
 	static registration := CGUI.RegisterControl("List", CListControl)
 
+	Items := []
+	Font := new CProxyFont()
+
 	__New(Name, Options, self, GUINum)
 	{
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
-		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self, "GuiNum" : GUINum })
-		, this.Font := new CProxyFont(new Delegate(this, "_update"))
+		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self, "GuiNum" : GUINum, "item_count" : 0 })
+		, content := self.selectNodes("item")
 
-		content := self.selectNodes("item")
-		Loop % this._.item_count := content.length
+		Loop % content.length
 		{
 			item := content.item(A_Index - 1)
+			, this.Items[A_Index] := new CListControl.Item(GUI, this, item, A_Index)
+			, this._.item_count++ ; increase step by step to avoid looping through non-existent items in UpdatePositions() (might be called from CListControl.Item constructor)
 
 			, opt := ""
-			, GUI.ProcessStyles(item, "", "", opt) ; ignore font for now, later to be handled in _update
-			; don't care about positions as this is handled by the _update() method.
+			, GUI.ProcessStyles(item, "", "", opt)
 			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h A_Space opt, this._get_marker(A_Index))
-			, this.AddContainerControl(GUI, "Text", "item" A_Index,   "x" x " y" y " w" w " h" h A_Space opt, GUI.GetElementContent(item))
+			; do not care for position or fonts now, as these are later to be handled by the UpdatePositions() method or the CListControl.Item class itself.
 		}
-		this._update() ; do initial repositioning
+		this.UpdatePositions() ; do initial repositioning
 
 		return Name
 	}
 
-	_update()
+	Show()
+	{
+		this.Visible := true
+		, this.ShowCurrent()
+	}
+
+	Hide()
+	{
+		Base.Hide()
+		for i, item in this.Items
+			item.Hide()
+	}
+
+	UpdatePositions()
 	{
 		static marker_margin := 5, item_padding := 5
+		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0
+			,  m, w, h, x, i, item_margin, item_width, font, font_opt
 
-		; ===== get all markers + widths =====
-		markers := [], marker_widths := []
 		Loop % this._.item_count
 		{
-			markers[A_Index] := this._get_marker(A_Index)
-			, marker_widths[A_Index] := MeasureText(markers[A_Index], this.Font.Options, this.Font.Font).W
+			; get each marker and the maximum width
+			m := markers[A_Index] := this._get_marker(A_Index)
+			, max_marker_width := (w := MeasureText(m, this.Font.Options, this.Font.Font).W) > max_marker_width ? w : max_marker_width
+		}
+		item_width := this._.w - max_marker_width
+
+		Loop % this._.item_count
+		{
+			; calculate items positions
+			h := item_heights[A_Index] := this.Items[A_Index].GetRequiredHeight(item_width) + item_padding
+			, total_item_height += h
 		}
 
-		; ===== get maximum marker width => item width =====
-		max_marker_width := Math.maxObj(marker_widths)
-		, item_width := this._.w - max_marker_width
+		item_margin := this._.item_count > 1 ? (this._.h - total_item_height) / (this._.item_count - 1) : 0
 
-		; ===== calculate item heights =====
-		items := [], item_heights := [], total_item_height := 0
+		x := this._.x + max_marker_width + marker_margin
 		Loop % this._.item_count
 		{
-			items[A_Index] := this.Container["item" A_Index].Text
-			, item_heights[A_Index] := MeasureTextHeight(items[A_Index], item_width, this.Font.Options, this.Font.Font) + item_padding
-			, total_item_height += item_heights[A_Index]
-		}
+			; move items
+			this.Items[A_Index].Move(x, y, item_width, item_heights[A_Index])
 
-		; ===== calculate margin between items =====
-		item_margin := (this._.h - total_item_height) / (this._.item_count - 1)
-
-		; ===== change fonts and reposition =====
-		height_offset := 0
-		, GUI := CGUI.GUIList[this._.GUINum]
-		Loop % this._.item_count
-		{
-			node := this._.node.selectSingleNode("item[" A_Index  "]")
-			, font := font_opt := ""
-			, GUI.ProcessStyles(node, font, font_opt, "") ; options are only set on startup
+			; move and update markers
+			font := font_opt := ""
+			, GUI.ProcessStyles(this.Items[A_Index].Node, font, font_opt, "") ; options are only set on startup
 
 			marker := this.Container["marker" A_Index]
 			, marker.Font.Font := font ? font : this.Font.Font
 			, marker.Font.Options := font_opt ? font_opt : this.Font.Options
 			, marker.Width := max_marker_width
-			, marker.Y := this._.y + height_offset
+			, marker.Y := y
 			, marker.X := this._.x
 
-			item := this.Container["item" A_Index]
-			, item.Font.Font := font ? font : this.Font.Font
-			, item.Font.Options := font_opt ? font_opt : this.Font.Options
-			, item.Width := item_width
-			, item.Height := item_heights[A_Index]
-			, item.Y := this._.y + height_offset
-			, item.X := this._.x + max_marker_width + marker_margin
-
-			height_offset += item_heights[A_Index] + item_margin
+			y += item_heights[A_Index] + item_margin
 		}
 	}
 
@@ -143,4 +144,6 @@ class CListControl extends CCompoundControl
 
 		return marker_prefix . marker . marker_suffix ; fallback: the specified string itself is the marker
 	}
+
+	#Include CListControl.Item.ahk
 }
