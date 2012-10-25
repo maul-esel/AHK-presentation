@@ -172,7 +172,7 @@
 		else if (ctrl_type = "browser")
 		{
 			err := ComObjError(false)
-			, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
+			, ctrl := this.AddControl("ActiveX", name, ctrl_options, "Shell.Explorer")
 			, ComObjError(err)
 
 			, is_localized := ctrl_node.getAttribute("localized") = "true"
