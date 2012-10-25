@@ -60,12 +60,13 @@
 			return this._get_viewbox(node.parentNode)
 	}
 
-	ProcessPosition(ctrl_node, viewbox)
+	ProcessPosition(ctrl_node)
 	{
 		static static_margin := 10
 
 		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
-		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
+		viewbox := this._get_viewbox(ctrl_node)
+		, panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
 					, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
 					, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
 					, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
@@ -124,7 +125,7 @@
 		Loop % ctrl_list.length
 		{
 			ctrl_node := ctrl_list.item(A_Index - 1)
-			, ctrl := this.CreateControl(ctrl_node, name_prefix . A_Index, this._get_viewbox(ctrl_node))
+			, ctrl := this.CreateControl(ctrl_node, name_prefix . A_Index)
 			, part.controls.Insert(ctrl)
 			, ctrl.Hide() ; hide controls for now, later to be shown by <showPart()>
 		}
@@ -132,7 +133,7 @@
 		part.created := true
 	}
 
-	CreateControl(ctrl_node, name, viewbox)
+	CreateControl(ctrl_node, name)
 	{
 		static CGUI_controls := Obj.keys(CGUI.RegisteredControls), READYSTATE_COMPLETE := 4
 		local ctrl_type, content, ctrl, err, is_localized, event_list, event_name, event_handler, event_handler_type
@@ -140,7 +141,7 @@
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-		, pos := this.ProcessPosition(ctrl_node, viewbox)
+		, pos := this.ProcessPosition(ctrl_node)
 
 		for property, value in pos
 			ctrl_options .= property . value . A_Space
