@@ -49,8 +49,11 @@ class Item extends CCompoundControl
 		}
 	}
 
-	Update()
+	; @callback
+	UpdateFont(property, value)
 	{
+		; TODO: only update if a real change happened (e.g. local font has priority over list font changes)
+
 		font := this.Font.Font ? this.Font.Font : this._.list.Font.Font
 		, font_opt := this.Font.Options ? this.Font.Options : this._.list.Font.Options
 
@@ -62,12 +65,5 @@ class Item extends CCompoundControl
 		}
 
 		this._.list.UpdatePositions()
-	}
-
-	; @callback
-	UpdateFont(property, value)
-	{
-		; TODO: only update if a real change happened (e.g. local font has priority over list font changes)
-		this.Update()
 	}
 }
