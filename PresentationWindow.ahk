@@ -60,7 +60,7 @@
 			return this._get_viewbox(node.parentNode)
 	}
 
-	_process_position(ctrl_node)
+	ProcessPosition(ctrl_node)
 	{
 		static static_margin := 10
 
@@ -130,7 +130,7 @@
 			, ctrl_type := ctrl_node.nodeName
 
 			this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-			, pos := this._process_position(ctrl_node)
+			, pos := this.ProcessPosition(ctrl_node)
 
 			ctrl_options := ""
 			for property, value in pos
