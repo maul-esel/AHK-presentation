@@ -123,14 +123,13 @@
 		static READYSTATE_COMPLETE := 4
 
 		node := part.node
-
-		ctrl_list := node.selectNodes("*")
+		, ctrl_list := node.selectNodes("*")
 		Loop % ctrl_list.length
 		{
 			ctrl_node := ctrl_list.item(A_Index - 1)
 			, ctrl_type := ctrl_node.nodeName
 
-			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+			this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
 			, pos := this._process_position(ctrl_node)
 
 			ctrl_options := ""
@@ -143,16 +142,9 @@
 
 			if (ctrl_type.in(CGUI_controls))
 			{
-				content := ctrl_node.getAttribute("content")
-				if (content)
-					content := Translator.getString(content)
-				else if (ctrl_node.text)
-					content := ctrl_node.text
-				else
-					content := ctrl_node
-
-				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
-				part.controls.Insert(ctrl)
+				content := this.GetElementContent(ctrl_node)
+				, ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
+				, part.controls.Insert(ctrl)
 
 				ctrl._.XMLNode := ctrl_node
 
@@ -367,7 +359,7 @@
 		}
 	}
 
-	_process_styles(node, byRef font, byRef font_opt, byRef opt)
+	ProcessStyles(node, byRef font, byRef font_opt, byRef opt)
 	{
 		if (style := node.getAttribute("style"))
 		{
@@ -393,6 +385,17 @@
 			font_opt .= t
 		if (t := node.getAttribute("options"))
 			opt .= t
+	}
+
+	GetElementContent(node)
+	{
+		content := node.getAttribute("content")
+		if (content)
+			return Translator.getString(content)
+		else if (node.text)
+			return node.text
+		else
+			return node
 	}
 
 	PostDestroy()

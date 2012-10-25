@@ -41,6 +41,7 @@ return
 #include Translator.ahk
 #include Presentation.ahk
 
+#Include CProxyFont.ahk
 #Include CExecutableCodeControl.ahk
 #Include CListControl.ahk
 #include PresentationWindow.ahk
