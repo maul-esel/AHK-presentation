@@ -384,10 +384,10 @@
 		content := node.getAttribute("content")
 		if (content)
 			return Translator.getString(content)
+		else if (node.selectNodes("*").length > 0) ; do not use childNodes as this includes attributes etc.
+			return node
 		else if (node.text)
 			return node.text
-		else
-			return node
 	}
 
 	PostDestroy()
