@@ -118,101 +118,93 @@
 
 	createPart(part)
 	{
-		static CGUI_controls := Obj.keys(CGUI.RegisteredControls)
-		static READYSTATE_COMPLETE := 4
+		ctrl_list := part.node.selectNodes("*")
+		, name_prefix := RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_")
 
-		node := part.node
-		, ctrl_list := node.selectNodes("*")
 		Loop % ctrl_list.length
 		{
 			ctrl_node := ctrl_list.item(A_Index - 1)
-			, ctrl_type := ctrl_node.nodeName
-
-			this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-			, pos := this.ProcessPosition(ctrl_node, this._get_viewbox(ctrl_node))
-
-			ctrl_options := ""
-			for property, value in pos
-			{
-				ctrl_options .= property . value . A_Space
-			}
-			ctrl_options .= ctrl_opt
-			, ctrl_opt := ""
-
-			if (ctrl_type.in(CGUI_controls))
-			{
-				content := this.GetElementContent(ctrl_node)
-				, ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
-				, part.controls.Insert(ctrl)
-
-				ctrl._.XMLNode := ctrl_node
-
-				if (ctrl_type = "hiedit")
-				{
-					for property, color in PresentationWindow.HiEdit_ColorSet
-						ctrl.Colors[property] := color
-					if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
-					{
-						ctrl.hilight := true
-						, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
-					}
-				}
-
-				if (ctrl_font)
-				{
-					ctrl.Font.Font := ctrl_font
-					, ctrl_font := ""
-				}
-				if (ctrl_font_opt)
-				{
-					ctrl.Font.Options := ctrl_font_opt
-					, ctrl_font_opt := ""
-				}
-			}
-			else if (ctrl_type = "browser")
-			{
-				err := ComObjError(false)
-				, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
-				, ComObjError(err)
-				, part.controls.Insert(ctrl)
-
-				, is_localized := ctrl_node.getAttribute("localized") = "true"
-				, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
-
-				while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
-					sleep 100
-			}
-
-			event_list := ctrl_node.selectNodes("event")
-			Loop % event_list.length
-			{
-				event_node := event_list.item(A_Index - 1)
-				, event_name := event_node.getAttribute("name")
-				, event_handler := event_node.getAttribute("handler")
-				, event_handler_type := event_node.getAttribute("handler-type")
-
-				if event_handler_type not in function,label
-				{
-					throw Exception("Unknown event handler type!", -1)
-				}
-				else if (event_handler_type = "function")
-				{
-					if (!IsFunc(event_handler))
-						throw Exception("Unknown function '" . event_handler . "' called!", -1)
-					event_handler := Func(event_handler)
-				}
-				else if (event_handler = "label")
-					event_handler := Label(event_handler)
-
-				ctrl[event_name].handler := event_handler
-			}
-
-			; hide controls for now, later to be shown by <showPart()>
-			ctrl.Hide()
-			, ctrl := ""
+			, ctrl := this.CreateControl(ctrl_node, name_prefix . A_Index, this._get_viewbox(ctrl_node))
+			, part.controls.Insert(ctrl)
+			, ctrl.Hide() ; hide controls for now, later to be shown by <showPart()>
 		}
 
 		part.created := true
+	}
+
+	CreateControl(ctrl_node, name, viewbox)
+	{
+		static CGUI_controls := Obj.keys(CGUI.RegisteredControls), READYSTATE_COMPLETE := 4
+		local ctrl_type, content, ctrl, err, is_localized, event_list, event_name, event_handler, event_handler_type
+			, ctrl_font := "", ctrl_font_opt := "", ctrl_opt := "", ctrl_options := "", property := "", value := "", color := ""
+
+		ctrl_type := ctrl_node.nodeName
+		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+		, pos := this.ProcessPosition(ctrl_node, viewbox)
+
+		for property, value in pos
+			ctrl_options .= property . value . A_Space
+		ctrl_options .= ctrl_opt
+
+		if (ctrl_type.in(CGUI_controls))
+		{
+			content := this.GetElementContent(ctrl_node)
+			, ctrl := this.AddControl(ctrl_type, name, ctrl_options, content)
+			, ctrl._.XMLNode := ctrl_node
+
+			if (ctrl_type = "hiedit")
+			{
+				for property, color in PresentationWindow.HiEdit_ColorSet
+					ctrl.Colors[property] := color
+				if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
+				{
+					ctrl.hilight := true
+					, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
+				}
+			}
+
+			if (ctrl_font)
+				ctrl.Font.Font := ctrl_font
+			if (ctrl_font_opt)
+				ctrl.Font.Options := ctrl_font_opt
+		}
+		else if (ctrl_type = "browser")
+		{
+			err := ComObjError(false)
+			, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
+			, ComObjError(err)
+
+			, is_localized := ctrl_node.getAttribute("localized") = "true"
+			, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
+
+			while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
+				sleep 100
+		}
+
+		event_list := ctrl_node.selectNodes("event")
+		Loop % event_list.length
+		{
+			event_node := event_list.item(A_Index - 1)
+			, event_name := event_node.getAttribute("name")
+			, event_handler := event_node.getAttribute("handler")
+			, event_handler_type := event_node.getAttribute("handler-type")
+
+			if event_handler_type not in function,label
+			{
+				throw Exception("Unknown event handler type!", -1)
+			}
+			else if (event_handler_type = "function")
+			{
+				if (!IsFunc(event_handler))
+					throw Exception("Unknown function '" . event_handler . "' called!", -1)
+				event_handler := Func(event_handler)
+			}
+			else if (event_handler = "label")
+				event_handler := Label(event_handler)
+
+			ctrl[event_name].handler := event_handler
+		}
+		return ctrl
 	}
 
 	showPart(part, step = 0)
