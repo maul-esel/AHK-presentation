@@ -19,8 +19,6 @@ class Item extends CCompoundControl
 			, this.AddContainerControl(GUI, "Text", "list_item" (this._.r := r), opt, this._.text := content)
 		}
 
-		this.Update()
-
 		if (font)
 			this.Font.Font := font
 		if (font_opt)
@@ -56,6 +54,7 @@ class Item extends CCompoundControl
 		font := this.Font.Font ? this.Font.Font : this._.list.Font.Font
 		, font_opt := this.Font.Options ? this.Font.Options : this._.list.Font.Options
 
+		; pass font settings to sub-controls
 		for name, ctrl in this.Container
 		{
 			ctrl.Font.Font := font
@@ -68,10 +67,7 @@ class Item extends CCompoundControl
 	; @callback
 	UpdateFont(property, value)
 	{
-		; pass font settings to sub-controls
-		; if text-only, resize sub-control accordingly
-		; only update if a real change happened (e.g. local font has priority over list font changes)
-
+		; TODO: only update if a real change happened (e.g. local font has priority over list font changes)
 		this.Update()
 	}
 }
