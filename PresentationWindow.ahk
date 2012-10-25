@@ -27,13 +27,6 @@
 			this.createPart(part)
 	}
 
-	disableLoadHandler := 0 ; internal count of to-be-ignored item selection events
-	; Usually, selecting a part from the treeview will automatically load that part.
-	; However, this should not happen if an item is selected programatically.
-	; To prevent this, the caller should previously increase this field.
-	; The event handler (<NavigationBox_ItemSelected()>) then checks if it is > 0. If so, he ignores the event.
-	; Also, it will be decreased by the event handler automatically.
-
 	_find_latest_descendant(part)
 	{
 		if (i := part.children.Count())
@@ -114,9 +107,7 @@
 		, this.showPart(part, step) ; show previous steps
 		, this.currentPart := part
 		, this.currentPart.currentStep := step
-
-		, this.disableLoadHandler++ ; increase count of to-be-ignored item selection events
-		, this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name)
+		, this.NavigationBox.SelectedItem := this.NavigationBox.FindItemWithText(part.localized_name) ; selection will not call loadPart() because it checks if the selected part is already loaded
 	}
 
 	unloadPart(step = -1)
@@ -414,7 +405,7 @@
 
 	NavigationBox_ItemSelected(item)
 	{
-		if (!this.disableLoadHandler--)
+		if (item.part != this.currentPart) ; only load if not already loaded
 		{
 			this.unloadPart()
 			, this.loadPart(item.part)
