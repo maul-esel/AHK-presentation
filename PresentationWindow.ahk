@@ -60,16 +60,15 @@
 			return this._get_viewbox(node.parentNode)
 	}
 
-	ProcessPosition(ctrl_node)
+	ProcessPosition(ctrl_node, viewbox)
 	{
 		static static_margin := 10
 
 		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
-		viewbox := this._get_viewbox(ctrl_node)
-		, panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
-					, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
-					, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
-					, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
+		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
+				, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
+				, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
+				, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
 
 		ctrl := {}
 		for i, opt in ["x", "y", "w", "h"]
@@ -141,7 +140,7 @@
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-		, pos := this.ProcessPosition(ctrl_node)
+		, pos := this.ProcessPosition(ctrl_node, this._get_viewbox(ctrl_node))
 
 		for property, value in pos
 			ctrl_options .= property . value . A_Space
