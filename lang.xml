@@ -60,5 +60,6 @@
 		<string name="redo">Wiederholen</string>
 		<string name="splashscreen-title">Laden...</string>
 		<string name="loading">Die Pr&#228;sentation wird geladen...</string>
+		<string name="create-script">Skript erstellen</string>
 	</translation>
 </lang>
