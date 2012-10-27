@@ -64,11 +64,10 @@
 	{
 		static static_margin := 10
 
-		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
 		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
 				, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
-				, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
-				, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
+				, "w" : this.WindowWidth - x_panel - static_margin - viewbox.margin.right
+				, "h" : this.WindowHeight - y_panel - static_margin - viewbox.margin.bottom }
 
 		ctrl := {}
 		for i, opt in ["x", "y", "w", "h"]

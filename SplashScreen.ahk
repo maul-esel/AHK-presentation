@@ -5,10 +5,10 @@ class SplashScreen extends CGUI
 	ToolWindow := true
 	WindowWidth := 567
 	WindowHeight := 150
-	Title := "Loading the presentation..."
+	Title := Translator.getString("splashscreen-title")
 
 	pic := this.AddControl("Picture", "pic", "x25 y10", A_ScriptDir "\resources\ahk_logo.png")
-	load := this.AddControl("Text", "load", "w" . this.WindowWidth " h25 +0x1", "Loading...")
+	load := this.AddControl("Text", "load", "w" . this.WindowWidth " h25 +0x1", Translator.getString("loading"))
 
 	__New()
 	{
