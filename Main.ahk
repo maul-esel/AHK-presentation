@@ -41,6 +41,7 @@ return
 #include Translator.ahk
 #include Presentation.ahk
 
+#Include Viewbox.ahk
 #Include ContentArea.ahk
 
 #Include CProxyFont.ahk
