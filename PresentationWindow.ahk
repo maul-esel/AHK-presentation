@@ -60,6 +60,22 @@
 			return this._get_viewbox(node.parentNode)
 	}
 
+	GetDefaultContentArea()
+	{
+		static static_margin := 10
+
+		elem := this.pres._doc.documentElement
+		for i, prop in ["left", "top", "right", "bottom"]
+			margin_%prop% := (t := elem.getAttribute("margin-" prop)) ? t : 0
+
+		x := this.NavigationBox.x + this.NavigationBox.width + static_margin+ margin_left
+		, y := this.HeaderBar.y + this.HeaderBar.Height + static_margin + margin_top
+		, w := this.WindowWidth - x - static_margin - margin_right
+		, h := this.WindowHeight - y - static_margin - margin_bottom
+
+		return new ContentArea(x, y, w, h)
+	}
+
 	ProcessPosition(ctrl_node, viewbox)
 	{
 		static static_margin := 10
