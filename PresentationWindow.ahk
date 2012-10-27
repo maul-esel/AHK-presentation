@@ -76,15 +76,8 @@
 		return new ContentArea(x, y, w, h)
 	}
 
-	ProcessPosition(ctrl_node, viewbox)
+	ProcessPosition(ctrl_node, viewbox, content_area)
 	{
-		static static_margin := 10
-
-		panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
-				, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
-				, "w" : this.WindowWidth - x_panel - static_margin - viewbox.margin.right
-				, "h" : this.WindowHeight - y_panel - static_margin - viewbox.margin.bottom }
-
 		ctrl := {}
 		for i, opt in ["x", "y", "w", "h"]
 		{
@@ -94,21 +87,13 @@
 
 		pos := {}
 		if (ctrl.HasKey("x"))
-		{
-			pos.x := floor(ctrl.x / viewbox.width * panel.w + panel.x)
-		}
+			pos.x := floor(ctrl.x / viewbox.Width * content_area.Width + content_area.X)
 		if (ctrl.HasKey("y"))
-		{
-			pos.y := floor(ctrl.y / viewbox.height * panel.h + panel.y)
-		}
+			pos.y := floor(ctrl.y / viewbox.Height * content_area.Height + content_area.Y)
 		if (ctrl.HasKey("w"))
-		{
-			pos.w := floor(ctrl.w / viewbox.width * panel.w)
-		}
+			pos.w := floor(ctrl.w / viewbox.Width * content_area.Width)
 		if (ctrl.HasKey("h"))
-		{
-			pos.h := floor(ctrl.h / viewbox.height * panel.h)
-		}
+			pos.h := floor(ctrl.h / viewbox.Height * content_area.Height)
 		return pos
 	}
 
@@ -155,7 +140,7 @@
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-		, pos := this.ProcessPosition(ctrl_node, this._get_viewbox(ctrl_node))
+		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.GetDefaultContentArea())
 
 		for property, value in pos
 			ctrl_options .= property . value . A_Space
