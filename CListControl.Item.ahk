@@ -4,7 +4,7 @@ class Item extends CCompoundControl
 
 	__New(GUI, list, item_node, index)
 	{
-		this.Insert("_", { "list" : list })
+		this.Insert("_", { "list" : list, "GUI" : GUI })
 		, this.Node := item_node
 		, content := GUI.GetElementContent(item_node)
 		, GUI.ProcessStyles(item_node, font, font_opt, opt)
@@ -57,8 +57,18 @@ class Item extends CCompoundControl
 
 	GetRequiredHeight(w)
 	{
+		if (!this._.hasKey("text"))
+		{
+			max_height := 0
+			for name, ctrl in this.Container
+			{
+				ctrl.AutoSize()
+				max_height += ctrl.Height
+			}
+			return max_height
+		}
 		font := this.Container["list_item" this._.r].Font
-		return this._.hasKey("text") ? MeasureTextHeight(this._.text, w, font.Options, font.font) : this.Boundaries.Height
+		return MeasureTextHeight(this._.text, w, font.Options, font.font)
 	}
 
 	Move(x, y, w, h)
@@ -73,8 +83,15 @@ class Item extends CCompoundControl
 		}
 		else
 		{
-			this.X := x, this.Y := y
-			; ...
+			content_area := new ContentArea(x, y, w, h)
+			for name, ctrl in this.Container
+			{
+				pos := this._.GUI.ProcessPosition(ctrl._.XMLNode, Viewbox.FromNode(ctrl._.XMLNode), content_area)
+				for key, value in { "x" : "x", "y" : "y", "width" : "w", "height" : "h" }
+				{
+					ctrl[key] := pos[value]
+				}
+			}
 		}
 	}
 

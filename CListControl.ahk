@@ -56,6 +56,7 @@ class CListControl extends CCompoundControl
 		GUI := CGUI.GUIList[GUINum]
 		, Parse(Options, "x* y* w* h*", x, y, w, h)
 		, this.Insert("_", { "x" : x, "y" : y, "w" : w, "h" : h, "currIndex" : this.initialIndex, "node" : self, "GuiNum" : GUINum, "item_count" : 0 })
+		, this.Width := w, this.Height := h
 		, content := self.selectNodes("item")
 
 		Loop % content.length
@@ -89,15 +90,16 @@ class CListControl extends CCompoundControl
 
 	UpdatePositions()
 	{
-		static marker_margin := 5, item_padding := 5
-		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0, item_width := 0
-			,  m, w, h, x, i, item_margin, font, font_opt
+		static marker_margin := 5
+		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0
+			, item_width, x, item_margin, font, font_opt
 
 		this._markers(markers, max_marker_width)
 		, item_width := this._.w - max_marker_width
 		, this._heights(item_width, item_heights, total_item_height)
 
 		item_margin := this._.item_count > 1 ? (this._.h - total_item_height) / (this._.item_count - 1) : 0
+		, item_margin := item_margin < 0 ? 0 : item_margin
 
 		x := this._.x + max_marker_width + marker_margin
 		Loop % this._.item_count
@@ -118,6 +120,43 @@ class CListControl extends CCompoundControl
 
 			y += item_heights[A_Index] + item_margin
 		}
+	}
+
+	__Set(key, val)
+	{
+		if key in Width,Height
+		{
+			this._[key = "width" ? "w" : "h"] := val
+			, this.UpdatePositions()
+			return val
+		}
+		else if key in X,Y
+		{
+			this._[key] := val
+			, this.UpdatePositions()
+			return val
+		}
+	}
+
+	__Get(key)
+	{
+		if key in Width,Height
+			return this._[key = "width" ? "w" : "h"]
+		else if key in X,Y
+			return this._[key]
+	}
+
+	AutoSize()
+	{
+		static max_margin := 5, inner_padding := 5
+		local max_marker_width := 0, total_item_height := 0
+			, item_width, h
+
+		this._markers("", max_marker_width)
+		, this._heights(this._.w - max_marker_width, "", total_item_height)
+
+		if ((h := total_item_height + (this._.item_count - 1) * max_margin + 2 * inner_padding) < this._.h)
+			this.Height := h
 	}
 
 	_heights(width, byRef list, byRef total_height)
