@@ -27,6 +27,9 @@ s := new splashScreen() ; show splashscreen
 return
 
 ;*********** <INCLUDES> ***********
+#include %A_ScriptDir%\_Struct
+#include sizeof.ahk
+#Include _Struct.ahk
 #include %A_ScriptDir%\CGUI
 #include CGUI.ahk
 #Include CHiEditControl.ahk
