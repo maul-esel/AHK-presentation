@@ -88,23 +88,12 @@ class CListControl extends CCompoundControl
 	UpdatePositions()
 	{
 		static marker_margin := 5, item_padding := 5
-		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0
-			,  m, w, h, x, i, item_margin, item_width, font, font_opt
+		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0, item_width := 0
+			,  m, w, h, x, i, item_margin, font, font_opt
 
-		Loop % this._.item_count
-		{
-			; get each marker and the maximum width
-			m := markers[A_Index] := this._get_marker(A_Index)
-			, max_marker_width := (w := MeasureText(m, this.Font.Options, this.Font.Font).W) > max_marker_width ? w : max_marker_width
-		}
-		item_width := this._.w - max_marker_width
-
-		Loop % this._.item_count
-		{
-			; calculate items positions
-			h := item_heights[A_Index] := this.Items[A_Index].GetRequiredHeight(item_width) + item_padding
-			, total_item_height += h
-		}
+		this._markers(markers, max_marker_width)
+		, item_width := this._.w - max_marker_width
+		, this._heights(item_width, item_heights, total_item_height)
 
 		item_margin := this._.item_count > 1 ? (this._.h - total_item_height) / (this._.item_count - 1) : 0
 
@@ -126,6 +115,33 @@ class CListControl extends CCompoundControl
 			, marker.X := this._.x
 
 			y += item_heights[A_Index] + item_margin
+		}
+	}
+
+	_heights(width, byRef list, byRef total_height)
+	{
+		local h
+		static item_padding := 5
+
+		list := [], total_height := 0
+		Loop % this._.item_count
+		{
+			; calculate items positions
+			h := list[A_Index] := this.Items[A_Index].GetRequiredHeight(width) + item_padding
+			, total_height += h
+		}
+	}
+
+	_markers(byRef list, byRef max_width)
+	{
+		local m, w
+
+		list := []
+		Loop % this._.item_count
+		{
+			; get each marker and the maximum width
+			m := list[A_Index] := this._get_marker(A_Index)
+			, max_width := (w := MeasureText(m, this.Font.Options, this.Font.Font).W) > max_width ? w : max_width
 		}
 	}
 
