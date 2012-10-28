@@ -33,6 +33,28 @@ class Item extends CCompoundControl
 		list.Font.FontChanged.Handler := new Delegate(this, "UpdateFont")
 	}
 
+	Next()
+	{
+		handled := false
+		for name, ctrl in this.Container
+		{
+			if (ctrl.canIterate)
+				handled := handled || ctrl.Next()
+		}
+		return handled
+	}
+
+	Previous()
+	{
+		handled := false
+		for name, ctrl in this.Container
+		{
+			if (ctrl.canIterate)
+				handled := handled || ctrl.Previous()
+		}
+		return handled
+	}
+
 	GetRequiredHeight(w)
 	{
 		font := this.Container["list_item" this._.r].Font

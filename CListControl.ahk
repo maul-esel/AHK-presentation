@@ -9,26 +9,28 @@ class CListControl extends CCompoundControl
 
 	Next()
 	{
-		if (this._.currIndex < this._.item_count)
+		handled := this.Items[this._.currIndex].Next()
+		if (!handled && this._.currIndex < this._.item_count)
 		{
 			this._.currIndex++
 			if (this.Visible)
 				this.ShowCurrent()
 			return true
 		}
-		return false
+		return handled
 	}
 
 	Previous()
 	{
-		if (this._.currIndex > this.initialIndex)
+		handled := this.Items[this._.currIndex].Previous()
+		if (!handled && this._.currIndex > this.initialIndex)
 		{
 			this._.currIndex--
 			if (this.Visible)
 				this.ShowCurrent()
 			return true
 		}
-		return false
+		return handled
 	}
 
 	ShowCurrent()
