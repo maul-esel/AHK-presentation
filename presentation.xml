@@ -34,8 +34,7 @@
 		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05.0" content="script-structure"/>
 		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05.0" content="script-structure/file"/>
 		<text   step="3" style="default" x="05" y="12.5" w="075" h="07.5" content="script-structure/file/text"/>
-		<button step="3" style="default" x="05" y="20.0" w="020" h="05.0">
-			Skript erstellen
+		<button step="3" style="default" x="05" y="20.0" w="020" h="05.0" content="create-script">
 			<event name="click" handler-type="function" handler="RunEditor"/>
 		</button>
 		<text   step="4" style="h2"      x="00" y="30.0" w="100" h="05" content="script-structure/auto-execute"/>

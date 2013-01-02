@@ -60,17 +60,24 @@
 			return this._get_viewbox(node.parentNode)
 	}
 
-	_process_position(ctrl_node)
+	GetDefaultContentArea()
 	{
 		static static_margin := 10
 
-		WinGetPos, , , w_win, h_win, % "ahk_id " this.hwnd ; get window dimensions
-		viewbox := this._get_viewbox(ctrl_node) ; get viewbox dimensions
-		, panel := { "x" : (x_panel := this.NavigationBox.x + this.NavigationBox.width + static_margin + viewbox.margin.left)
-					, "y" : (y_panel := this.HeaderBar.y + this.HeaderBar.height + static_margin + viewbox.margin.top)
-					, "w" : w_win - x_panel - 2 * static_margin - viewbox.margin.right
-					, "h" : h_win - y_panel - 2 * static_margin - viewbox.margin.bottom }
+		elem := this.pres._doc.documentElement
+		for i, prop in ["left", "top", "right", "bottom"]
+			margin_%prop% := (t := elem.getAttribute("margin-" prop)) ? t : 0
 
+		x := this.NavigationBox.x + this.NavigationBox.width + static_margin+ margin_left
+		, y := this.HeaderBar.y + this.HeaderBar.Height + static_margin + margin_top
+		, w := this.WindowWidth - x - static_margin - margin_right
+		, h := this.WindowHeight - y - static_margin - margin_bottom
+
+		return new ContentArea(x, y, w, h)
+	}
+
+	ProcessPosition(ctrl_node, viewbox, content_area)
+	{
 		ctrl := {}
 		for i, opt in ["x", "y", "w", "h"]
 		{
@@ -80,21 +87,13 @@
 
 		pos := {}
 		if (ctrl.HasKey("x"))
-		{
-			pos.x := floor(ctrl.x / viewbox.width * panel.w + panel.x)
-		}
+			pos.x := floor(ctrl.x / viewbox.Width * content_area.Width + content_area.X)
 		if (ctrl.HasKey("y"))
-		{
-			pos.y := floor(ctrl.y / viewbox.height * panel.h + panel.y)
-		}
+			pos.y := floor(ctrl.y / viewbox.Height * content_area.Height + content_area.Y)
 		if (ctrl.HasKey("w"))
-		{
-			pos.w := floor(ctrl.w / viewbox.width * panel.w)
-		}
+			pos.w := floor(ctrl.w / viewbox.Width * content_area.Width)
 		if (ctrl.HasKey("h"))
-		{
-			pos.h := floor(ctrl.h / viewbox.height * panel.h)
-		}
+			pos.h := floor(ctrl.h / viewbox.Height * content_area.Height)
 		return pos
 	}
 
@@ -119,109 +118,93 @@
 
 	createPart(part)
 	{
-		static CGUI_controls := Obj.keys(CGUI.RegisteredControls)
-		static READYSTATE_COMPLETE := 4
+		ctrl_list := part.node.selectNodes("*")
+		, name_prefix := RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_")
 
-		node := part.node
-
-		ctrl_list := node.selectNodes("*")
 		Loop % ctrl_list.length
 		{
 			ctrl_node := ctrl_list.item(A_Index - 1)
-			, ctrl_type := ctrl_node.nodeName
-
-			this._process_styles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-			, pos := this._process_position(ctrl_node)
-
-			ctrl_options := ""
-			for property, value in pos
-			{
-				ctrl_options .= property . value . A_Space
-			}
-			ctrl_options .= ctrl_opt
-			, ctrl_opt := ""
-
-			if (ctrl_type.in(CGUI_controls))
-			{
-				content := ctrl_node.getAttribute("content")
-				if (content)
-					content := Translator.getString(content)
-				else if (ctrl_node.text)
-					content := ctrl_node.text
-				else
-					content := ctrl_node
-
-				ctrl := this.AddControl(ctrl_type, RegExReplace(part.name, "(^[^a-zA-Z#_@\$]|[^\w#@\$])", "_") . A_Index, ctrl_options, content)
-				part.controls.Insert(ctrl)
-
-				ctrl._.XMLNode := ctrl_node
-
-				if (ctrl_type = "hiedit")
-				{
-					for property, color in PresentationWindow.HiEdit_ColorSet
-						ctrl.Colors[property] := color
-					if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
-					{
-						ctrl.hilight := true
-						, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
-					}
-				}
-
-				if (ctrl_font)
-				{
-					ctrl.Font.Font := ctrl_font
-					, ctrl_font := ""
-				}
-				if (ctrl_font_opt)
-				{
-					ctrl.Font.Options := ctrl_font_opt
-					, ctrl_font_opt := ""
-				}
-			}
-			else if (ctrl_type = "browser")
-			{
-				err := ComObjError(false)
-				, ctrl := this.AddControl("ActiveX", part . A_Index, ctrl_options, "Shell.Explorer")
-				, ComObjError(err)
-				, part.controls.Insert(ctrl)
-
-				, is_localized := ctrl_node.getAttribute("localized") = "true"
-				, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
-
-				while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
-					sleep 100
-			}
-
-			event_list := ctrl_node.selectNodes("event")
-			Loop % event_list.length
-			{
-				event_node := event_list.item(A_Index - 1)
-				, event_name := event_node.getAttribute("name")
-				, event_handler := event_node.getAttribute("handler")
-				, event_handler_type := event_node.getAttribute("handler-type")
-
-				if event_handler_type not in function,label
-				{
-					throw Exception("Unknown event handler type!", -1)
-				}
-				else if (event_handler_type = "function")
-				{
-					if (!IsFunc(event_handler))
-						throw Exception("Unknown function '" . event_handler . "' called!", -1)
-					event_handler := Func(event_handler)
-				}
-				else if (event_handler = "label")
-					event_handler := Label(event_handler)
-
-				ctrl[event_name].handler := event_handler
-			}
-
-			; hide controls for now, later to be shown by <showPart()>
-			ctrl.Hide()
-			, ctrl := ""
+			, ctrl := this.CreateControl(ctrl_node, name_prefix . A_Index)
+			, part.controls.Insert(ctrl)
+			, ctrl.Hide() ; hide controls for now, later to be shown by <showPart()>
 		}
 
 		part.created := true
+	}
+
+	CreateControl(ctrl_node, name)
+	{
+		static CGUI_controls := Obj.keys(CGUI.RegisteredControls), READYSTATE_COMPLETE := 4
+		local ctrl_type, content, ctrl, err, is_localized, event_list, event_name, event_handler, event_handler_type
+			, ctrl_font := "", ctrl_font_opt := "", ctrl_opt := "", ctrl_options := "", property := "", value := "", color := ""
+
+		ctrl_type := ctrl_node.nodeName
+		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
+		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.GetDefaultContentArea())
+
+		for property, value in pos
+			ctrl_options .= property . value . A_Space
+		ctrl_options .= ctrl_opt
+
+		if (ctrl_type.in(CGUI_controls))
+		{
+			content := this.GetElementContent(ctrl_node)
+			, ctrl := this.AddControl(ctrl_type, name, ctrl_options, content)
+			, ctrl._.XMLNode := ctrl_node
+
+			if (ctrl_type = "hiedit")
+			{
+				for property, color in PresentationWindow.HiEdit_ColorSet
+					ctrl.Colors[property] := color
+				if (!ctrl_node.getAttribute("highlight").in([0, "false"]))
+				{
+					ctrl.hilight := true
+					, ctrl.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
+				}
+			}
+
+			if (ctrl_font)
+				ctrl.Font.Font := ctrl_font
+			if (ctrl_font_opt)
+				ctrl.Font.Options := ctrl_font_opt
+		}
+		else if (ctrl_type = "browser")
+		{
+			err := ComObjError(false)
+			, ctrl := this.AddControl("ActiveX", name, ctrl_options, "Shell.Explorer")
+			, ComObjError(err)
+
+			, is_localized := ctrl_node.getAttribute("localized") = "true"
+			, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
+
+			while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
+				sleep 100
+		}
+
+		event_list := ctrl_node.selectNodes("event")
+		Loop % event_list.length
+		{
+			event_node := event_list.item(A_Index - 1)
+			, event_name := event_node.getAttribute("name")
+			, event_handler := event_node.getAttribute("handler")
+			, event_handler_type := event_node.getAttribute("handler-type")
+
+			if event_handler_type not in function,label
+			{
+				throw Exception("Unknown event handler type!", -1)
+			}
+			else if (event_handler_type = "function")
+			{
+				if (!IsFunc(event_handler))
+					throw Exception("Unknown function '" . event_handler . "' called!", -1)
+				event_handler := Func(event_handler)
+			}
+			else if (event_handler = "label")
+				event_handler := Label(event_handler)
+
+			ctrl[event_name].handler := event_handler
+		}
+		return ctrl
 	}
 
 	showPart(part, step = 0)
@@ -367,7 +350,7 @@
 		}
 	}
 
-	_process_styles(node, byRef font, byRef font_opt, byRef opt)
+	ProcessStyles(node, byRef font, byRef font_opt, byRef opt)
 	{
 		if (style := node.getAttribute("style"))
 		{
@@ -393,6 +376,17 @@
 			font_opt .= t
 		if (t := node.getAttribute("options"))
 			opt .= t
+	}
+
+	GetElementContent(node)
+	{
+		content := node.getAttribute("content")
+		if (content)
+			return Translator.getString(content)
+		else if (node.selectNodes("*").length > 0) ; do not use childNodes as this includes attributes etc.
+			return node
+		else if (node.text)
+			return node.text
 	}
 
 	PostDestroy()

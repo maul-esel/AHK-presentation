@@ -58,5 +58,8 @@
 		<string name="clear">Code l&#246;schen</string>
 		<string name="undo">R&#252;ckg&#228;ngig</string>
 		<string name="redo">Wiederholen</string>
+		<string name="splashscreen-title">Laden...</string>
+		<string name="loading">Die Pr&#228;sentation wird geladen...</string>
+		<string name="create-script">Skript erstellen</string>
 	</translation>
 </lang>
