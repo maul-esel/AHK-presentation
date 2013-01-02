@@ -2,7 +2,7 @@
 <lang>
 	<translation lang="de">
 		<string name="win-title">AutoHotkey &#8212; die beste Skript-Sprache f&#252;r Windows.</string>
-		<string name="introduction">Einf&#252;hrung</string>
+		<string name="introduction">Einleitung</string>
 		<string name="version-history">Versionsgeschichte</string>
 		<string name="usage-cases">Einsatzgebiete</string>
 		<string name="script-structure">Aufbau eines Skripts</string>
