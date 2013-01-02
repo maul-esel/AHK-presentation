@@ -11,7 +11,7 @@ class CListControl extends CCompoundControl
 	{
 		handled := false
 		for i, item in this.ItemsByStep[this._.currentStep]
-			handled := handled || item.Next()
+			handled := item.Next() || handled
 		if (!handled && this._.currentStep < this.MaxSteps)
 		{
 			this._.currentStep++

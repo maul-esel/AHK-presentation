@@ -41,7 +41,7 @@ class Item extends CCompoundControl
 		for name, ctrl in this.Container
 		{
 			if (ctrl.canIterate)
-				handled := handled || ctrl.Next()
+				handled := ctrl.Next() || handled
 		}
 		return handled
 	}

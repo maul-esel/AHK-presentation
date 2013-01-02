@@ -270,7 +270,7 @@
 			{
 				if (ctrl.canIterate) ; is it an iterator control?
 				{
-					handled := handled || ctrl.Next() ; if so, call Next(). If it really could step further, `handled` is `true` now
+					handled := ctrl.Next() || handled ; if so, call Next(). If it really could step further, `handled` is `true` now
 				}
 			}
 		}
