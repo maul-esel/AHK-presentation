@@ -8,6 +8,8 @@ class Item extends CCompoundControl
 		, this.Node := item_node
 		, content := GUI.GetElementContent(item_node)
 		, GUI.ProcessStyles(item_node, font, font_opt, opt)
+		, this.Step := (t := item_node.getAttribute("step")) ? t : index
+		, this.Index := index
 
 		Random r
 		this._.r := r
@@ -39,7 +41,7 @@ class Item extends CCompoundControl
 		for name, ctrl in this.Container
 		{
 			if (ctrl.canIterate)
-				handled := handled || ctrl.Next()
+				handled := ctrl.Next() || handled
 		}
 		return handled
 	}
