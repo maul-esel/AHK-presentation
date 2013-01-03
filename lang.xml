@@ -44,9 +44,18 @@
 		<string name="introduction/advanced/1">neuere Versionen von AutoHotkey: Zugriff auf fortgeschrittene Techniken</string>
 
 		<string name="script-structure/file">Eine Skript-Datei</string>
-		<string name="script-structure/file/text">Ein AutoHotkey-Script ist einfach nur eine ganz normale Text-Datei. Meistens wird die Dateiendung &quot;.ahk&quot; benutzt.</string>
+		<string name="script-structure/file/1">ganz normale Text-Datei</string>
+		<string name="script-structure/file/2">meist wird die Dateiendung &quot;.ahk&quot; benutzt</string>
+
 		<string name="script-structure/auto-execute">Wo fangen wir an? &#8212; die &quot;auto-execute section&quot;</string>
-		<string name="script-structure/auto-execute/text">Wird ein Skript gestartet, wird zuerst die sogenannte &quot;auto-execute section&quot; ausgef&#252;hrt. Sie beginnt in der ersten Zeile der Datei und endet entweder am Ende der Datei oder beim ersten &quot;return&quot;-Befehl, was immer zuerst kommt.</string>
+		<string name="script-structure/auto-execute/1">Bei Skriptstart: sogenannte &quot;auto-execute section&quot; wird ausgef&#252;hrt</string>
+		<string name="script-structure/auto-execute/2">Beginn: 1. Zeile der Datei</string>
+		<string name="script-structure/auto-execute/3">Ende: entweder am Ende der Datei, oder beim ersten &quot;return&quot;-Befehl, oder beim ersten Hotkey</string>
+
+		<string name="script-structure/script-end">Wann endet das Skript?</string>
+		<string name="script-structure/script-end/1">Nach auto-execute-Sektion: Skript endet</string>
+		<string name="script-structure/script-end/2">Au&#223;er: Skript erstellt Fenster, Hotkeys etc.</string>
+		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
 
 		<string name="script-structure/variables">Variablen</string>
 		<string name="script-structure/variables/text">Variablen lassen sich schnell und einfach nutzen. Anders als in Javascript m&#252;ssen Variablen nicht einmal deklariert werden (kein &quot;var&quot; o. &#196;. vor dem Namen) - sie enthalten dann standardm&#228;ßig einen leeren String.&#10;&#10;Zuweisen lassen sich Werte mit &quot;:=&quot; :</string>

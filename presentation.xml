@@ -47,14 +47,29 @@
 	</part>
 	<part name="usage-cases"/>
 	<part name="script-structure" steps="true">
-		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05.0" content="script-structure"/>
-		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05.0" content="script-structure/file"/>
-		<text   step="3" style="default" x="05" y="12.5" w="075" h="07.5" content="script-structure/file/text"/>
-		<button step="3" style="default" x="05" y="20.0" w="020" h="05.0" content="create-script">
+		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
+		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
+		<list	step="3" 				 x="05" y="12.5" w="075" h="10">
+			<item step="1" style="default" content="script-structure/file/1"/>
+			<item step="2" style="default" content="script-structure/file/2"/>
+		</list>
+		<button step="4" style="default" x="05" y="25.0" w="020" h="05" content="create-script">
 			<event name="click" handler-type="function" handler="RunEditor"/>
 		</button>
-		<text   step="4" style="h2"      x="00" y="30.0" w="100" h="05" content="script-structure/auto-execute"/>
-		<text   step="5" style="default" x="05" y="35.0" w="075" h="20" content="script-structure/auto-execute/text"/>
+
+		<text   step="5" style="h2"      x="00" y="35" w="100" h="05" content="script-structure/auto-execute"/>
+		<list	step="6" 				 x="05" y="40" w="075" h="15">
+			<item step="1" style="default" content="script-structure/auto-execute/1"/>
+			<item step="2" style="default" content="script-structure/auto-execute/2"/>
+			<item step="3" style="default" content="script-structure/auto-execute/3"/>
+		</list>
+
+		<text	step="7" style="h2"		x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
+		<list	step="8"				x="05" y="65" w="075" h="15">
+			<item style="default" content="script-structure/script-end/1"/>
+			<item style="default" content="script-structure/script-end/2"/>
+			<item style="default" content="script-structure/script-end/3"/>
+		</list>
 
 		<part name="variables" steps="true">
 			<text	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/variables"/>
