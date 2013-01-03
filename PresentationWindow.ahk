@@ -8,6 +8,7 @@
 
 	QuickEdit := new QuickEditWindow(this)
 	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
+	DefaultContentArea := ""
 
 	__New(pres)
 	{
@@ -22,6 +23,8 @@
 		, this.HeaderBar := this.AddControl("ActiveX", "HeaderBar", "x5 y5 h90 w" (0.99 * A_ScreenWidth), "Shell.Explorer")
 		, ComObjError(err)
 		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
+
+		, this.DefaultContentArea := this.GetDefaultContentArea()
 
 		for i, part in this.presentation.parts
 			this.createPart(part)
@@ -140,7 +143,7 @@
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.GetDefaultContentArea())
+		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.DefaultContentArea)
 
 		for property, value in pos
 			ctrl_options .= property . value . A_Space
