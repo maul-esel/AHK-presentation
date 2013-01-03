@@ -9,35 +9,35 @@
 		<style name="code"    font-opt="s14"                font-name="Consolas" options=""/>
 	</styles>
 	<part name="introduction" steps="true">
-		<text step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="introduction"/>
-		<text step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="introduction/what"/>
-		<text step="3" style="cite"    x="05" y="12.5" w="095" h="20" content="introduction/cite"/>
-		<text step="4" style="h2"      x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
+		<text step="1" style="h1"	x="00" y="00.0" w="100" h="05" content="introduction"/>
+		<text step="2" style="h2"	x="00" y="07.5" w="100" h="05" content="introduction/what"/>
+		<text step="3" style="cite"	x="05" y="12.5" w="095" h="20" content="introduction/cite"/>
+		<text step="4" style="h2"	x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
 
-		<list step="5" x="00" y="27.5" w="20" h="65">
-			<item style="h3" content="introduction/simplicity"/>
-			<item style="h3" content="introduction/builtins"/>
-			<item style="h3" content="introduction/hotkeys"/>
-			<item style="h3" content="introduction/automation"/>
-			<item style="h3" content="introduction/advanced"/>
+		<list step="5" style="h3"	x="00" y="27.5" w="020" h="65">
+			<item content="introduction/simplicity"/>
+			<item content="introduction/builtins"/>
+			<item content="introduction/hotkeys"/>
+			<item content="introduction/automation"/>
+			<item content="introduction/advanced"/>
 		</list>
 
-		<list step="5" x="25" y="27.5" w="75" h="65" marker="double-arrow">
-			<item step="1" style="default" content="introduction/simplicity/1"/>
-			<item step="1" style="default" content="introduction/simplicity/2"/>
-			<item step="1" style="default" content="introduction/simplicity/3"/>
-			<item step="1" style="default" content="introduction/simplicity/4"/>
+		<list step="5" style="default" x="25" y="27.5" w="75" h="65" marker="double-arrow">
+			<item step="1" content="introduction/simplicity/1"/>
+			<item step="1" content="introduction/simplicity/2"/>
+			<item step="1" content="introduction/simplicity/3"/>
+			<item step="1" content="introduction/simplicity/4"/>
 
-			<item step="2" style="default" content="introduction/builtins/1"/>
+			<item step="2" content="introduction/builtins/1"/>
 
-			<item step="3" style="default" content="introduction/hotkeys/1"/>
-			<item step="3" style="default" content="introduction/hotkeys/2"/>
-			<item step="3" style="default" content="introduction/hotkeys/3"/>
+			<item step="3" content="introduction/hotkeys/1"/>
+			<item step="3" content="introduction/hotkeys/2"/>
+			<item step="3" content="introduction/hotkeys/3"/>
 
-			<item step="4" style="default" content="introduction/automation/1"/>
-			<item step="4" style="default" content="introduction/automation/2"/>
+			<item step="4" content="introduction/automation/1"/>
+			<item step="4" content="introduction/automation/2"/>
 
-			<item step="5" style="default" content="introduction/advanced/1"/>
+			<item step="5" content="introduction/advanced/1"/>
 		</list>
 	</part>
 	<part name="version-history" steps="true">
@@ -48,37 +48,37 @@
 	<part name="script-structure" steps="true">
 		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
 		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
-		<list	step="3" 				 x="05" y="12.5" w="075" h="10">
-			<item style="default" content="script-structure/file/1"/>
-			<item style="default" content="script-structure/file/2"/>
+		<list	step="3" style="default" x="05" y="12.5" w="075" h="10">
+			<item content="script-structure/file/1"/>
+			<item content="script-structure/file/2"/>
 		</list>
 		<button step="4" style="default" x="05" y="25.0" w="020" h="05" content="create-script">
 			<event name="click" handler-type="function" handler="RunEditor"/>
 		</button>
 
 		<text   step="5" style="h2"      x="00" y="35" w="100" h="05" content="script-structure/auto-execute"/>
-		<list	step="6" 				 x="05" y="40" w="075" h="15">
-			<item style="default" content="script-structure/auto-execute/1"/>
-			<item style="default" content="script-structure/auto-execute/2"/>
-			<item style="default" content="script-structure/auto-execute/3"/>
+		<list	step="6" style="default" x="05" y="40" w="075" h="15">
+			<item content="script-structure/auto-execute/1"/>
+			<item content="script-structure/auto-execute/2"/>
+			<item content="script-structure/auto-execute/3"/>
 		</list>
 
-		<text	step="7" style="h2"		x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
-		<list	step="8"				x="05" y="65" w="075" h="15">
-			<item style="default" content="script-structure/script-end/1"/>
-			<item style="default" content="script-structure/script-end/2"/>
-			<item style="default" content="script-structure/script-end/3"/>
+		<text	step="7" style="h2"		 x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
+		<list	step="8" style="default" x="05" y="65" w="075" h="15">
+			<item content="script-structure/script-end/1"/>
+			<item content="script-structure/script-end/2"/>
+			<item content="script-structure/script-end/3"/>
 		</list>
 	</part>
 	<part name="syntax" steps="true">
 		<part name="variables" steps="true">
 			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/variables"/>
-			<list	step="2"				 x="05" y="05" w="095" h="25">
-				<item style="default" content="syntax/variables/1"/>
-				<item style="default" content="syntax/variables/2"/>
-				<item style="default" content="syntax/variables/3"/>
-				<item style="default" content="syntax/variables/4"/>
-				<item style="default" content="syntax/variables/5"/>
+			<list	step="2" style="default" x="05" y="05" w="095" h="25">
+				<item content="syntax/variables/1"/>
+				<item content="syntax/variables/2"/>
+				<item content="syntax/variables/3"/>
+				<item content="syntax/variables/4"/>
+				<item content="syntax/variables/5"/>
 			</list>
 			<hiedit	step="3" style="code"    x="05" y="35" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
