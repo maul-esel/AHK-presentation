@@ -133,7 +133,6 @@
 		{
 			content := this.GetElementContent(ctrl_node)
 			, ctrl := this.AddControl(ctrl_type, name, ctrl_options, content)
-			, ctrl._.XMLNode := ctrl_node
 
 			if (ctrl_type = "hiedit")
 			{
@@ -163,6 +162,7 @@
 			while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
 				sleep 100
 		}
+		ctrl._.XMLNode := ctrl_node
 
 		event_list := ctrl_node.selectNodes("event")
 		Loop % event_list.length
