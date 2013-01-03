@@ -15,11 +15,11 @@
 		<text step="4" style="h2"      x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
 
 		<list step="5" x="00" y="27.5" w="20" h="65">
-			<item step="1" style="h3" content="introduction/simplicity"/>
-			<item step="2" style="h3" content="introduction/builtins"/>
-			<item step="3" style="h3" content="introduction/hotkeys"/>
-			<item step="4" style="h3" content="introduction/automation"/>
-			<item step="5" style="h3" content="introduction/advanced"/>
+			<item style="h3" content="introduction/simplicity"/>
+			<item style="h3" content="introduction/builtins"/>
+			<item style="h3" content="introduction/hotkeys"/>
+			<item style="h3" content="introduction/automation"/>
+			<item style="h3" content="introduction/advanced"/>
 		</list>
 
 		<list step="5" x="25" y="27.5" w="75" h="65" marker="double-arrow">
@@ -49,8 +49,8 @@
 		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
 		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
 		<list	step="3" 				 x="05" y="12.5" w="075" h="10">
-			<item step="1" style="default" content="script-structure/file/1"/>
-			<item step="2" style="default" content="script-structure/file/2"/>
+			<item style="default" content="script-structure/file/1"/>
+			<item style="default" content="script-structure/file/2"/>
 		</list>
 		<button step="4" style="default" x="05" y="25.0" w="020" h="05" content="create-script">
 			<event name="click" handler-type="function" handler="RunEditor"/>
@@ -58,9 +58,9 @@
 
 		<text   step="5" style="h2"      x="00" y="35" w="100" h="05" content="script-structure/auto-execute"/>
 		<list	step="6" 				 x="05" y="40" w="075" h="15">
-			<item step="1" style="default" content="script-structure/auto-execute/1"/>
-			<item step="2" style="default" content="script-structure/auto-execute/2"/>
-			<item step="3" style="default" content="script-structure/auto-execute/3"/>
+			<item style="default" content="script-structure/auto-execute/1"/>
+			<item style="default" content="script-structure/auto-execute/2"/>
+			<item style="default" content="script-structure/auto-execute/3"/>
 		</list>
 
 		<text	step="7" style="h2"		x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
