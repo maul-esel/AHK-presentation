@@ -8,6 +8,7 @@
 
 	QuickEdit := new QuickEditWindow(this)
 	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
+	DefaultContentArea := ""
 
 	__New(pres)
 	{
@@ -23,8 +24,7 @@
 		, ComObjError(err)
 		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
-		for i, part in this.presentation.parts
-			this.createPart(part)
+		, this.DefaultContentArea := this.GetDefaultContentArea()
 	}
 
 	_find_latest_descendant(part)
@@ -44,31 +44,15 @@
 		}
 	}
 
-	_get_viewbox(node)
-	{
-		box := node.selectSingleNode("viewbox")
-		if (box)
-		{
-			return { "width" : box.getAttribute("width")
-					, "height" : box.getAttribute("height")
-					, "margin" : {  "left" : (t := box.getAttribute("margin-left"))   ? t : 0
-								,  "right" : (t := box.getAttribute("margin-right"))  ? t : 0
-								,    "top" : (t := box.getAttribute("margin-top"))    ? t : 0
-								, "bottom" : (t := box.getAttribute("margin-bottom")) ? t : 0 } }
-		}
-		if (node.parentNode)
-			return this._get_viewbox(node.parentNode)
-	}
-
 	GetDefaultContentArea()
 	{
 		static static_margin := 10
 
-		elem := this.pres._doc.documentElement
+		elem := this.presentation._doc.documentElement
 		for i, prop in ["left", "top", "right", "bottom"]
 			margin_%prop% := (t := elem.getAttribute("margin-" prop)) ? t : 0
 
-		x := this.NavigationBox.x + this.NavigationBox.width + static_margin+ margin_left
+		x := this.NavigationBox.x + this.NavigationBox.width + static_margin + margin_left
 		, y := this.HeaderBar.y + this.HeaderBar.Height + static_margin + margin_top
 		, w := this.WindowWidth - x - static_margin - margin_right
 		, h := this.WindowHeight - y - static_margin - margin_bottom
@@ -128,7 +112,6 @@
 			, part.controls.Insert(ctrl)
 			, ctrl.Hide() ; hide controls for now, later to be shown by <showPart()>
 		}
-
 		part.created := true
 	}
 
@@ -140,7 +123,7 @@
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)
-		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.GetDefaultContentArea())
+		, pos := this.ProcessPosition(ctrl_node, Viewbox.FromNode(ctrl_node), this.DefaultContentArea)
 
 		for property, value in pos
 			ctrl_options .= property . value . A_Space
@@ -315,7 +298,7 @@
 			{
 				if (ctrl.canIterate) ; is it an iterator control?
 				{
-					handled := handled || ctrl.Previous() ; if so, call Previous(). If it really could step back, `handled` is `true` now
+					handled := ctrl.Previous() || handled ; if so, call Previous(). If it really could step back, `handled` is `true` now
 				}
 			}
 		}
