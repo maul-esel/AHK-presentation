@@ -48,11 +48,11 @@
 	{
 		static static_margin := 10
 
-		elem := this.pres._doc.documentElement
+		elem := this.presentation._doc.documentElement
 		for i, prop in ["left", "top", "right", "bottom"]
 			margin_%prop% := (t := elem.getAttribute("margin-" prop)) ? t : 0
 
-		x := this.NavigationBox.x + this.NavigationBox.width + static_margin+ margin_left
+		x := this.NavigationBox.x + this.NavigationBox.width + static_margin + margin_left
 		, y := this.HeaderBar.y + this.HeaderBar.Height + static_margin + margin_top
 		, w := this.WindowWidth - x - static_margin - margin_right
 		, h := this.WindowHeight - y - static_margin - margin_bottom
