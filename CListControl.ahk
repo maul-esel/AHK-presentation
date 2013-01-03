@@ -127,7 +127,7 @@ class CListControl extends CCompoundControl
 
 			marker := this.Container["marker" A_Index]
 			, marker.Font.Font := font ? font : this.Font.Font
-			, marker.Font.Options := font_opt ? font_opt : this.Font.Options
+			, marker.Font.Options := RegexReplace(font_opt ? font_opt : this.Font.Options, "underline", "")
 			, marker.Width := max_marker_width + marker_margin
 			, marker.Y := y
 			, marker.X := this._.x
