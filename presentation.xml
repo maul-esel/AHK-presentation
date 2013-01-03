@@ -71,7 +71,7 @@
 		</list>
 	</part>
 	<part name="syntax" steps="true">
-		<part name="variables" steps="true">
+		<part name="syntax/variables" steps="true">
 			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/variables"/>
 			<list	step="2" style="default" x="05" y="05" w="095" h="25">
 				<item content="syntax/variables/1"/>
@@ -83,7 +83,7 @@
 			<hiedit	step="3" style="code"    x="05" y="35" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
 
-		<part name="functions" steps="true">
+		<part name="syntax/functions" steps="true">
 			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/functions"/>
 			<text 	step="2" style="default" x="05" y="05" w="095" h="20" content="syntax/functions/text"/>
 			<hiedit step="3" style="code"    x="05" y="10" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
@@ -98,7 +98,7 @@ Hello()
 Hello()
 			</executableCode>
 		</part>
-		<part name="commands" steps="true">
+		<part name="syntax/commands" steps="true">
 			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="syntax/commands"/>
 			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="syntax/commands/text"/>
 			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="syntax/commands/differences"/>
