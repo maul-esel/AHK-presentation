@@ -2,11 +2,11 @@
 	<viewbox x="0" y="0" width="100" height="100"/>
 	<styles>
 		<style name="h1"      font-opt="s20 bold underline" font-name="Tahoma" options=""/>
-		<style name="h2"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
-		<style name="h3"      font-opt="s12 bold underline" font-name="Tahoma" options=""/>
-		<style name="cite"    font-opt="s12 italic"         font-name="Tahoma" options=""/>
-		<style name="default" font-opt="s12"                font-name="Tahoma" options=""/>
-		<style name="code"    font-opt="s13"                font-name="Consolas" options=""/>
+		<style name="h2"      font-opt="s18 bold underline" font-name="Tahoma" options=""/>
+		<style name="h3"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
+		<style name="cite"    font-opt="s16 italic"         font-name="Tahoma" options=""/>
+		<style name="default" font-opt="s14"                font-name="Tahoma" options=""/>
+		<style name="code"    font-opt="s16"                font-name="Consolas" options=""/>
 	</styles>
 	<part name="introduction" steps="true">
 		<text step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="introduction"/>
