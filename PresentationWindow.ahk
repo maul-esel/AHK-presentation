@@ -25,9 +25,6 @@
 		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
 		, this.DefaultContentArea := this.GetDefaultContentArea()
-
-		for i, part in this.presentation.parts
-			this.createPart(part)
 	}
 
 	_find_latest_descendant(part)
@@ -115,7 +112,6 @@
 			, part.controls.Insert(ctrl)
 			, ctrl.Hide() ; hide controls for now, later to be shown by <showPart()>
 		}
-
 		part.created := true
 	}
 
