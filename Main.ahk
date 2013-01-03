@@ -65,4 +65,4 @@ return
 ^!Z::gui.continue()
 ^!Y::gui.back()
 
-^!Q::ExitApp
+Esc::ExitApp
