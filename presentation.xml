@@ -13,16 +13,32 @@
 		<text step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="introduction/what"/>
 		<text step="3" style="cite"    x="05" y="12.5" w="095" h="20" content="introduction/cite"/>
 		<text step="4" style="h2"      x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
-		<text step="5" style="h3"      x="00" y="27.5" w="030" h="20" content="introduction/simplicity"/>
-		<text step="5" style="default" x="30" y="27.5" w="070" h="20" content="introduction/simplicity/text"/>
-		<text step="6" style="h3"      x="00" y="40.0" w="030" h="20" content="introduction/builtins"/>
-		<text step="6" style="default" x="30" y="40.0" w="070" h="20" content="introduction/builtins/text"/>
-		<text step="7" style="h3"      x="00" y="52.5" w="030" h="20" content="introduction/hotkeys"/>
-		<text step="7" style="default" x="30" y="52.5" w="070" h="20" content="introduction/hotkeys/text"/>
-		<text step="8" style="h3"      x="00" y="65.0" w="030" h="20" content="introduction/automation"/>
-		<text step="8" style="default" x="30" y="65.0" w="070" h="20" content="introduction/automation/text"/>
-		<text step="9" style="h3"      x="00" y="80.0" w="030" h="20" content="introduction/advanced"/>
-		<text step="9" style="default" x="30" y="80.0" w="070" h="20" content="introduction/advanced/text"/>
+
+		<list step="5" x="00" y="27.5" w="20" h="65">
+			<item step="1" style="h3" content="introduction/simplicity"/>
+			<item step="2" style="h3" content="introduction/builtins"/>
+			<item step="3" style="h3" content="introduction/hotkeys"/>
+			<item step="4" style="h3" content="introduction/automation"/>
+			<item step="5" style="h3" content="introduction/advanced"/>
+		</list>
+
+		<list step="5" x="25" y="27.5" w="75" h="65" marker="double-arrow">
+			<item step="1" style="default" content="introduction/simplicity/1"/>
+			<item step="1" style="default" content="introduction/simplicity/2"/>
+			<item step="1" style="default" content="introduction/simplicity/3"/>
+			<item step="1" style="default" content="introduction/simplicity/4"/>
+
+			<item step="2" style="default" content="introduction/builtins/1"/>
+
+			<item step="3" style="default" content="introduction/hotkeys/1"/>
+			<item step="3" style="default" content="introduction/hotkeys/2"/>
+			<item step="3" style="default" content="introduction/hotkeys/3"/>
+
+			<item step="4" style="default" content="introduction/automation/1"/>
+			<item step="4" style="default" content="introduction/automation/2"/>
+
+			<item step="5" style="default" content="introduction/advanced/1"/>
+		</list>
 	</part>
 	<part name="version-history" steps="true">
 		<text    step="1" style="h1" x="00" y="0.0" w="100" h="5" content="version-history"/>
