@@ -47,22 +47,6 @@
 		}
 	}
 
-	_get_viewbox(node)
-	{
-		box := node.selectSingleNode("viewbox")
-		if (box)
-		{
-			return { "width" : box.getAttribute("width")
-					, "height" : box.getAttribute("height")
-					, "margin" : {  "left" : (t := box.getAttribute("margin-left"))   ? t : 0
-								,  "right" : (t := box.getAttribute("margin-right"))  ? t : 0
-								,    "top" : (t := box.getAttribute("margin-top"))    ? t : 0
-								, "bottom" : (t := box.getAttribute("margin-bottom")) ? t : 0 } }
-		}
-		if (node.parentNode)
-			return this._get_viewbox(node.parentNode)
-	}
-
 	GetDefaultContentArea()
 	{
 		static static_margin := 10
