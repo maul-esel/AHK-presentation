@@ -69,25 +69,26 @@
 			<item style="default" content="script-structure/script-end/2"/>
 			<item style="default" content="script-structure/script-end/3"/>
 		</list>
-
+	</part>
+	<part name="syntax" steps="true">
 		<part name="variables" steps="true">
-			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="script-structure/variables"/>
+			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/variables"/>
 			<list	step="2"				 x="05" y="05" w="095" h="25">
-				<item style="default" content="script-structure/variables/1"/>
-				<item style="default" content="script-structure/variables/2"/>
-				<item style="default" content="script-structure/variables/3"/>
-				<item style="default" content="script-structure/variables/4"/>
-				<item style="default" content="script-structure/variables/5"/>
+				<item style="default" content="syntax/variables/1"/>
+				<item style="default" content="syntax/variables/2"/>
+				<item style="default" content="syntax/variables/3"/>
+				<item style="default" content="syntax/variables/4"/>
+				<item style="default" content="syntax/variables/5"/>
 			</list>
-			<hiedit	step="3" style="code"    x="05" y="35.0" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
+			<hiedit	step="3" style="code"    x="05" y="35" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
 
 		<part name="functions" steps="true">
-			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/functions"/>
-			<text 	step="2" style="default" x="05" y="05.0" w="095" h="20" content="script-structure/functions/text"/>
-			<hiedit step="3" style="code"    x="05" y="10.0" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
-			<text 	step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
-			<text 	step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/functions"/>
+			<text 	step="2" style="default" x="05" y="05" w="095" h="20" content="syntax/functions/text"/>
+			<hiedit step="3" style="code"    x="05" y="10" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
+			<text 	step="4" style="h3"      x="00" y="25" w="100" h="05" content="syntax/functions/UDF"/>
+			<text 	step="5" style="default" x="05" y="30" w="095" h="10" content="syntax/functions/UDF/text"/>
 			<executableCode step="6" style="code"    x="05" y="37.5" w="095" h="15">
 Hello()
 {
@@ -98,13 +99,13 @@ Hello()
 			</executableCode>
 		</part>
 		<part name="commands" steps="true">
-			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
-			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
-			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
+			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="syntax/commands"/>
+			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="syntax/commands/text"/>
+			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="syntax/commands/differences"/>
 			<list   step="4" style="default" x="05" y="25.0" w="095" h="10" steps="true" marker="number" marker-suffix=".">
-				<item content="script-structure/commands/differences/syntax"/>
-				<item content="script-structure/commands/differences/variables"/>
-				<item content="script-structure/commands/differences/user-defined"/>
+				<item content="syntax/commands/differences/syntax"/>
+				<item content="syntax/commands/differences/variables"/>
+				<item content="syntax/commands/differences/user-defined"/>
 			</list>
 			<executableCode step="5" style="code"    x="05" y="40.0" w="095" h="15">
 text := &quot;test&quot;
