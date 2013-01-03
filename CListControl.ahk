@@ -77,7 +77,7 @@ class CListControl extends CCompoundControl
 			if (!this.ItemsByStep[item.Step])
 				this.ItemsByStep[item.Step] := []
 			this.ItemsByStep[item.Step].Insert(item)
-			this.MaxSteps := (this.MaxSteps < item.Step) ? item.Step : this.MaxSteps
+			, this.MaxSteps := (this.MaxSteps < item.Step) ? item.Step : this.MaxSteps
 
 			, opt := ""
 			, GUI.ProcessStyles(item_node, "", "", opt)
@@ -104,7 +104,7 @@ class CListControl extends CCompoundControl
 
 	UpdatePositions()
 	{
-		static marker_margin := 5
+		static marker_margin := 10
 		local item_heights := [], markers := [], max_marker_width := 0, height_offset := 0, GUI := CGUI.GUIList[this._.GUINum], y := this._.y, total_item_height := 0
 			, item_width, x, item_margin, font, font_opt
 
@@ -128,7 +128,7 @@ class CListControl extends CCompoundControl
 			marker := this.Container["marker" A_Index]
 			, marker.Font.Font := font ? font : this.Font.Font
 			, marker.Font.Options := font_opt ? font_opt : this.Font.Options
-			, marker.Width := max_marker_width
+			, marker.Width := max_marker_width + marker_margin
 			, marker.Y := y
 			, marker.X := this._.x
 
