@@ -71,9 +71,15 @@
 		</list>
 
 		<part name="variables" steps="true">
-			<text	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/variables"/>
-			<text	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/variables/text"/>
-			<hiedit	step="3" style="code"    x="05" y="20.0" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
+			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="script-structure/variables"/>
+			<list	step="2"				 x="05" y="05" w="095" h="25">
+				<item style="default" content="script-structure/variables/1"/>
+				<item style="default" content="script-structure/variables/2"/>
+				<item style="default" content="script-structure/variables/3"/>
+				<item style="default" content="script-structure/variables/4"/>
+				<item style="default" content="script-structure/variables/5"/>
+			</list>
+			<hiedit	step="3" style="code"    x="05" y="35.0" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
 
 		<part name="functions" steps="true">

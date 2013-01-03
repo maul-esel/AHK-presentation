@@ -58,7 +58,11 @@
 		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
 
 		<string name="script-structure/variables">Variablen</string>
-		<string name="script-structure/variables/text">Variablen lassen sich schnell und einfach nutzen. Anders als in Javascript m&#252;ssen Variablen nicht einmal deklariert werden (kein &quot;var&quot; o. &#196;. vor dem Namen) - sie enthalten dann standardm&#228;&#223;ig einen leeren String.&#10;&#10;Zuweisen lassen sich Werte mit &quot;:=&quot; :</string>
+		<string name="script-structure/variables/1">schnelle und einfache Nutzung</string>
+		<string name="script-structure/variables/2">Deklarierung (z.B. &quot;var MeineVariable&quot; in Javascript) nicht notwendig</string>
+		<string name="script-structure/variables/3">Unbekannte Variablen enthalten leeren String</string>
+		<string name="script-structure/variables/4">Zuweisung mit &quot;:=&quot; (oder &quot;=&quot;)</string>
+		<string name="script-structure/variables/5">Vergleich mit &quot;=&quot; (Gro&#223;-/Kleinschreibung unbeachtet) oder &quot;==&quot;</string>
 
 		<string name="script-structure/functions">Funktionen</string>
 		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax zum Aufrufen ist exakt dieselbe:</string>
