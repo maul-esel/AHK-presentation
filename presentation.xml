@@ -6,7 +6,7 @@
 		<style name="h3"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
 		<style name="cite"    font-opt="s16 italic"         font-name="Tahoma" options=""/>
 		<style name="default" font-opt="s14"                font-name="Tahoma" options=""/>
-		<style name="code"    font-opt="s16"                font-name="Consolas" options=""/>
+		<style name="code"    font-opt="s14"                font-name="Consolas" options=""/>
 	</styles>
 	<part name="introduction" steps="true">
 		<text step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="introduction"/>
