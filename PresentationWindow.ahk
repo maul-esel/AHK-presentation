@@ -318,7 +318,7 @@
 			{
 				if (ctrl.canIterate) ; is it an iterator control?
 				{
-					handled := handled || ctrl.Previous() ; if so, call Previous(). If it really could step back, `handled` is `true` now
+					handled := ctrl.Previous() || handled ; if so, call Previous(). If it really could step back, `handled` is `true` now
 				}
 			}
 		}
