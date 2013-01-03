@@ -64,11 +64,15 @@
 		<string name="syntax/variables/4">Zuweisung mit &quot;:=&quot; (oder &quot;=&quot;)</string>
 		<string name="syntax/variables/5">Vergleich mit &quot;=&quot; (Gro&#223;-/Kleinschreibung unbeachtet) oder &quot;==&quot;</string>
 
-		<string name="syntax/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax zum Aufrufen ist exakt dieselbe:</string>
-		<string name="syntax/functions/UDF">Benutzerdefinierte Funktionen</string>
-		<string name="syntax/functions/UDF/text">Die Syntax ist fast dieselbe wie in Javascript, nur das Wort &quot;function&quot;, das in Javascript vor jede Funktion kommt, wird nicht verwendet:</string>
+		<string name="syntax/functions/1">Auch in AutoHotkey gibt es Funktionen</string>
+		<string name="syntax/functions/2">Syntax zum Aufrufen: wie in Javascript</string>
 
-		<string name="syntax/commands/text">Anders als in den meisten anderen Sprachen gibt es neben Funktionen in AutoHotkey noch &quot;Befehle&quot;. Diese tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede, die leicht zu Verwirrung f&#252;hren k&#246;nnen.&#10;&#10;In AutoHotkey v2 sind Befehle deshalb identisch mit Funktionen.</string>
+		<string name="syntax/functions/UDF">Benutzerdefinierte Funktionen</string>
+		<string name="syntax/functions/UDF/1">Syntax wie in Javascript oder PHP, nur ohne &quot;function&quot; vor dem Namen</string>
+
+		<string name="syntax/commands/1">neben Funktionen: &quot;Befehle&quot;</string>
+		<string name="syntax/commands/2">tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede &#x21D2; Verwirrung</string>
+		<string name="syntax/commands/3">in AutoHotkey v2 daher: Befehle identisch mit Funktionen</string>
 		<string name="syntax/commands/differences">Unterschiede</string>
 		<string name="syntax/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
 		<string name="syntax/commands/differences/variables">Variablen werden anders dargestellt</string>

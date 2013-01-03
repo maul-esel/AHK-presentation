@@ -85,11 +85,17 @@
 
 		<part name="syntax/functions" steps="true">
 			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/functions"/>
-			<text 	step="2" style="default" x="05" y="05" w="095" h="20" content="syntax/functions/text"/>
-			<hiedit step="3" style="code"    x="05" y="10" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
-			<text 	step="4" style="h3"      x="00" y="25" w="100" h="05" content="syntax/functions/UDF"/>
-			<text 	step="5" style="default" x="05" y="30" w="095" h="10" content="syntax/functions/UDF/text"/>
-			<executableCode step="6" style="code"    x="05" y="37.5" w="095" h="15">
+			<list	step="2" style="default" x="05" y="05" w="095" h="8">
+				<item content="syntax/functions/1"/>
+				<item content="syntax/functions/2"/>
+			</list>
+			<hiedit step="3" style="code"    x="05" y="15" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
+
+			<text 	step="4" style="h3"      x="00" y="30" w="100" h="05" content="syntax/functions/UDF"/>
+			<list 	step="5" style="default" x="05" y="35" w="095" h="10">
+				<item content="syntax/functions/UDF/1"/>
+			</list>
+			<executableCode step="6" style="code"    x="05" y="42.5" w="095" h="17.5">
 Hello()
 {
 	MsgBox Hello
@@ -99,15 +105,19 @@ Hello()
 			</executableCode>
 		</part>
 		<part name="syntax/commands" steps="true">
-			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="syntax/commands"/>
-			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="syntax/commands/text"/>
-			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="syntax/commands/differences"/>
-			<list   step="4" style="default" x="05" y="25.0" w="095" h="10" steps="true" marker="number" marker-suffix=".">
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/commands"/>
+			<list 	step="2" style="default" x="05" y="05" w="095" h="15">
+				<item content="syntax/commands/1"/>
+				<item content="syntax/commands/2"/>
+				<item content="syntax/commands/3"/>
+			</list>
+			<text 	step="3" style="h3"      x="00" y="25" w="100" h="05" content="syntax/commands/differences"/>
+			<list   step="4" style="default" x="05" y="30" w="095" h="15" steps="true" marker="number" marker-suffix=".">
 				<item content="syntax/commands/differences/syntax"/>
 				<item content="syntax/commands/differences/variables"/>
 				<item content="syntax/commands/differences/user-defined"/>
 			</list>
-			<executableCode step="5" style="code"    x="05" y="40.0" w="095" h="15">
+			<executableCode step="5" style="code"    x="05" y="50" w="095" h="15">
 text := &quot;test&quot;
 MsgBox, 64, AutoHotkey, %text%
 
