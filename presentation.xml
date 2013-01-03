@@ -42,8 +42,7 @@
 	</part>
 	<part name="version-history" steps="true">
 		<text    step="1" style="h1" x="00" y="0.0" w="100" h="5" content="version-history"/>
-		<!--picture step="2" x="00" y="7.5">C:\Dokumente und Einstellungen\___\Desktop\gFS\resources\diagram.png</picture-->
-		<!--browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/-->
+		<browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/>
 	</part>
 	<part name="usage-cases"/>
 	<part name="script-structure" steps="true">
