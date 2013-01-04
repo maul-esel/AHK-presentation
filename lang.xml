@@ -58,11 +58,22 @@
 		<string name="script-structure/script-end/2">Au&#223;er: Skript erstellt Fenster, Hotkeys etc.</string>
 		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
 
+		<string name="syntax/similarities">&#196;hnlichkeiten zu Javascript</string>
+		<string name="syntax/similarities/1">Bl&#246;cke: mit geschweiften Klammern</string>
+		<string name="syntax/similarities/2">Bedingungen mit &quot;if (Bedingung)&quot;</string>
+		<string name="syntax/similarities/3">Bedingungen verknüpfen mit &amp;&amp; und || (oder &quot;AND&quot; und &quot;OR&quot;)</string>
+		<string name="syntax/similarities/4">Logisches NOT (!) und die meisten anderen Operatoren (+, -, *, /, ...)</string>
+
+		<string name="syntax/differences">Unterschiede zu Javascript</string>
+		<string name="syntax/differences/1">keine Semikolons am Zeilenende - Codezeile endet mit Textzeile</string>
+		<string name="syntax/differences/2">Strings verketten mit . (wie in PHP)</string>
+		<string name="syntax/differences/3">Vergleich mit &quot;=&quot; (Gro&#223;-/Kleinschreibung unbeachtet) oder &quot;==&quot;</string>
+		<string name="syntax/differences/4">Strings immer mit &quot; (nicht &#39; )</string>
+
 		<string name="syntax/variables/1">schnelle und einfache Nutzung</string>
 		<string name="syntax/variables/2">Deklarierung (z.B. &quot;var MeineVariable&quot; in Javascript) nicht notwendig</string>
 		<string name="syntax/variables/3">Unbekannte Variablen enthalten leeren String</string>
 		<string name="syntax/variables/4">Zuweisung mit &quot;:=&quot; (oder &quot;=&quot;)</string>
-		<string name="syntax/variables/5">Vergleich mit &quot;=&quot; (Gro&#223;-/Kleinschreibung unbeachtet) oder &quot;==&quot;</string>
 
 		<string name="syntax/functions/1">Auch in AutoHotkey gibt es Funktionen</string>
 		<string name="syntax/functions/2">Syntax zum Aufrufen: wie in Javascript</string>
