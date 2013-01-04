@@ -112,12 +112,13 @@ Hello()
 				<item content="syntax/commands/3"/>
 			</list>
 			<text 	step="3" style="h3"      x="00" y="25" w="100" h="05" content="syntax/commands/differences"/>
-			<list   step="4" style="default" x="05" y="30" w="095" h="15" steps="true" marker="number" marker-suffix=".">
+			<list   step="4" style="default" x="05" y="30" w="095" h="20" steps="true" marker="number" marker-suffix=".">
 				<item content="syntax/commands/differences/syntax"/>
 				<item content="syntax/commands/differences/variables"/>
 				<item content="syntax/commands/differences/user-defined"/>
+				<item content="syntax/commands/differences/return"/>
 			</list>
-			<executableCode step="5" style="code"    x="05" y="50" w="095" h="15">
+			<executableCode step="5" style="code"    x="05" y="55" w="095" h="15">
 text := &quot;test&quot;
 MsgBox, 64, AutoHotkey, %text%
 

@@ -77,6 +77,7 @@
 		<string name="syntax/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
 		<string name="syntax/commands/differences/variables">Variablen werden anders dargestellt</string>
 		<string name="syntax/commands/differences/user-defined">Benutzerdefinierte Befehle sind nicht m&#246;glich</string>
+		<string name="syntax/commands/differences/return">Befehle haben keinen R&#252;ckgabewert</string>
 
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
