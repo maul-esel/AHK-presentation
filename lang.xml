@@ -2,13 +2,14 @@
 <lang>
 	<translation lang="de">
 		<string name="win-title">AutoHotkey &#8212; die beste Skript-Sprache f&#252;r Windows.</string>
-		<string name="introduction">Einf&#252;hrung</string>
+		<string name="introduction">Einleitung</string>
 		<string name="version-history">Versionsgeschichte</string>
 		<string name="usage-cases">Einsatzgebiete</string>
 		<string name="script-structure">Aufbau eines Skripts</string>
-		<string name="variables">Variablen</string>
-		<string name="functions">Funktionen</string>
-		<string name="commands">Befehle</string>
+		<string name="syntax">Syntax</string>
+		<string name="syntax/variables">Variablen</string>
+		<string name="syntax/functions">Funktionen</string>
+		<string name="syntax/commands">Befehle</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
 		<string name="gui">Benutzeroberfl&#228;chen</string>
 		<string name="hotkeys">Tastenkombinationen</string>
@@ -21,36 +22,61 @@
 		<string name="introduction/what">Was ist AutoHotkey?</string>
 		<string name="introduction/cite">&#187;AutoHotkey ist eine freie Open-Source-Scriptsprache f&#252;r Windows.&#171;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#8212; de.autohotkey.com</string>
 		<string name="introduction/advantages">Was sind die Vorteile von AutoHotkey?</string>
-		<string name="introduction/simplicity">&#8226; Einfachheit</string>
-		<string name="introduction/simplicity/text">AutoHotkey ist relativ einfach zu erlernen, auch und besonders f&#252;r Programmier-Anf&#228;nger. Skripts f&#252;r die t&#228;gliche Arbeit am Computer lassen sich in kurzer Zeit erstellen. Zudem ist AutoHotkey eine eher &quot;laxe&quot; Sprache.</string>
-		<string name="introduction/builtins">&#8226; Eingebautes</string>
-		<string name="introduction/builtins/text">AutoHotkey hat zahlreiche n&#252;tzliche Funktionen fertig integriert. W&#228;hrend es in anderen Sprachen beispielsweise recht kompliziert sein, ein UI zu erstellen, l&#228;sst sich dies in AutoHotkey mit wenigen Befehlen erledigen. </string>
-		<string name="introduction/hotkeys">&#8226; Tastenkombinationen</string>
-		<string name="introduction/hotkeys/text">Tastenkombinationen, sogenannte &quot;hotkeys&quot;, sind, wie schon der Name verr&#228;t, ein besonderer Schwerpunkt in AutoHotkey. Sie lassen sich mit nur einer Codezeile erstellen. Dank dieser Funktionalit&#228;t wird AutoHotkey auch oft zur Automatisierung von Computerspielen verwendet.</string>
-		<string name="introduction/automation">&#8226; Automatisierung</string>
-		<string name="introduction/automation/text">Der andere Schwerpunkt von AutoHotkey ist die Automatisierung. Es gibt eine Unzahl an Befehlen zur Automatisierung von Fenstern, es lassen sich Tasten an Programme senden, Aktionen k&#246;nnen in bestimmten Zeitintervallen ausgef&#252;hrt werden usw.&#10;Dies l&#228;sst sich nicht nur in Spielen einsetzen, auch allt&#228;gliche Computerarbeit (z.B. im B&#252;ro) l&#228;sst sich vielfach erleichtern.</string>
-		<string name="introduction/advanced">&#8226; Fortgeschrittenes</string>
-		<string name="introduction/advanced/text">Neben den leicht zug&#228;nglichen Befehlen f&#252;r einfachere Skripte bieten besonders neuere Versionen von AutoHotkey auch die M&#246;glichkeit von Zugriffen auf fortgeschrittene Techniken. So ist es beispielsweise m&#246;glich, &#252;ber das Internet zu kommunizieren, in das Betriebssystem einzugreifen, Office-Programme zu automatisieren oder in anderen Sprachen programmierten Code auszuf&#252;hren.</string>
+
+		<string name="introduction/simplicity">Einfachheit</string>
+		<string name="introduction/simplicity/1">einfach zu erlernen</string>
+		<string name="introduction/simplicity/2">besonders f&#252;r Programmier-Anf&#228;nger geeignet</string>
+		<string name="introduction/simplicity/3">Skripts f&#252;r die t&#228;gliche Arbeit am Computer</string>
+		<string name="introduction/simplicity/4">&quot;laxe&quot; Sprache</string>
+
+		<string name="introduction/builtins">Eingebautes</string>
+		<string name="introduction/builtins/1">zahlreiche n&#252;tzliche Funktionen fertig integriert</string>
+
+		<string name="introduction/hotkeys">Tastenkombinationen</string>
+		<string name="introduction/hotkeys/1">besonderer Schwerpunkt in AutoHotkey: Tastenkombinationen (&quot;hotkeys&quot;)</string>
+		<string name="introduction/hotkeys/2">lassen sich mit nur einer Zeile erstellen</string>
+		<string name="introduction/hotkeys/3">oft zur Automatisierung von Computerspielen verwendet</string>
+
+		<string name="introduction/automation">Automatisierung</string>
+		<string name="introduction/automation/1">anderer Schwerpunkt: Automatisierung (von Fenstern, Tastendr&#252;cken, Timern)</string>
+		<string name="introduction/automation/2">nicht nur f&#252;r Spiele geeignet</string>
+
+		<string name="introduction/advanced">Fortgeschrittenes</string>
+		<string name="introduction/advanced/1">neuere Versionen von AutoHotkey: Zugriff auf fortgeschrittene Techniken</string>
 
 		<string name="script-structure/file">Eine Skript-Datei</string>
-		<string name="script-structure/file/text">Ein AutoHotkey-Script ist einfach nur eine ganz normale Text-Datei. Meistens wird die Dateiendung &quot;.ahk&quot; benutzt.</string>
+		<string name="script-structure/file/1">ganz normale Text-Datei</string>
+		<string name="script-structure/file/2">meist wird die Dateiendung &quot;.ahk&quot; benutzt</string>
+
 		<string name="script-structure/auto-execute">Wo fangen wir an? &#8212; die &quot;auto-execute section&quot;</string>
-		<string name="script-structure/auto-execute/text">Wird ein Skript gestartet, wird zuerst die sogenannte &quot;auto-execute section&quot; ausgef&#252;hrt. Sie beginnt in der ersten Zeile der Datei und endet entweder am Ende der Datei oder beim ersten &quot;return&quot;-Befehl, was immer zuerst kommt.</string>
+		<string name="script-structure/auto-execute/1">Bei Skriptstart: sogenannte &quot;auto-execute section&quot; wird ausgef&#252;hrt</string>
+		<string name="script-structure/auto-execute/2">Beginn: 1. Zeile der Datei</string>
+		<string name="script-structure/auto-execute/3">Ende: entweder am Ende der Datei, oder beim ersten &quot;return&quot;-Befehl, oder beim ersten Hotkey</string>
 
-		<string name="script-structure/variables">Variablen</string>
-		<string name="script-structure/variables/text">Variablen lassen sich schnell und einfach nutzen. Anders als in Javascript m&#252;ssen Variablen nicht einmal deklariert werden (kein &quot;var&quot; o. &#196;. vor dem Namen) - sie enthalten dann standardm&#228;ßig einen leeren String.&#10;&#10;Zuweisen lassen sich Werte mit &quot;:=&quot; :</string>
+		<string name="script-structure/script-end">Wann endet das Skript?</string>
+		<string name="script-structure/script-end/1">Nach Ausf&#252;hrung der auto-execute-Sektion: Skript wird beendet</string>
+		<string name="script-structure/script-end/2">Au&#223;er: Skript erstellt Fenster, Hotkeys etc.</string>
+		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
 
-		<string name="script-structure/functions">Funktionen</string>
-		<string name="script-structure/functions/text">Wie in Javascript gibt es in AutoHotkey auch Funktionen. Die Syntax zum Aufrufen ist exakt dieselbe:</string>
-		<string name="script-structure/functions/UDF">Benutzerdefinierte Funktionen</string>
-		<string name="script-structure/functions/UDF/text">Die Syntax ist fast dieselbe wie in Javascript, nur das Wort &quot;function&quot;, das in Javascript vor jede Funktion kommt, wird nicht verwendet:</string>
+		<string name="syntax/variables/1">schnelle und einfache Nutzung</string>
+		<string name="syntax/variables/2">Deklarierung (z.B. &quot;var MeineVariable&quot; in Javascript) nicht notwendig</string>
+		<string name="syntax/variables/3">Unbekannte Variablen enthalten leeren String</string>
+		<string name="syntax/variables/4">Zuweisung mit &quot;:=&quot; (oder &quot;=&quot;)</string>
+		<string name="syntax/variables/5">Vergleich mit &quot;=&quot; (Gro&#223;-/Kleinschreibung unbeachtet) oder &quot;==&quot;</string>
 
-		<string name="script-structure/commands">Befehle</string>
-		<string name="script-structure/commands/text">Anders als in den meisten anderen Sprachen gibt es neben Funktionen in AutoHotkey noch &quot;Befehle&quot;. Diese tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede, die leicht zu Verwirrung f&#252;hren k&#246;nnen.&#10;&#10;In AutoHotkey v2 sind Befehle deshalb identisch mit Funktionen.</string>
-		<string name="script-structure/commands/differences">Unterschiede</string>
-		<string name="script-structure/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
-		<string name="script-structure/commands/differences/variables">Variablen werden anders dargestellt</string>
-		<string name="script-structure/commands/differences/user-defined">Benutzerdefinierte Befehle sind nicht m&#246;glich</string>
+		<string name="syntax/functions/1">Auch in AutoHotkey gibt es Funktionen</string>
+		<string name="syntax/functions/2">Syntax zum Aufrufen: wie in Javascript</string>
+
+		<string name="syntax/functions/UDF">Benutzerdefinierte Funktionen</string>
+		<string name="syntax/functions/UDF/1">Syntax wie in Javascript oder PHP, nur ohne &quot;function&quot; vor dem Namen</string>
+
+		<string name="syntax/commands/1">neben Funktionen: &quot;Befehle&quot;</string>
+		<string name="syntax/commands/2">tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede &#x21D2; Verwirrung</string>
+		<string name="syntax/commands/3">in AutoHotkey v2 daher: Befehle identisch mit Funktionen</string>
+		<string name="syntax/commands/differences">Unterschiede</string>
+		<string name="syntax/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
+		<string name="syntax/commands/differences/variables">Variablen werden anders dargestellt</string>
+		<string name="syntax/commands/differences/user-defined">Benutzerdefinierte Befehle sind nicht m&#246;glich</string>
 
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>

@@ -2,57 +2,100 @@
 	<viewbox x="0" y="0" width="100" height="100"/>
 	<styles>
 		<style name="h1"      font-opt="s20 bold underline" font-name="Tahoma" options=""/>
-		<style name="h2"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
-		<style name="h3"      font-opt="s12 bold underline" font-name="Tahoma" options=""/>
-		<style name="cite"    font-opt="s12 italic"         font-name="Tahoma" options=""/>
-		<style name="default" font-opt="s12"                font-name="Tahoma" options=""/>
-		<style name="code"    font-opt="s13"                font-name="Consolas" options=""/>
+		<style name="h2"      font-opt="s18 bold underline" font-name="Tahoma" options=""/>
+		<style name="h3"      font-opt="s16 bold underline" font-name="Tahoma" options=""/>
+		<style name="cite"    font-opt="s16 italic"         font-name="Tahoma" options=""/>
+		<style name="default" font-opt="s14"                font-name="Tahoma" options=""/>
+		<style name="code"    font-opt="s14"                font-name="Consolas" options=""/>
 	</styles>
 	<part name="introduction" steps="true">
-		<text step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="introduction"/>
-		<text step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="introduction/what"/>
-		<text step="3" style="cite"    x="05" y="12.5" w="095" h="20" content="introduction/cite"/>
-		<text step="4" style="h2"      x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
-		<text step="5" style="h3"      x="00" y="27.5" w="030" h="20" content="introduction/simplicity"/>
-		<text step="5" style="default" x="30" y="27.5" w="070" h="20" content="introduction/simplicity/text"/>
-		<text step="6" style="h3"      x="00" y="40.0" w="030" h="20" content="introduction/builtins"/>
-		<text step="6" style="default" x="30" y="40.0" w="070" h="20" content="introduction/builtins/text"/>
-		<text step="7" style="h3"      x="00" y="52.5" w="030" h="20" content="introduction/hotkeys"/>
-		<text step="7" style="default" x="30" y="52.5" w="070" h="20" content="introduction/hotkeys/text"/>
-		<text step="8" style="h3"      x="00" y="65.0" w="030" h="20" content="introduction/automation"/>
-		<text step="8" style="default" x="30" y="65.0" w="070" h="20" content="introduction/automation/text"/>
-		<text step="9" style="h3"      x="00" y="80.0" w="030" h="20" content="introduction/advanced"/>
-		<text step="9" style="default" x="30" y="80.0" w="070" h="20" content="introduction/advanced/text"/>
+		<text step="1" style="h1"	x="00" y="00.0" w="100" h="05" content="introduction"/>
+		<text step="2" style="h2"	x="00" y="07.5" w="100" h="05" content="introduction/what"/>
+		<text step="3" style="cite"	x="05" y="12.5" w="095" h="20" content="introduction/cite"/>
+		<text step="4" style="h2"	x="00" y="20.0" w="100" h="05" content="introduction/advantages"/>
+
+		<list step="5" style="h3"	x="00" y="27.5" w="020" h="65">
+			<item content="introduction/simplicity"/>
+			<item content="introduction/builtins"/>
+			<item content="introduction/hotkeys"/>
+			<item content="introduction/automation"/>
+			<item content="introduction/advanced"/>
+		</list>
+
+		<list step="5" style="default" x="25" y="27.5" w="75" h="65" marker="double-arrow">
+			<item step="1" content="introduction/simplicity/1"/>
+			<item step="1" content="introduction/simplicity/2"/>
+			<item step="1" content="introduction/simplicity/3"/>
+			<item step="1" content="introduction/simplicity/4"/>
+
+			<item step="2" content="introduction/builtins/1"/>
+
+			<item step="3" content="introduction/hotkeys/1"/>
+			<item step="3" content="introduction/hotkeys/2"/>
+			<item step="3" content="introduction/hotkeys/3"/>
+
+			<item step="4" content="introduction/automation/1"/>
+			<item step="4" content="introduction/automation/2"/>
+
+			<item step="5" content="introduction/advanced/1"/>
+		</list>
 	</part>
 	<part name="version-history" steps="true">
 		<text    step="1" style="h1" x="00" y="0.0" w="100" h="5" content="version-history"/>
-		<!--picture step="2" x="00" y="7.5">C:\Dokumente und Einstellungen\___\Desktop\gFS\resources\diagram.png</picture-->
-		<!--browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/-->
+		<browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/>
 	</part>
 	<part name="usage-cases"/>
 	<part name="script-structure" steps="true">
-		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05.0" content="script-structure"/>
-		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05.0" content="script-structure/file"/>
-		<text   step="3" style="default" x="05" y="12.5" w="075" h="07.5" content="script-structure/file/text"/>
-		<button step="3" style="default" x="05" y="20.0" w="020" h="05.0" content="create-script">
+		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
+		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
+		<list	step="3" style="default" x="05" y="12.5" w="075" h="10">
+			<item content="script-structure/file/1"/>
+			<item content="script-structure/file/2"/>
+		</list>
+		<button step="4" style="default" x="05" y="25.0" w="020" h="05" content="create-script">
 			<event name="click" handler-type="function" handler="RunEditor"/>
 		</button>
-		<text   step="4" style="h2"      x="00" y="30.0" w="100" h="05" content="script-structure/auto-execute"/>
-		<text   step="5" style="default" x="05" y="35.0" w="075" h="20" content="script-structure/auto-execute/text"/>
 
-		<part name="variables" steps="true">
-			<text	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/variables"/>
-			<text	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/variables/text"/>
-			<hiedit	step="3" style="code"    x="05" y="20.0" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
+		<text   step="5" style="h2"      x="00" y="35" w="100" h="05" content="script-structure/auto-execute"/>
+		<list	step="6" style="default" x="05" y="40" w="075" h="15">
+			<item content="script-structure/auto-execute/1"/>
+			<item content="script-structure/auto-execute/2"/>
+			<item content="script-structure/auto-execute/3"/>
+		</list>
+
+		<text	step="7" style="h2"		 x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
+		<list	step="8" style="default" x="05" y="65" w="075" h="15">
+			<item content="script-structure/script-end/1"/>
+			<item content="script-structure/script-end/2"/>
+			<item content="script-structure/script-end/3"/>
+		</list>
+	</part>
+	<part name="syntax" steps="true">
+		<part name="syntax/variables" steps="true">
+			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/variables"/>
+			<list	step="2" style="default" x="05" y="05" w="095" h="25">
+				<item content="syntax/variables/1"/>
+				<item content="syntax/variables/2"/>
+				<item content="syntax/variables/3"/>
+				<item content="syntax/variables/4"/>
+				<item content="syntax/variables/5"/>
+			</list>
+			<hiedit	step="3" style="code"    x="05" y="35" w="095" h="10" highlight="true">test := myVar ; leerer String&#10;number := 5&#10;text := "test"</hiedit>
 		</part>
 
-		<part name="functions" steps="true">
-			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/functions"/>
-			<text 	step="2" style="default" x="05" y="05.0" w="095" h="20" content="script-structure/functions/text"/>
-			<hiedit step="3" style="code"    x="05" y="10.0" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
-			<text 	step="4" style="h3"      x="00" y="25.0" w="100" h="05" content="script-structure/functions/UDF"/>
-			<text 	step="5" style="default" x="05" y="30.0" w="095" h="10" content="script-structure/functions/UDF/text"/>
-			<executableCode step="6" style="code"    x="05" y="37.5" w="095" h="15">
+		<part name="syntax/functions" steps="true">
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/functions"/>
+			<list	step="2" style="default" x="05" y="05" w="095" h="8">
+				<item content="syntax/functions/1"/>
+				<item content="syntax/functions/2"/>
+			</list>
+			<hiedit step="3" style="code"    x="05" y="15" w="095" h="10" highlight="true">PI := 3.141593&#10;sinus := sin(PI)</hiedit>
+
+			<text 	step="4" style="h3"      x="00" y="30" w="100" h="05" content="syntax/functions/UDF"/>
+			<list 	step="5" style="default" x="05" y="35" w="095" h="10">
+				<item content="syntax/functions/UDF/1"/>
+			</list>
+			<executableCode step="6" style="code"    x="05" y="42.5" w="095" h="17.5">
 Hello()
 {
 	MsgBox Hello
@@ -61,16 +104,20 @@ Hello()
 Hello()
 			</executableCode>
 		</part>
-		<part name="commands" steps="true">
-			<text 	step="1" style="h2"      x="00" y="00.0" w="100" h="05" content="script-structure/commands"/>
-			<text 	step="2" style="default" x="05" y="05.0" w="095" h="15" content="script-structure/commands/text"/>
-			<text 	step="3" style="h3"      x="00" y="20.0" w="100" h="05" content="script-structure/commands/differences"/>
-			<list   step="4" style="default" x="05" y="25.0" w="095" h="10" steps="true" marker="number" marker-suffix=".">
-				<item content="script-structure/commands/differences/syntax"/>
-				<item content="script-structure/commands/differences/variables"/>
-				<item content="script-structure/commands/differences/user-defined"/>
+		<part name="syntax/commands" steps="true">
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/commands"/>
+			<list 	step="2" style="default" x="05" y="05" w="095" h="15">
+				<item content="syntax/commands/1"/>
+				<item content="syntax/commands/2"/>
+				<item content="syntax/commands/3"/>
 			</list>
-			<executableCode step="5" style="code"    x="05" y="40.0" w="095" h="15">
+			<text 	step="3" style="h3"      x="00" y="25" w="100" h="05" content="syntax/commands/differences"/>
+			<list   step="4" style="default" x="05" y="30" w="095" h="15" steps="true" marker="number" marker-suffix=".">
+				<item content="syntax/commands/differences/syntax"/>
+				<item content="syntax/commands/differences/variables"/>
+				<item content="syntax/commands/differences/user-defined"/>
+			</list>
+			<executableCode step="5" style="code"    x="05" y="50" w="095" h="15">
 text := &quot;test&quot;
 MsgBox, 64, AutoHotkey, %text%
 

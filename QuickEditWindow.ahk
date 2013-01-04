@@ -33,7 +33,7 @@ class QuickEditWindow extends CGUI
 		, this.QuickEdit.SelectionBarWidth := 15
 		, this.QuickEdit.LineNumbersWidth := 20
 		, this.QuickEdit.Font.Font := "Consolas"
-		, this.QuickEdit.Font.Options := "s24"
+		, this.QuickEdit.Font.Options := "s14"
 		, this.QuickEdit.KeywordFile := A_ScriptDir "\resources\Keywords.hes"
 
 		for property, color in PresentationWindow.HiEdit_ColorSet
