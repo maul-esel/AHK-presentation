@@ -45,7 +45,6 @@
 		<text    step="1" style="h1" x="00" y="0.0" w="100" h="5" content="version-history"/>
 		<browser step="2" x="00" y="7.5" w="100" h="90" resource="versions.svg"/>
 	</part>
-	<part name="usage-cases"/>
 	<part name="script-structure" steps="true">
 		<text   step="1" style="h1"      x="00" y="00.0" w="100" h="05" content="script-structure"/>
 		<text   step="2" style="h2"      x="00" y="07.5" w="100" h="05" content="script-structure/file"/>
