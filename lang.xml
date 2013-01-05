@@ -64,7 +64,7 @@
 		<string name="syntax/constructs/directives">Direktiven</string>d
 		<string name="syntax/constructs/labels">Sprungmarken (&quot;labels&quot;)</string>d
 		<string name="syntax/constructs/hotkeys">Tastenkombinationen (&quot;hotkeys&quot;) &amp;&amp; &quot;Hotstrings&quot;</string>
-		<string name="syntax/constructs/other">Sonstiges: Variablen-Zuweisungen, if/else - Bedingungen, ...</string>
+		<string name="syntax/constructs/other">Sonstiges: Variablen-Zuweisungen, if/else - Bedingungen, Schleifen, ...</string>
 
 		<string name="syntax/similarities">&#196;hnlichkeiten zu Javascript</string>
 		<string name="syntax/similarities/1">Bl&#246;cke: mit geschweiften Klammern</string>
@@ -95,7 +95,7 @@
 		<string name="syntax/commands/3">in AutoHotkey v2 daher: Befehle identisch mit Funktionen</string>
 		<string name="syntax/commands/differences">Unterschiede</string>
 		<string name="syntax/commands/differences/syntax">Syntax: es werden keine Klammern verwendet</string>
-		<string name="syntax/commands/differences/variables">Variablen werden anders dargestellt</string>
+		<string name="syntax/commands/differences/variables">Variablen und Strings werden anders dargestellt</string>
 		<string name="syntax/commands/differences/user-defined">Benutzerdefinierte Befehle sind nicht m&#246;glich</string>
 		<string name="syntax/commands/differences/return">Befehle haben keinen R&#252;ckgabewert</string>
 
