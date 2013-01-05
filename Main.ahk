@@ -35,9 +35,6 @@ return
 #include CGUI.ahk
 #Include CHiEditControl.ahk
 
-#include %A_ScriptDir%\Canvas
-#include Canvas.ahk
-
 #include %A_ScriptDir%\ahk_library\lib
 #include lib_CORE.ahk
 
