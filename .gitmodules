@@ -1,6 +1,3 @@
-[submodule "lib"]
-	path = lib
-	url = https://github.com/maul-esel/AHK-Util-Funcs.git
 [submodule "Canvas"]
 	path = Canvas
 	url = https://github.com/Uberi/Canvas-AHK.git
