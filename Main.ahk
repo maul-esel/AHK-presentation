@@ -9,7 +9,7 @@ SetWorkingDir %A_ScriptDir%
 
 String.init()
 
-s := new splashScreen() ; show splashscreen
+s := new SplashScreen() ; show splashscreen
 
 , pres := new Presentation()
 , gui := new PresentationWindow(pres)
@@ -30,6 +30,7 @@ return
 #include %A_ScriptDir%\_Struct
 #include sizeof.ahk
 #Include _Struct.ahk
+
 #include %A_ScriptDir%\CGUI
 #include CGUI.ahk
 #Include CHiEditControl.ahk
