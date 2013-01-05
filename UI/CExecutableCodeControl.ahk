@@ -44,11 +44,11 @@ class CExecutableCodeControl extends CCompoundControl
 
 	Execute(b)
 	{
-		static temp_file := A_ScriptDir . "\temp.ahk"
+		static temp_file := A_ScriptDir . "\tmp\ExecutableCode.ahk"
 
 		if (FileExist(temp_file))
 			FileDelete %temp_file%
 		FileAppend % this.Code, %temp_file%
-		Run % (A_IsCompiled ? A_ScriptDir . "\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
+		Run % (A_IsCompiled ? A_ScriptDir . "\tmp\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
 	}
 }

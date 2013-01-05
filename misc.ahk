@@ -16,7 +16,7 @@ SetRedraw(win, allow = false)
 
 RunEditor()
 {
-	static script_file := A_ScriptDir . "\test.ahk"
+	static script_file := A_ScriptDir . "\tmp\script.ahk"
 		, script_text := "MsgBox Hallo Welt!"
 
 	if (FileExist(script_file))

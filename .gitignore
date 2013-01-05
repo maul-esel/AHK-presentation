@@ -1,5 +1,3 @@
 *.bak
-*.exe
 *.chm
-test.ahk
-temp.ahk
+tmp/*

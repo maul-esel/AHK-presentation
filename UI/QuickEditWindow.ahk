@@ -61,12 +61,12 @@ class QuickEditWindow extends CGUI
 
 	btn_Execute_Click()
 	{
-		static temp_file := A_ScriptDir . "\temp.ahk"
+		static temp_file := A_ScriptDir . "\tmp\QuickEdit.ahk"
 
 		if (FileExist(temp_file))
 			FileDelete %temp_file%
 		FileAppend % this.QuickEdit.Text, %temp_file%
-		Run % (A_IsCompiled ? A_ScriptDir . "\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
+		Run % (A_IsCompiled ? A_ScriptDir . "\tmp\AutoHotkey.exe" : A_AhkPath) . " """ . temp_file """"
 	}
 
 	SlideIn()
