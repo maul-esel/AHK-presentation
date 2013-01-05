@@ -22,7 +22,7 @@ class CExecutableCodeControl extends CCompoundControl
 		for name, color in PresentationWindow.HiEdit_ColorSet
 			hiEdit.Colors[name] := color
 
-		this.AddContainerControl(GUI, "Button", "ExecButton", "xp+" (w - 100) " y" y " w100 h" h, Translator.getString("execute"))
+		this.AddContainerControl(GUI, "Button", "ExecButton", "x" (x + w - 100) " y" y " w100 h" h, Translator.getString("execute"))
 		, this.Container.ExecButton.Click.Handler := new Delegate(this, "Execute")
 
 		return Name
