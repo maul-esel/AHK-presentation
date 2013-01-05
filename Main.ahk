@@ -44,18 +44,21 @@ return
 #include Translator.ahk
 #include Presentation.ahk
 
+#Include LabelReference.ahk
+#include misc.ahk
+
+#include %A_ScriptDir%\UI
 #Include Viewbox.ahk
 #Include ContentArea.ahk
 
 #Include CProxyFont.ahk
 #Include CExecutableCodeControl.ahk
 #Include CListControl.ahk
+
 #include PresentationWindow.ahk
 #include QuickEditWindow.ahk
 #include SplashScreen.ahk
 
-#Include LabelReference.ahk
-#include misc.ahk
 #Include MeasureText.ahk
 ;*********** </INCLUDES> **********
 
