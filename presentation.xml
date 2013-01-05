@@ -72,23 +72,32 @@
 	</part>
 	<part name="syntax" steps="true">
 		<text step="1" style="h1" x="00" y="00" w="100" h="05" content="syntax"/>
-		<text step="2" style="h2" x="00" y="05" w="100" h="05" content="syntax/similarities"/>
-		<list step="3" style="default" x="05" y="10" w="95" h="20">
+		<text step="2" style="h2" x="00" y="05" w="100" h="05" content="syntax/constructs"/>
+		<list step="3" style="default" x="05" y="10" w="95" h="14">
+			<item content="syntax/constructs/functions"/>
+			<item content="syntax/constructs/commands"/>
+			<item content="syntax/constructs/directives"/>
+			<item content="syntax/constructs/other"/>
+		</list>
+
+		<text step="4" style="h2" x="00" y="26.5" w="100" h="05" content="syntax/similarities"/>
+		<list step="5" style="default" x="05" y="31.5" w="95" h="15">
 			<item content="syntax/similarities/1"/>
 			<item content="syntax/similarities/2"/>
 			<item content="syntax/similarities/3"/>
 			<item content="syntax/similarities/4"/>
 		</list>
-		<hiedit step="4" style="code" x="05" y="35" w="95" h="15">var := 123&#10;if (!var || var == 124 - 1) {&#10;&#9;MsgBox&#10;}</hiedit>
+		<hiedit step="6" style="code" x="05" y="49" w="95" h="10">var := 123&#10;if (!var || var == 124 - 1) {&#10;&#9;MsgBox&#10;}</hiedit>
 
-		<text step="5" style="h2" x="00" y="55" w="100" h="05" content="syntax/differences"/>
-		<list step="6" style="default" x="05" y="60" w="95" h="20">
+		<text step="7" style="h2" x="00" y="64" w="100" h="05" content="syntax/differences"/>
+		<list step="8" style="default" x="05" y="69" w="95" h="17.5">
 			<item content="syntax/differences/1"/>
 			<item content="syntax/differences/2"/>
 			<item content="syntax/differences/3"/>
 			<item content="syntax/differences/4"/>
+			<item content="syntax/differences/5"/>
 		</list>
-		<hiedit step="7" style="code" x="05" y="85" w="95" h="15">var := &quot;test&quot;&#10;if (var . &quot;_&quot; == &quot;TEST_&quot;) {&#10;&#9;MsgBox wird nicht ausgef&#252;hrt&#10;}</hiedit>
+		<hiedit step="9" style="code" x="05" y="90" w="95" h="10">var := &quot;test&quot;&#10;if (var . &quot;_&quot; == &quot;TEST_&quot;) {&#10;&#9;MsgBox wird nicht ausgef&#252;hrt&#10;}</hiedit>
 
 		<part name="syntax/variables" steps="true">
 			<text	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/variables"/>
