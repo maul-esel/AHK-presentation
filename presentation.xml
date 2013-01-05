@@ -64,10 +64,11 @@
 		</list>
 
 		<text	step="7" style="h2"		 x="00" y="60" w="100" h="05" content="script-structure/script-end"/>
-		<list	step="8" style="default" x="05" y="65" w="075" h="15">
+		<list	step="8" style="default" x="05" y="65" w="075" h="20">
 			<item content="script-structure/script-end/1"/>
 			<item content="script-structure/script-end/2"/>
 			<item content="script-structure/script-end/3"/>
+			<item content="script-structure/script-end/4"/>
 		</list>
 	</part>
 	<part name="syntax" steps="true">

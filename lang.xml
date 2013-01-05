@@ -56,6 +56,7 @@
 		<string name="script-structure/script-end/1">Nach Ausf&#252;hrung der auto-execute-Sektion: Skript wird beendet</string>
 		<string name="script-structure/script-end/2">Au&#223;er: Skript erstellt Fenster, Hotkeys etc.</string>
 		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
+		<string name="script-structure/script-end/3">Au&#223;erdem m&#246;glich: konkrete Anweisung im Code, jetzt beenden</string>
 
 		<string name="syntax/constructs">Syntax-Konstrukte</string>
 		<string name="syntax/constructs/functions">Funktionen</string>
