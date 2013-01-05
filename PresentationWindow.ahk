@@ -7,7 +7,7 @@
 	static HiEdit_ColorSet := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
 
 	QuickEdit := new QuickEditWindow(this)
-	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275 h" (0.78 * A_ScreenHeight))
+	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275")
 	DefaultContentArea := ""
 
 	__New(pres)
@@ -25,6 +25,7 @@
 		, this.HeaderBar.Navigate(A_ScriptDir "\resources\localized\" Translator.Language "\header.html")
 
 		, this.DefaultContentArea := this.GetDefaultContentArea()
+		, this.NavigationBox.Height := this.DefaultContentArea.Height
 	}
 
 	_find_latest_descendant(part)
@@ -54,8 +55,8 @@
 
 		x := this.NavigationBox.x + this.NavigationBox.width + static_margin + margin_left
 		, y := this.HeaderBar.y + this.HeaderBar.Height + static_margin + margin_top
-		, w := this.WindowWidth - x - static_margin - margin_right
-		, h := this.WindowHeight - y - static_margin - margin_bottom
+		, w := A_ScreenWidth - x - static_margin - margin_right
+		, h := A_ScreenHeight - y - static_margin - margin_bottom
 
 		return new ContentArea(x, y, w, h)
 	}
