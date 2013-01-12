@@ -24,6 +24,7 @@ s := new SplashScreen() ; show splashscreen
 
 , s.Close() ; end splashscreen
 
+SoundPlay, *64
 return
 
 ;*********** <INCLUDES> ***********
