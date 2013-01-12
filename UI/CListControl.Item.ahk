@@ -25,7 +25,7 @@ class Item extends CCompoundControl
 		}
 		else ; is pure text item
 		{
-			this.AddContainerControl(GUI, "Text", "list_item" . r, opt, this._.text := content)
+			this.AddContainerControl(GUI, "Text", "list_item" . r, opt " +0x80", this._.text := content)
 		}
 
 		if (font)

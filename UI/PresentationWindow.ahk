@@ -120,7 +120,7 @@
 	{
 		static CGUI_controls := Obj.keys(CGUI.RegisteredControls), READYSTATE_COMPLETE := 4
 		local ctrl_type, content, ctrl, err, is_localized, event_list, event_name, event_handler, event_handler_type
-			, ctrl_font := "", ctrl_font_opt := "", ctrl_opt := "", ctrl_options := "", property := "", value := "", color := ""
+			, ctrl_font := "", ctrl_font_opt := "", ctrl_opt := "", ctrl_options := "+0x80 ", property := "", value := "", color := ""
 
 		ctrl_type := ctrl_node.nodeName
 		, this.ProcessStyles(ctrl_node, ctrl_font, ctrl_font_opt, ctrl_opt)

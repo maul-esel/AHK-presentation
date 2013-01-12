@@ -64,13 +64,13 @@
 		<string name="syntax/constructs/functions">Funktionen</string>
 		<string name="syntax/constructs/commands">Befehle</string>
 		<string name="syntax/constructs/directives">Direktiven</string>
-		<string name="syntax/constructs/hotkeys">Tastenkombinationen (&quot;hotkeys&quot;) &amp;&amp; &quot;Hotstrings&quot;</string>
+		<string name="syntax/constructs/hotkeys">Tastenkombinationen (&quot;hotkeys&quot;) &amp; &quot;Hotstrings&quot;</string>
 		<string name="syntax/constructs/other">Sonstiges: Variablen-Zuweisungen, if/else - Bedingungen, Schleifen, ...</string>
 
 		<string name="syntax/similarities">&#196;hnlichkeiten zu Javascript</string>
 		<string name="syntax/similarities/1">Bl&#246;cke: mit geschweiften Klammern</string>
 		<string name="syntax/similarities/2">Bedingungen mit &quot;if (Bedingung)&quot;</string>
-		<string name="syntax/similarities/3">Bedingungen verkn&#252;pfen mit &amp;&amp;&amp;&amp; und || (oder &quot;AND&quot; und &quot;OR&quot;)</string>
+		<string name="syntax/similarities/3">Bedingungen verkn&#252;pfen mit &amp;&amp; und || (oder &quot;AND&quot; und &quot;OR&quot;)</string>
 		<string name="syntax/similarities/4">Logisches NOT (!) und die meisten anderen Operatoren (+, -, *, /, ...)</string>
 
 		<string name="syntax/differences">Unterschiede zu Javascript</string>

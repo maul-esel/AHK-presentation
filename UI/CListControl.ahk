@@ -81,7 +81,7 @@ class CListControl extends CCompoundControl
 
 			, opt := ""
 			, GUI.ProcessStyles(item_node, "", "", opt)
-			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h A_Space opt, this._get_marker(A_Index))
+			, this.AddContainerControl(GUI, "Text", "marker" A_Index, "x" x " y" y " w" w " h" h A_Space opt " +0x80", this._get_marker(A_Index))
 			; do not care for position or fonts now, as these are later to be handled by the UpdatePositions() method or the CListControl.Item class itself.
 		}
 		this.UpdatePositions() ; do initial repositioning
