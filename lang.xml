@@ -13,9 +13,9 @@
 		<string name="syntax/hotkeys">Tastenkombinationen &amp; mehr</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
 		<string name="functionality/gui">Benutzeroberfl&#228;chen</string>
-		<string name="hotkeys">Tastenkombinationen</string>
-		<string name="automation">Automatisierung</string>
-		<string name="extensibility">Zugriff auf andere Techniken</string>
+		<string name="functionality/hotkeys">Tastenkombinationen</string>
+		<string name="functionality/automation">Automatisierung</string>
+		<string name="functionality/extensibility">Zugriff auf andere Techniken</string>
 		<string name="programs">AHK - Programme</string>
 		<string name="community">Community &amp; Foren</string>
 		<string name="end">Ende</string>

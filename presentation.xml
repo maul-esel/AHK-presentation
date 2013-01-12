@@ -188,9 +188,9 @@ MsgBox, 64, AutoHotkey, %text%
 			<executableCode step="7" style="code" x="05" y="80" w="095" h="05">Gui +AlwaysOnTop +Resize +ToolWindow -SysMenu&#10;Gui Show, xcenter ycenter w200 h200, Fenster-Optionen in Aktion</executableCode>
 		</part>
 
-		<part name="hotkeys"/>
-		<part name="automation"/>
-		<part name="extensibility"/>
+		<part name="functionality/hotkeys"/>
+		<part name="functionality/automation"/>
+		<part name="functionality/extensibility"/>
 	</part>
 	<part name="programs"/>
 	<part name="community"/>
