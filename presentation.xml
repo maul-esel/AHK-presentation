@@ -134,6 +134,7 @@ Hello()
 Hello()
 			</executableCode>
 		</part>
+
 		<part name="syntax/commands" steps="true">
 			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/commands"/>
 			<list 	step="2" style="default" x="05" y="05" w="095" h="15">
@@ -154,6 +155,15 @@ MsgBox, 64, AutoHotkey, %text%
 
 ; MsgBox(64, &quot;AutoHotkey&quot;, text) ; AutoHotkey v2
 			</executableCode>
+		</part>
+
+		<part name="syntax/directives" steps="true">
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/directives"/>
+			<list	step="2" style="default" x="05" y="05" w="095" h="15">
+				<item content="syntax/directives/1"/>
+				<item content="syntax/directives/2"/>
+				<item content="syntax/directives/3"/>
+			</list>
 		</part>
 	</part>
 	<part name="functionality">
