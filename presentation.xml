@@ -78,7 +78,6 @@
 			<item content="syntax/constructs/functions"/>
 			<item content="syntax/constructs/commands"/>
 			<item content="syntax/constructs/directives"/>
-			<item content="syntax/constructs/labels"/>
 			<item content="syntax/constructs/hotkeys"/>
 			<item content="syntax/constructs/other"/>
 		</list>
@@ -124,8 +123,9 @@
 			<text 	step="4" style="h3"      x="00" y="30" w="100" h="05" content="syntax/functions/UDF"/>
 			<list 	step="5" style="default" x="05" y="35" w="095" h="10">
 				<item content="syntax/functions/UDF/1"/>
+				<item content="syntax/functions/UDF/2"/>
 			</list>
-			<executableCode step="6" style="code"    x="05" y="42.5" w="095" h="17.5">
+			<executableCode step="6" style="code"    x="05" y="47.5" w="095" h="17.5">
 Hello()
 {
 	MsgBox Hello

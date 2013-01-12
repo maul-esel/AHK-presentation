@@ -9,6 +9,8 @@
 		<string name="syntax/variables">Variablen</string>
 		<string name="syntax/functions">Funktionen</string>
 		<string name="syntax/commands">Befehle</string>
+		<string name="syntax/directives">Direktiven</string>
+		<string name="syntax/hotkeys">Tastenkombinationen &amp; mehr</string>
 		<string name="functionality">Was alles m&#246;glich ist</string>
 		<string name="gui">Benutzeroberfl&#228;chen</string>
 		<string name="hotkeys">Tastenkombinationen</string>
@@ -56,13 +58,12 @@
 		<string name="script-structure/script-end/1">Nach Ausf&#252;hrung der auto-execute-Sektion: Skript wird beendet</string>
 		<string name="script-structure/script-end/2">Au&#223;er: Skript erstellt Fenster, Hotkeys etc.</string>
 		<string name="script-structure/script-end/3">Oder: konkrete Anweisung im Code, nicht zu beenden</string>
-		<string name="script-structure/script-end/3">Au&#223;erdem m&#246;glich: konkrete Anweisung im Code, jetzt beenden</string>
+		<string name="script-structure/script-end/4">Au&#223;erdem m&#246;glich: konkrete Anweisung im Code, jetzt zu beenden</string>
 
 		<string name="syntax/constructs">Syntax-Konstrukte</string>
 		<string name="syntax/constructs/functions">Funktionen</string>
 		<string name="syntax/constructs/commands">Befehle</string>
-		<string name="syntax/constructs/directives">Direktiven</string>d
-		<string name="syntax/constructs/labels">Sprungmarken (&quot;labels&quot;)</string>d
+		<string name="syntax/constructs/directives">Direktiven</string>
 		<string name="syntax/constructs/hotkeys">Tastenkombinationen (&quot;hotkeys&quot;) &amp;&amp; &quot;Hotstrings&quot;</string>
 		<string name="syntax/constructs/other">Sonstiges: Variablen-Zuweisungen, if/else - Bedingungen, Schleifen, ...</string>
 
@@ -89,6 +90,7 @@
 
 		<string name="syntax/functions/UDF">Benutzerdefinierte Funktionen</string>
 		<string name="syntax/functions/UDF/1">Syntax wie in Javascript oder PHP, nur ohne &quot;function&quot; vor dem Namen</string>
+		<string name="syntax/functions/UDF/2">Wichtiger Unterschied: Zugriff auf globale Variablen muss deklariert werden</string>
 
 		<string name="syntax/commands/1">neben Funktionen: &quot;Befehle&quot;</string>
 		<string name="syntax/commands/2">tun praktisch dasselbe wie Funktionen, haben aber ein paar entscheidende Unterschiede &#x21D2; Verwirrung</string>
