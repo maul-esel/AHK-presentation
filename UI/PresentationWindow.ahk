@@ -158,7 +158,8 @@
 			, ComObjError(err)
 
 			, is_localized := ctrl_node.getAttribute("localized") = "true"
-			, ctrl.Navigate(A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") ctrl_node.getAttribute("resource"))
+			, resource := !RegExMatch(resource := ctrl_node.getAttribute("resource"), "^(https?|file|ftp):\/\/") ? A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") . resource : resource
+			, ctrl.Navigate(resource)
 
 			while (ctrl.busy || ctrl.readyState != READYSTATE_COMPLETE)
 				sleep 100
