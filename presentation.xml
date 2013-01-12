@@ -165,6 +165,11 @@ MsgBox, 64, AutoHotkey, %text%
 				<item content="syntax/directives/3"/>
 			</list>
 		</part>
+
+		<part name="syntax/hotkeys" steps="true">
+			<text 	step="1" style="h2"      x="00" y="00" w="100" h="05" content="syntax/hotkeys"/>
+			<executableCode step="2" x="05" y="05" w="095" h="25" style="code">#T::MsgBox Hello&#10;^!G::Send `n `; test&#10;&#10;::abc::Alphabet</executableCode>
+		</part>
 	</part>
 	<part name="functionality">
 		<part name="gui"/>
