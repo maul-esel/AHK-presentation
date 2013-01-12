@@ -4,7 +4,7 @@
 	Caption := false
 	Title := Translator.getString("win-title")
 
-	static HiEdit_ColorSet := { "Back" : "black", "Text" : "white", "SelBarBack" : "black", "LineNumber" : "red", "Number" : "red" }
+	static HiEdit_ColorSet := { "Back" : 0x8edcff, "Text" : "black", "SelBarBack" : 0x8cbadd, "LineNumber" : "blue", "Number" : "red" }
 
 	QuickEdit := new QuickEditWindow(this)
 	NavigationBox := this.AddControl("TreeView", "NavigationBox", "-Buttons x5 y110 w275")
