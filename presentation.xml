@@ -185,10 +185,10 @@ MsgBox, 64, AutoHotkey, %text%
 			<executableCode step="3" style="code" x="05" y="10" w="095" h="15">Gui Show, xcenter ycenter w200 h200, Fenster anzeigen&#10;return&#10;&#10;GuiClose:&#10;Gui, Destroy&#10;ExitApp</executableCode>
 
 			<text step="4" style="default"	x="05" y="30" w="095" h="03" content="functionality/gui/2"/>
-			<executableCode step="5" style="code" x="05" y="35" w="095" h="35">Gui Add, DropDownList, x5 w190 r6 gAddCtrl vDDL, Edit|Button|Combobox|Checkbox|DateTime&#10;Gui Show, xcenter ycenter w200 h200, Steuerelemente&#10;return&#10;&#10;GuiClose:&#10;Gui, Destroy&#10;ExitApp&#10;&#10;AddCtrl:&#10;if (!y)&#10;&#9;y := 25&#10;GuiControlGet, ctrl,, DDL&#10;Gui Add, %ctrl%, x5 h20 w190 y%y%, A|new|%ctrl%&#10;y+=25&#10;return</executableCode>
+			<executableCode step="5" style="code" x="05" y="35" w="095" h="37.5">Gui Add, DropDownList, x5 w190 r6 gAddCtrl vDDL, Edit|Button|Combobox|Checkbox|DateTime&#10;Gui Show, xcenter ycenter w200 h200, Steuerelemente&#10;return&#10;&#10;GuiClose:&#10;Gui, Destroy&#10;ExitApp&#10;&#10;AddCtrl:&#10;if (!y)&#10;&#9;y := 25&#10;GuiControlGet, ctrl,, DDL&#10;Gui Add, %ctrl%, x5 h20 w190 y%y%, A|new|%ctrl%&#10;y+=25&#10;return</executableCode>
 
-			<text step="6" style="default" x="05" y="75" w="095" h="03" content="functionality/gui/3"/>
-			<executableCode step="7" style="code" x="05" y="80" w="095" h="05">Gui +AlwaysOnTop +Resize +ToolWindow -SysMenu&#10;Gui Show, xcenter ycenter w200 h200, Fenster-Optionen in Aktion</executableCode>
+			<text step="6" style="default" x="05" y="77.5" w="095" h="03" content="functionality/gui/3"/>
+			<executableCode step="7" style="code" x="05" y="82.5" w="095" h="07.5">Gui +AlwaysOnTop +Resize +ToolWindow -SysMenu&#10;Gui Show, xcenter ycenter w200 h200, Fenster-Optionen in Aktion</executableCode>
 		</part>
 
 		<part name="functionality/hotkeys" steps="true">
