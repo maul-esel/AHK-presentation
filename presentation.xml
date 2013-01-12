@@ -191,7 +191,34 @@ MsgBox, 64, AutoHotkey, %text%
 			<executableCode step="7" style="code" x="05" y="80" w="095" h="05">Gui +AlwaysOnTop +Resize +ToolWindow -SysMenu&#10;Gui Show, xcenter ycenter w200 h200, Fenster-Optionen in Aktion</executableCode>
 		</part>
 
-		<part name="functionality/hotkeys"/>
+		<part name="functionality/hotkeys" steps="true">
+			<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="functionality/hotkeys"/>
+
+			<text step="2" style="default" x="05" y="05" w="095" h="03" content="functionality/hotkeys/1"/>
+			<text step="3" style="default" x="05" y="10" w="095" h="03" content="functionality/hotkeys/2"/>
+			<executableCode step="4" style="code" x="05" y="13" w="095" h="05">Z::MsgBox Z</executableCode>
+
+			<text step="5" style="default" x="05" y="20" w="095" h="03" content="functionality/hotkeys/3"/>
+			<executableCode step="6" style="code" x="05" y="23" w="095" h="05">!H::MsgBox Alt + H</executableCode>
+
+			<text step="7" style="default" x="05" y="30" w="095" h="03" content="functionality/hotkeys/4"/>
+			<executableCode step="8" style="code" x="05" y="33" w="095" h="7.5">!H::&#10;MsgBox Alt + H&#10;ExitApp</executableCode>
+
+			<text step="9" style="default" x="05" y="42.5" w="095" h="03" content="functionality/hotkeys/5"/>
+			<executableCode step="10" style="code" x="05" y="45.5" w="095" h="05">#IfWinActive ahk_class AutoHotkeyGUI&#10;!F::MsgBox AHK: Alt + F</executableCode>
+
+			<text step="11" style="h3"	  x="00" y="55" w="100" h="05" content="functionality/hotkeys/hotstrings"/>
+
+			<text step="12" style="default" x="05" y="60" w="095" h="03" content="functionality/hotkeys/hotstrings/1"/>
+			<text step="13" style="default" x="05" y="65" w="095" h="03" content="functionality/hotkeys/hotstrings/2"/>
+			<executableCode step="14" style="code" x="05" y="68" w="095" h="05">::abc::Alphabet</executableCode>
+
+			<text step="15" style="default" x="05" y="75" w="095" h="03" content="functionality/hotkeys/hotstrings/3"/>
+			<executableCode step="16" style="code" x="05" y="78" w="095" h="05">:*:abc::Alphabet ; ? C</executableCode>
+
+			<text step="17" style="default" x="05" y="85" w="095" h="03" content="functionality/hotkeys/hotstrings/4"/>
+			<executableCode step="18" style="code" x="05" y="88" w="095" h="10">::test::&#10;MsgBox "test" eingegeben&#10;ExitApp</executableCode>
+		</part>
 		<part name="functionality/automation"/>
 		<part name="functionality/extensibility"/>
 	</part>

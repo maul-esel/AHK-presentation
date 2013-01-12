@@ -112,6 +112,18 @@
 		<string name="functionality/gui/2">Hinzuf&#252;gen und Auslesen von Steuerelementen:</string>
 		<string name="functionality/gui/3">Optionen setzen:</string>
 
+		<string name="functionality/hotkeys/1">&#8226; Tastenkombinationen l&#246;sen Aktionen aus</string>
+		<string name="functionality/hotkeys/2">&#8226; Definition einer Tastenkombination: &quot;[Tasten]::Aktion&quot;</string>
+		<string name="functionality/hotkeys/3">&#8226; Sondertasten durch Symbole dargestellt (Win: #, Alt: !, Strg: ^, ...)</string>
+		<string name="functionality/hotkeys/4">&#8226; Mehrzeilige Aktionen m&#246;glich</string>
+		<string name="functionality/hotkeys/5">&#8226; Kontextabh&#228;ngige Hotkeys mit #If, #IfWinActive oder #IfWinExist</string>
+
+		<string name="functionality/hotkeys/hotstrings">&quot;Hotstrings&quot;</string>
+		<string name="functionality/hotkeys/hotstrings/1">&#8226; durch Eingabe eines festgelegten Textes aktiviert</string>
+		<string name="functionality/hotkeys/hotstrings/2">&#8658; Ersetzen der Eingabe</string>
+		<string name="functionality/hotkeys/hotstrings/3">&#8226; Verschiedene Optionen m&#246;glich (sofort: *, im Wort: ?, Gro&#223;-/Kleinschreibung: C, ...)</string>
+		<string name="functionality/hotkeys/hotstrings/4">&#8226; k&#246;nnen auch Aktionen ausl&#246;sen</string>
+
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
 		<string name="execute">Ausf&#252;hren</string>
