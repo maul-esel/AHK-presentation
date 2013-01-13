@@ -14,6 +14,21 @@ SetRedraw(win, allow = false)
 	SendMessage, WM_SETREDRAW, allow, 0,, % "ahk_id " win.hwnd
 }
 
+SwitchBrowser()
+{
+	global gui
+	static dest
+
+	for name, ctrl in gui.currentPart.controls {
+		if (ctrl.Type = "ActiveX") {
+			alt_resource := ctrl._.XMLNode.getAttribute("alt-resource")
+			, resource := ctrl._.XMLNode.getAttribute("resource")
+			, ctrl.Navigate(dest := (!dest || dest = resource) ? alt_resource : resource)
+			break
+		}
+	}
+}
+
 RunEditor()
 {
 	static script_file := A_ScriptDir . "\tmp\script.ahk"

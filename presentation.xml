@@ -223,7 +223,10 @@ MsgBox, 64, AutoHotkey, %text%
 		<part name="functionality/automation"/>
 		<part name="functionality/extensibility" steps="true">
 			<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="functionality/extensibility"/>
-			<browser step="2" style="default" x="05" y="05" w="095" h="25" resource="http://google.de"/>
+			<browser step="2" style="default" x="05" y="05" w="095" h="25" resource="http://google.de" alt-resource="C:\"/>
+			<button step="2" style="default" x="90" y="30" w="10" h="05" content="functionality/extensibility/switch">
+				<event name="click" handler-type="function" handler="SwitchBrowser"/>
+			</button>
 
 			<text step="3" style="h3" x="00" y="35" w="100" h="05" content="functionality/extensibility/possibilities"/>
 			<list step="4" style="default" x="05" y="40" w="095" h="15">
