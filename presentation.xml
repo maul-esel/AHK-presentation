@@ -263,6 +263,17 @@ return</executableCode>
 		</part>
 	</part>
 	<part name="programs"/>
-	<part name="community"/>
+	<part name="community" steps="true">
+		<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="community"/>
+		<list step="2" style="default" x="05" y="05" w="095" h="30">
+			<item content="community/1"/>
+			<item content="community/2"/>
+			<item content="community/3"/>
+			<item content="community/4"/>
+			<item content="community/5"/>
+			<item content="community/6"/>
+		</list>
+		<browser step="3" style="default" x="05" y="40" w="095" h="60" resource="http://www.autohotkey.com"/>
+	</part>
 	<part name="end"/>
 </presentation>

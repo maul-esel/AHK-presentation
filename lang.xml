@@ -130,6 +130,13 @@
 		<string name="functionality/extensibility/possibilities/2">Windows-Funktionen aufrufen mit DllCall()</string>
 		<string name="functionality/extensibility/possibilities/3">Automatisierung von Office, Outlook, Internet Explorer u.A. mit COM</string>
 
+		<string name="community/1">Webseite: http://autohotkey.com</string>
+		<string name="community/2">Forum: http://autohotkey.com/community (englisch, mit deutschem Unterforum)</string>
+		<string name="community/3">(altes deutsches Forum: http://de.autohotkey.com/forum)</string>
+		<string name="community/4">Ausf&#252;hrliche Dokumentation, auf Deutsch und Chinesisch &#252;bersetzt</string>
+		<string name="community/5">Zahlreiche fertige Skripte, alle kostenlos</string>
+		<string name="community/6">Kostenloser und meist schneller Support bei Fragen rund um AHK</string>
+
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
 		<string name="execute">Ausf&#252;hren</string>
