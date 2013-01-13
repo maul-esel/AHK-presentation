@@ -124,6 +124,11 @@
 		<string name="functionality/hotkeys/hotstrings/3">&#8226; Verschiedene Optionen m&#246;glich (sofort: *, im Wort: ?, Gro&#223;-/Kleinschreibung: C, ...)</string>
 		<string name="functionality/hotkeys/hotstrings/4">&#8226; k&#246;nnen auch Aktionen ausl&#246;sen</string>
 
+		<string name="functionality/extensibility/possibilities">Verschiedene M&#246;glichkeiten</string>
+		<string name="functionality/extensibility/possibilities/1">Arbeitsspeicher lesen und Schreiben mit NumGet() / NumPut() bzw. StrGet() / StrPut()</string>
+		<string name="functionality/extensibility/possibilities/2">Windows-Funktionen aufrufen mit DllCall()</string>
+		<string name="functionality/extensibility/possibilities/3">Automatisierung von Office, Outlook, Internet Explorer u.A. mit COM</string>
+
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
 		<string name="execute">Ausf&#252;hren</string>

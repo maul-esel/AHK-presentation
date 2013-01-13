@@ -219,8 +219,45 @@ MsgBox, 64, AutoHotkey, %text%
 			<text step="17" style="default" x="05" y="85" w="095" h="03" content="functionality/hotkeys/hotstrings/4"/>
 			<executableCode step="18" style="code" x="05" y="88" w="095" h="10">::test::&#10;MsgBox "test" eingegeben&#10;ExitApp</executableCode>
 		</part>
+
 		<part name="functionality/automation"/>
-		<part name="functionality/extensibility"/>
+		<part name="functionality/extensibility" steps="true">
+			<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="functionality/extensibility"/>
+			<browser step="2" style="default" x="05" y="05" w="095" h="25" resource="http://google.de"/>
+
+			<text step="3" style="h3" x="00" y="35" w="100" h="05" content="functionality/extensibility/possibilities"/>
+			<list step="4" style="default" x="05" y="40" w="095" h="15">
+				<item content="functionality/extensibility/possibilities/1"/>
+				<item content="functionality/extensibility/possibilities/2"/>
+				<item content="functionality/extensibility/possibilities/3"/>
+			</list>
+
+			<executableCode step="5" style="code" x="05" y="55" w="095" h="15">var := &quot;abc&quot;
+addr := &amp;var
+MsgBox % StrGet(addr, 1)
+StrPut(&quot;d&quot;, addr, 1)
+MsgBox %var%</executableCode>
+			<executableCode step="6" style="code" x="05" y="70" w="095" h="25">#Persistent
+#SingleInstance force
+
+xls := ComObjCreate("Excel.Application")
+
+xls.Workbooks.Add()
+
+xls.Range("A1").Value := 42
+xls.Range("A2").Value := 44
+xls.Range("A3").Formula := "=SUMME(A1:A2)"
+
+xls.Visible := true
+xls.Windows[1].Activate()
+return
+
+!L::
+xls.DisplayAlerts := false
+xls.Quit()
+ExitApp
+return</executableCode>
+		</part>
 	</part>
 	<part name="programs"/>
 	<part name="community"/>
