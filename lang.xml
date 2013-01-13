@@ -137,6 +137,11 @@
 		<string name="community/5">Zahlreiche fertige Skripte, alle kostenlos</string>
 		<string name="community/6">Kostenloser und meist schneller Support bei Fragen rund um AHK</string>
 
+		<string name="end/sources">Quellen</string>
+		<string name="end/sources/1">AutoHotkey Foren (autohotkey.com/community und de.autohotkey.com/forum)</string>
+		<string name="end/sources/2">eigenes Vorwissen</string>
+		<string name="end/code">Benutzter Quellcode</string>
+
 		<string name="exit">Beenden</string>
 		<string name="reload">Neu starten</string>
 		<string name="execute">Ausf&#252;hren</string>

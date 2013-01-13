@@ -262,7 +262,6 @@ ExitApp
 return</executableCode>
 		</part>
 	</part>
-	<part name="programs"/>
 	<part name="community" steps="true">
 		<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="community"/>
 		<list step="2" style="default" x="05" y="05" w="095" h="30">
@@ -275,5 +274,20 @@ return</executableCode>
 		</list>
 		<browser step="3" style="default" x="05" y="40" w="095" h="60" resource="http://www.autohotkey.com"/>
 	</part>
-	<part name="end"/>
+	<part name="end" steps="true">
+		<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="end"/>
+		<text step="2" style="h3" x="00" y="05" w="100" h="05" content="end/sources"/>
+		<list step="3" style="default" x="05" y="10" w="095" h="7.5">
+			<item content="end/sources/1"/>
+			<item content="end/sources/2"/>
+		</list>
+
+		<text step="4" style="h3" x="00" y="30" w="100" h="05" content="end/code"/>
+		<list step="5" style="default" x="05" y="35" w="095" h="20">
+			<item>CGUI by ChrisS85 (https://github.com/ChrisS85/CGUI)</item>
+			<item>ahk_library by lordkrandel (https://github.com/lordkrandel/ahk_library)</item>
+			<item>HiEdit (HiEdit control is copyright of Antonis Kyprianou (aka akyprian).  See http://www.winasm.net.)</item>
+			<item>HiEdit wrapper by majkinetor (http://code.google.com/p/mm-autohotkey/)</item>
+		</list>
+	</part>
 </presentation>
