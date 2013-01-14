@@ -102,7 +102,7 @@
 		<string name="syntax/commands/differences/return">Befehle haben keinen R&#252;ckgabewert</string>
 
 		<string name="syntax/directives/1">beeinflussen das Verhalten von AutoHotkey</string>
-		<string name="syntax/directives/2">werden vor der Ausf&#252;hrung gelesen &#8592; (meistens) Position im Code egal</string>
+		<string name="syntax/directives/2">werden vor der Ausf&#252;hrung gelesen &#8658; (meistens) Position im Code egal</string>
 		<string name="syntax/directives/3">Beispiele: #SingleInstance, #NoEnv, #Persistent, #If, #Include, ...</string>
 
 		<string name="functionality/1">Wie erw&#228;hnt: zahlreiche Funktionen eingebaut</string>
