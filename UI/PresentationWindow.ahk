@@ -156,6 +156,7 @@
 			err := ComObjError(false)
 			, ctrl := this.AddControl("ActiveX", name, ctrl_options, "Shell.Explorer")
 			, ComObjError(err)
+			, ctrl.Silent := true
 
 			, is_localized := ctrl_node.getAttribute("localized") = "true"
 			, resource := !RegExMatch(resource := ctrl_node.getAttribute("resource"), "^(https?|file|ftp):\/\/") ? A_ScriptDir "\resources\" (is_localized ? "localized\" Translator.Language "\" : "") . resource : resource
