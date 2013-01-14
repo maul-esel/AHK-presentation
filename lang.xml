@@ -124,6 +124,11 @@
 		<string name="functionality/hotkeys/hotstrings/2">&#8226; Verschiedene Optionen m&#246;glich (sofort: *, im Wort: ?, Gro&#223;-/Kleinschreibung: C, ...)</string>
 		<string name="functionality/hotkeys/hotstrings/3">&#8226; k&#246;nnen auch Aktionen ausl&#246;sen</string>
 
+		<string name="functionality/automation/send">&#8226; Tastendrücke mit dem &quot;Send&quot;-Befehl</string>
+		<string name="functionality/automation/sendmodes">&#8226; Weitere Befehle: &quot;SendInput&quot;, &quot;SendRaw&quot;, &quot;SendPlay&quot;</string>
+		<string name="functionality/automation/run">&#8226; Andere Programme oder Skripte starten mit &quot;Run&quot;</string>
+		<string name="functionality/automation/windows">&#8226; Zahlreiche M&#246;glichkeiten der Fenster-Manipulation: &quot;WinActivate&quot;, &quot;WinMaximize&quot;, &quot;WinMove&quot;, &quot;WinMenuSelectItem&quot;, &quot;WinMinimizeAll(Undo)&quot;, ...</string>
+
 		<string name="functionality/extensibility/switch">wechseln</string>
 		<string name="functionality/extensibility/possibilities">Verschiedene M&#246;glichkeiten</string>
 		<string name="functionality/extensibility/possibilities/1">Arbeitsspeicher lesen und Schreiben mit NumGet() / NumPut() bzw. StrGet() / StrPut()</string>

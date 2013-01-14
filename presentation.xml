@@ -220,7 +220,47 @@ MsgBox, 64, AutoHotkey, %text%
 			<executableCode step="18" style="code" x="05" y="87" w="095" h="13">::test::&#10;MsgBox "test" eingegeben&#10;ExitApp</executableCode>
 		</part>
 
-		<part name="functionality/automation"/>
+		<part name="functionality/automation" steps="true">
+			<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="functionality/automation"/>
+			<text step="2" style="default" x="05" y="05" w="095" h="05" content="functionality/automation/send"/>
+			<executableCode step="3" style="code" x="05" y="10" w="095" h="10">Q::Send Irgendein beliebiger Text...</executableCode>
+			<text step="4" style="default" x="05" y="20" w="095" h="05" content="functionality/automation/sendmodes"/>
+			<text step="5" style="default" x="05" y="25" w="095" h="05" content="functionality/automation/run"/>
+			<text step="6" style="default" x="05" y="30" w="095" h="05" content="functionality/automation/windows"/>
+			<executableCode step="7" style="code" x="05" y="35" w="095" h="65">RunEditor()
+{
+	static script_file := A_ScriptDir . &quot;\script.ahk&quot;
+		, script_text := &quot;MsgBox Hallo Welt!&quot;
+
+	if (FileExist(script_file))
+		FileDelete %script_file%
+
+	Run, notepad.exe, , , pid
+	WinWait ahk_pid %pid%
+	WinActivate ahk_pid %pid%
+
+	Loop, parse, script_text
+	{
+		SendRaw %A_LoopField%
+		sleep 100
+	}
+
+	sleep 5000
+	Send ^s
+	sleep 1000
+	Send %script_file%{Tab}{Right}{Down}{Enter}
+	sleep 3000
+	Send {Enter}
+	sleep 2000
+
+	Run explorer.exe /select`,&quot;%script_file%&quot;
+	sleep 3000
+	Process, Close, %pid%
+}
+
+RunEditor()</executableCode>
+		</part>
+
 		<part name="functionality/extensibility" steps="true">
 			<text step="1" style="h2"		x="00" y="00" w="100" h="05" content="functionality/extensibility"/>
 			<browser step="2" style="default" x="05" y="05" w="095" h="25" resource="http://google.de" alt-resource="C:\"/>
